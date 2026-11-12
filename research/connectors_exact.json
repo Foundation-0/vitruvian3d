@@ -1,0 +1,36 @@
+{
+  "model": "Capsules about all prescribed contact-center segments of length2r, including internal octahedral edges and intermotif bridges. Spheres remain full opaque obstacle balls.",
+  "capsule_contained_in_physical_endpoint_spheres": "Only zero rod radius. Any a>0 protrudes near the touching point.",
+  "probe_exclusion_redundancy": {
+    "general_max_rod_radius": "sqrt(q)*sqrt(q + 2*r) - q",
+    "equal_probe_ratio": "-1 + sqrt(3)",
+    "equal_probe_normalized_radius": "sqrt(2)*(-1 + sqrt(3))/2",
+    "equal_probe_normalized_radius_decimal": 0.5176380902050415
+  },
+  "nonincident_rods": {
+    "minimum_centerline_separation": "sqrt(2)*r",
+    "equal_rod_nonpenetration_radius": "r/sqrt(2)",
+    "normalized_radius": 0.5
+  },
+  "incident_rods": {
+    "minimum_angle": "pi/3",
+    "overlap_region_contained_in_shared_junction_sphere_if": "a<=r/2",
+    "normalized_radius": 0.3535533905932738
+  },
+  "simultaneous_universal_certificate": {
+    "radius_ratio": "a/r < 1/2",
+    "normalized_radius_upper_bound": 0.3535533905932738,
+    "consequence": "No extra equal-radius-probe obstruction; no nonincident rod intersection; incident rod overlaps confined to shared junction spheres. Applies to every globally nonoverlapping equal-sphere contact framework, including all exact separated nonuniform phases."
+  },
+  "limitations": "Pure solid geometry. Junction articulation, finite wall thickness, bending, friction, loads, actuation, manufacturing and arbitrary solid motif faces are not modeled. Exact tangencies have no guaranteed tolerance against endpoint sphere growth or generic changes that destroy original contacts.",
+  "composite_volume": {
+    "contact_rods_per_cell": 15,
+    "spheres_per_cell": 6,
+    "neck_height": "h=r-sqrt(r\u00b2-a\u00b2)",
+    "added_volume_per_rod": "2*pi*r*h\u00b2-(4*pi/3)*h\u00b3",
+    "total_solid_volume": "8*pi*r\u00b3+15*(2*pi*r*h\u00b2-(4*pi/3)*h\u00b3)",
+    "condition": "a/r<1/2; exterior rod portions do not overlap one another or unrelated spheres",
+    "consequence": "Matched cell volumes retain exactly matched composite solid fractions.",
+    "probe_ratio_band": "For a/r<=1/2, every q/r>=1/4 satisfies rod exclusion redundancy."
+  }
+}
