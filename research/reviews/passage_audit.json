@@ -1,0 +1,70 @@
+{
+  "reviewed_passage_commit": "3dbc5c1a8ca42b0cc843546f18eece0a487f118e",
+  "reviewed_repository": "https://github.com/Foundation-0/vitruvian3d",
+  "reviewed_connector_commit": "0bb354ee74f48e921a1350c3d6d7dd4063397639",
+  "source_read_method": "git show at exact pinned commit, independent of moving checkout HEAD",
+  "published_file_sha256": {
+    "passage_proof.md": "54652d262bf3ae2920f3bbebb5e93c399787689f93ba311df5b71dab736ac63c",
+    "passage_verify.py": "4c8fb018cc2dcd09ee40467f80c689a6d95c6a877582ec11af15fe32c9f96dac",
+    "passage_window_verify.py": "0fb6c0c78c20645799ef76a97cf75feb776dd5eb13078186df9a51b0cb117d66",
+    "passage_certificate.json": "deabfc3b90da4666a45b8d09021c22827c1e6b3284876c49eb81a7fe0f8dc0c7",
+    "passage_window.json": "a903bf4a2351589a554f458dd0f1365efd129b9a78a900195e569d23045e9b5a"
+  },
+  "published_clone_mutated": false,
+  "integer_witness_types_and_positive_scales_checked": true,
+  "narrow_exact_function_replay": {
+    "plane": {
+      "triangles": 2048,
+      "vertex_checks": 6144,
+      "max_squared_distance_upper_bound": "202766238443119/102400000000000"
+    },
+    "original": {
+      "loops": 2,
+      "segments": 16,
+      "exact_segment_site_checks": 32928,
+      "winding_vectors": [
+        [
+          0,
+          0,
+          -1
+        ],
+        [
+          0,
+          1,
+          0
+        ]
+      ]
+    },
+    "skew": {
+      "loops": 3,
+      "segments": 24,
+      "exact_segment_site_checks": 49392,
+      "winding_vectors": [
+        [
+          0,
+          0,
+          -1
+        ],
+        [
+          -1,
+          0,
+          1
+        ],
+        [
+          0,
+          -1,
+          0
+        ]
+      ]
+    },
+    "volume": {
+      "matched_volume_bracket": true,
+      "original_interval_contains_exact_40_degrees": true
+    }
+  },
+  "wide_replay_evidence": "Identical-hash staging verifier/witnesses replayed all 200 tiles successfully; reviewed interval-cover and hash-binding logic.",
+  "pinned_connector_proof_sha256": "cc328d5b84f3bd0b02c1cc85dd51d50e77835acc2592f8af30ac14ce0594d441",
+  "mathematical_review": "PASS continuum plane obstruction, connected-loop winding ranks, all-image control, matched-volume monotonicity, shape sandwich, rod exclusion and disjoint added material.",
+  "dependency_note": "The pinned passage checkout references connectors_proof.md but does not contain it; the separate connector publication supplies that corollary dependency.",
+  "scope": "No novelty, optimal throat, arbitrary probe shape, material mechanics, or hardware claim established."
+}
