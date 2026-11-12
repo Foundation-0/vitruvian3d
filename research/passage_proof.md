@@ -214,11 +214,44 @@ Its volume outside its two endpoint spheres is therefore constant. Six equal phy
 
 ## Reproduction, controls, and evidence boundary
 
+### A wider control window
+
+`passage_window.py` extends the same theorem to the exact half-angle intervals
+
+$$
+I_o^{\rm wide}=[355/1000,364/1000],\qquad
+I_v^{\rm wide}=[415/1000,426/1000].
+$$
+
+The original interval spans about $39.090^\circ$ to $40.003^\circ$. The skew interval spans about $45.077^\circ$ to $46.148^\circ$. These angle decimals are explanatory. The endpoints of the certified intervals are the rational half-angle parameters above.
+
+The extension uses the same two original free loops and three skew free loops. A common $64\times64$ plane-cover witness replaces the smaller grid. Each whole interval is partitioned into closed parameter tiles of width $1/10000$: 90 original tiles and 110 skew tiles. Exact interval checks cover every real parameter in every tile. Adjacent tiles share their endpoints, so there are no unverified gaps.
+
+The separate standard-library program `passage_window_verify.py` checks the saved witnesses through the independent verifier. It verifies interval coverage, the hash binding to the original loop witnesses, the covered plane on every original tile, the free loops on every tile, and the exact matched-volume bracket over the whole wider intervals. The earlier proof arguments then give rank exactly two versus rank three throughout this wider window, for every $q/r\in[199/200,201/200]$.
+
+### A shape-sandwich corollary
+
+Let a rigid probe $K$, referred to its chosen center, satisfy
+
+$$
+B(0,(199/200)r)\subseteq K\subseteq B(0,(201/200)r).
+$$
+
+Every orientation of $K$ contains the smaller concentric ball. The certified covered planes therefore block every nonzero first winding regardless of the probe's orientation. Every orientation of $K$ lies within the larger ball. The certified free polylines therefore work for every orientation, including arbitrary orientation changes while following those paths.
+
+Holding orientation fixed gives closed loops in the full position-and-orientation configuration space with the already certified center windings. The maximum center-winding rank is consequently exactly two on the original route and three on the skew route for these probes too. This is a robustness result for shapes close to a sphere. It supplies no claim about elongated objects or anatomical bodies.
+
+The contact-rod corollary also survives this sandwich. The outer-ball paths remain free with the specified rods, and adding rods cannot remove the inner-ball barrier.
+
+### Commands and scope
+
 Run:
 
 ```sh
 python3 research/passage_certificate.py
 python3 research/passage_verify.py
+python3 research/passage_window.py
+python3 research/passage_window_verify.py
 ```
 
 The first program discovers convenient witnesses using NumPy/SciPy, then accepts them only through exact finite inequalities. It writes `passage_certificate.json`. The second program reads the saved witnesses and independently reconstructs every acceptance calculation with the Python standard library. It imports neither the discovery program nor NumPy/SciPy, and writes `passage_verify.json`.

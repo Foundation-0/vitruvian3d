@@ -34,5 +34,7 @@ jobs:
         run: python research/passage_verify.py
       - name: Audit fixed-width discovery arithmetic
         run: python research/connectors_passage_review.py
+      - name: Verify the wider parameter window
+        run: python research/passage_window_verify.py
       - name: Check saved verifier receipts
-        run: git diff --exit-code -- research/passage_verify.json research/connectors_passage_review.json
+        run: git diff --exit-code -- research/passage_verify.json research/passage_window_verify.json research/connectors_passage_review.json

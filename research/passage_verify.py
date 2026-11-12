@@ -64,7 +64,7 @@ def verify_plane(data):
                     assert bound<F(399**2,80000)
                     maximum=max(maximum,bound);count+=1
     assert next(labels,None) is None
-    assert count==6144
+    assert count==6*N*N
     return {'triangles':2*N*N,'vertex_checks':count,'max_squared_distance_upper_bound':str(maximum)}
 
 
