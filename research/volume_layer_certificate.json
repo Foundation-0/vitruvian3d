@@ -1,0 +1,79 @@
+{
+  "theorem": "Any sequence q_k in [-1,1] yields a globally nonoverlapping fixed-contact layer stack using the certified L3(q_k).",
+  "positions": "X(n1,n2,k)=n1*L1+n2*L2+S(k), S(k+1)-S(k)=L3(q_k)",
+  "adjacent_exact_comparisons_rechecked": 475,
+  "nonadjacent_lower_distance": "(12*m-10)/sqrt(35) >=14/sqrt(35)>sqrt(2), m>=2",
+  "N_periodic_supercell": "Rows L1,L2,sum_{k=0}^{N-1}L3(q_k), containing 6N sphere sites.",
+  "total_volume": "sum_k V(q_k), V(q)=9+q+4sqrt(3-2q^2)",
+  "sequential_conversion_peak_exact": "14N + (3/2)sqrt(22)-5",
+  "product_path_family_minimax": "The same value is optimal among arbitrary continuous q_k(t) in [-1,1] starting all +1 and ending all -1; first crossing of q*=1/sqrt(22) supplies the lower bound.",
+  "first_N_beating_one_cell_lower_per_motif": 52,
+  "finite_interface_extra_normal_height": 0.34408319602962123,
+  "examples": [
+    {
+      "layers": 1,
+      "peak_total_volume": 16.035623639735142,
+      "peak_volume_per_motif": 16.035623639735142,
+      "relative_peak_expansion_percent": 14.540168855251029,
+      "upper_per_motif_excess_below_one_cell_certified_lower": false
+    },
+    {
+      "layers": 2,
+      "peak_total_volume": 30.035623639735142,
+      "peak_volume_per_motif": 15.017811819867571,
+      "relative_peak_expansion_percent": 7.270084427625514,
+      "upper_per_motif_excess_below_one_cell_certified_lower": false
+    },
+    {
+      "layers": 8,
+      "peak_total_volume": 114.03562363973515,
+      "peak_volume_per_motif": 14.254452954966894,
+      "relative_peak_expansion_percent": 1.8175211069063786,
+      "upper_per_motif_excess_below_one_cell_certified_lower": false
+    },
+    {
+      "layers": 16,
+      "peak_total_volume": 226.03562363973515,
+      "peak_volume_per_motif": 14.127226477483447,
+      "relative_peak_expansion_percent": 0.9087605534531893,
+      "upper_per_motif_excess_below_one_cell_certified_lower": false
+    },
+    {
+      "layers": 51,
+      "peak_total_volume": 716.0356236397351,
+      "peak_volume_per_motif": 14.039914189014414,
+      "relative_peak_expansion_percent": 0.28510135010296134,
+      "upper_per_motif_excess_below_one_cell_certified_lower": false
+    },
+    {
+      "layers": 52,
+      "peak_total_volume": 730.0356236397351,
+      "peak_volume_per_motif": 14.039146608456445,
+      "relative_peak_expansion_percent": 0.27961863183175056,
+      "upper_per_motif_excess_below_one_cell_certified_lower": true
+    },
+    {
+      "layers": 64,
+      "peak_total_volume": 898.0356236397351,
+      "peak_volume_per_motif": 14.031806619370862,
+      "relative_peak_expansion_percent": 0.22719013836329732,
+      "upper_per_motif_excess_below_one_cell_certified_lower": true
+    },
+    {
+      "layers": 256,
+      "peak_total_volume": 3586.035623639735,
+      "peak_volume_per_motif": 14.007951654842715,
+      "relative_peak_expansion_percent": 0.05679753459082433,
+      "upper_per_motif_excess_below_one_cell_certified_lower": true
+    },
+    {
+      "layers": 1024,
+      "peak_total_volume": 14338.035623639735,
+      "peak_volume_per_motif": 14.001987913710678,
+      "relative_peak_expansion_percent": 0.014199383647706083,
+      "upper_per_motif_excess_below_one_cell_certified_lower": true
+    }
+  ],
+  "connector_corollary": "Contact capsules of radius a<r/2, r=1/sqrt(2), inherit the existing universal contact-framework certificate at every sequence and time.",
+  "scope": "Changing periodic cell allowed. Vanishing relative/per-motif barrier as N grows; finite total transition excess remains. No fixed-box path, energy, forces, or physical articulation claimed."
+}
