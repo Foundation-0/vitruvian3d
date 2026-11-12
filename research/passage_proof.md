@@ -198,7 +198,7 @@ In the selected interval both numerator and denominator are positive, and $0<3\a
 
 ## Relation to finite rods
 
-The separate elementary theorem in `connectors_proof.md` shows that a capsule of radius $a$ around a contact-center segment of length (2r) adds no probe-center exclusion when
+The separate elementary theorem in [connectors_proof.md](https://github.com/Foundation-0/vitruvian3d/blob/0bb354ee74f48e921a1350c3d6d7dd4063397639/research/connectors_proof.md) shows that a capsule of radius $a$ around a contact-center segment of length (2r) adds no probe-center exclusion when
 
 $$
 a\le\sqrt{q(2r+q)}-q.
