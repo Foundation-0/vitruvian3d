@@ -1,0 +1,194 @@
+{
+  "published_heads": {
+    "main": "15a73317efbea8052b7829d0839ce61b2b90893b",
+    "gpt-forge/finite-connectors": "0bb354ee74f48e921a1350c3d6d7dd4063397639",
+    "gpt-forge/volume-transition": "65afe245178d6d0da1b748a5d5f52be5a7d865f4",
+    "gpt-forge/certified-passage": "4c50aa10adc5027f813741b5f16ba8a4bdf38b97",
+    "gpt-forge/layer-transition": "64c2a4693eb6f31aabbeed3113379786aa58284c",
+    "gpt-forge/fixed-boundary": "8dd4ad360471f5dc7bd2e57e5bebd6afbfd13602"
+  },
+  "source_sha256": {
+    ".github/workflows/boundary.yml": "3ff9c186d01935d43e76420d8fef43187acb1dd4e1e2bb524fed63c8996d03a9",
+    ".github/workflows/certified-passage.yml": "750878199863a7f90c1e8bf9252b48c42c535b13596a6538f46b441d69afa75f",
+    ".github/workflows/connectors.yml": "865cacf5661c12f679534c71b960f6b4257b6403e1a371776fa82522a645ad5b",
+    ".github/workflows/layers.yml": "c648265a9c8d38a54e3614130cfa5151f3e0d027e69b1ddfa7ff8ea371e16a02",
+    ".github/workflows/research.yml": "7c49fd64a2f47e3b04abf7e67c6179a84e8b890d0e6e14e63336a8af8d1243d4",
+    ".github/workflows/volume.yml": "61567aa332e99075cd04694a9950eaa68f8eb11dda23dfef700327e4159923bd",
+    "LICENSE-TEXT.md": "8eaae8e50ab831eaec17d489f0c524e87c75697cf458571e6140a3cdf7c588a6",
+    "NOTICE.md": "5c11625f7e2a3977fcd4e54a0d49877ba14c00df45330f8bddf8dd00785c259f",
+    "README.md": "ccac13b882fcec325da9fcd80c2edead41d9d60de223b5978b4bd597ce8faa14",
+    "requirements.txt": "d81c589f9649525eeaa2c0fb585867327d753c7c8b4544b0e9a117ab9a516434",
+    "research/abstract-directions.md": "deb97ad49c32478cc61efeced3f39b11256c1e2ec47cc59a05aa68dd578085a9",
+    "research/boundary_certificate.json": "573d34bc1a95ce2aff751f10abaa02820acf734e3b9a2d15a93380d0ba3c1f86",
+    "research/boundary_certificate.py": "40c860356f7c36b74db25d4406991ba01382dd9bc1acc3f6f0976f483caa84a6",
+    "research/boundary_proof.md": "6259c659e5cc8ff9f3a594596c9afc4647e0c8dbb4f8eeee41c79bf7fe9de972",
+    "research/centre_dynamics.json": "97c6293fbedd20bf17253c2276166842595ac0960cc124e29ea12792fa227db0",
+    "research/centre_dynamics.py": "80cb029b00e3c3d087eaae02cb0c1c5b765fdd2e10f8e3c67a227b74902cc158",
+    "research/centre_dynamics_report.md": "ec2114d1a8c63093ce54093ec942fb57f55fa7adeebfbb7d3c97a6f011a30f49",
+    "research/centre_extraction.json": "3915340bb4423b642904ce4b78d93505e6223c706b382fed53e8f6cf82ee112a",
+    "research/centre_extraction.py": "6b40652c07d25809419f79ad7d18146de5039ec56b7bcc0a9d0993fb904d2553",
+    "research/chirality_probe.json": "89e3d802c1be6c34524d7f93f86395b1f7e06b33b8bb986fc5467ce13df2b8bf",
+    "research/chirality_probe.py": "2bdf0b39ee8b8249ce0e61f8cc4b6a0907bee0b2109092e259b01377f5a2a842",
+    "research/chirality_probe.txt": "4ad8ade1b83251c17b534d38ed380d88374c73f40b8783b4137ce30f115f7a5e",
+    "research/connectors_boundary_review.json": "d268aede71dc61c9d1a5cdccfea50f28bfe6fe0bbd1829b096d3f3d35d250841",
+    "research/connectors_boundary_review.md": "2b7bd4789eefac989f8243603b080c4697200784736b9278401a1cc583be67a4",
+    "research/connectors_boundary_review.py": "08760f09dd0fb84562fe7afcb7c9169e167b01cbbce1820cdae4cc23f60ad2b0",
+    "research/connectors_exact.json": "3c250fa9f282114f612fc6c397962c5a46a65db28587d242c8f7d6639d1e8c3a",
+    "research/connectors_exact.py": "a4d46023f3b05bad4a927ef1a6a0217061f2780c3834a9b55fa0e42f7dae6c01",
+    "research/connectors_layer_review.json": "dda41f43cf81edbc19728901a365f91428abd59b8d19a27be4528a59ce14d067",
+    "research/connectors_layer_review.md": "b981397284a0703a183fdcea26db89c9a3db1269a1346a58883d5db655d308cf",
+    "research/connectors_layer_review.py": "dd6e9742d2de8ae7b0d4ef4d0b1ec58c07ae6511db40bf2e3783a518a98511cb",
+    "research/connectors_passage_review.json": "5b04d417ecdde476df4e1d4aa2acdb3af98ad609edca6da218244ee593d2bdba",
+    "research/connectors_passage_review.py": "4405678c488a8b6b1f31a4042dcbb5d6305c26d400e130cfc578a0acd70dc456",
+    "research/connectors_proof.md": "cc328d5b84f3bd0b02c1cc85dd51d50e77835acc2592f8af30ac14ce0594d441",
+    "research/connectors_restricted_review.md": "1f75a980acf045dc5822d3808f68dea950c7d3f0dd73e65c0907439aa8f9e870",
+    "research/connectors_routes.json": "10f9bfda7b0981838471a776f4783c7e97649b1d03bfc5449f972c2334e2a67d",
+    "research/connectors_routes.py": "ca970517207b9cd39833e9b48fc3c508bfc563b37c968453017814682d88a8a8",
+    "research/connectors_verify.py": "31f35614bf7f33a3ddd8b857aed3ba5b830f5f1d5800eef5fceec3a8edf031ac",
+    "research/connectors_volume_path_conditions.json": "38d6d38465e80de609f873fcd7fe58d0b7a030331f08fb630eb36cf6ef6728cd",
+    "research/connectors_volume_review.json": "b8dccb806fc246b3c4b9062ce287e12f8c8db2421ada8874591ac5fbcca30a6f",
+    "research/connectors_volume_review.py": "39ec89fcdc0f0c5bb467bb5710e9ab804ee699e1a1d2fe7a40ff86b2751b1f74",
+    "research/initial-decision.md": "f37abf223acdc36d10f9bd25fd5b6881ee5a7777f3ddb02626e3fed528ec5cf9",
+    "research/nonuniform_motion.json": "907acab3a1f08aa31b000a25cd1749aac1cc38130f1ca163b7d0ee0bf4236dfa",
+    "research/nonuniform_motion.py": "153d2f38a4a7fef8cb8c1393a1e4ea7ac51dc23c1541184aefe175cda3dc50d7",
+    "research/nonuniform_motion_proof.md": "eb026b94fb4434578d462e3fe68a277b1887043d450af774675e49702fa4ce1e",
+    "research/passage_certificate.json": "deabfc3b90da4666a45b8d09021c22827c1e6b3284876c49eb81a7fe0f8dc0c7",
+    "research/passage_certificate.py": "92d61c9795fe3b71561bf0704d67c0223dd0fd675714581c1a60850d11d06237",
+    "research/passage_proof.md": "2a82d76b85d4b62d3d95a7c6de99b5871aebba4f941c335e428f182241ddd74c",
+    "research/passage_verify.json": "5ea5a630810394adae6f1bea152fd26342e80c1f043f4a1cdddd2a4f4d43e4a5",
+    "research/passage_verify.py": "4c8fb018cc2dcd09ee40467f80c689a6d95c6a877582ec11af15fe32c9f96dac",
+    "research/passage_window.json": "a903bf4a2351589a554f458dd0f1365efd129b9a78a900195e569d23045e9b5a",
+    "research/passage_window.py": "7f52ee4e46f464ad874baebd211f1ba0e93ff3a0b9d0e37d1b5e2138a55e4644",
+    "research/passage_window_verify.json": "8b0e66774daf98f8806f71a8f0118e45a682569f5cefdbff0b5b7dbb167e8253",
+    "research/passage_window_verify.py": "0fb6c0c78c20645799ef76a97cf75feb776dd5eb13078186df9a51b0cb117d66",
+    "research/posture_closure.json": "61aa0e98688b4524132e3408d8b698db13c6b46691a73bd1fca03c6007d15c8c",
+    "research/posture_closure.py": "7e59593dbc669916b180651e900d3fb1a46c8a9c72f79587a1b929b392099c83",
+    "research/transport_independent.json": "795ffa0facc7c1f04956ff26009539e9fb615f72b246707579e5772a657e3c1f",
+    "research/transport_independent.py": "e73c18042dccd9f0400aa140fa9446e41553f540a0a8f6f9bf1d44f8cde52b3d",
+    "research/transport_independent.txt": "b8e19c70e07595b3aace975deab9a95827061557b7177e5da563b98af6148c1d",
+    "research/transport_probe.json": "db950ccc25a927ef2f1f2f9c76e1baa46002730c53ac8835f42abcbbe35139d4",
+    "research/transport_probe.py": "19a0fb424b33677f042f6799970fa604330c1e886085ac036969342aa5d58796",
+    "research/transport_probe.txt": "d5763fe27a3c1a0d30ad7a039da0ecd5ab5837cdc17223b26b876255edb8702a",
+    "research/vacancy_independent.json": "c020c3e790c2540900c2d429830a9fbbf776fc5e3dbee153d3044de4de672769",
+    "research/vacancy_independent.py": "6a2b8e5605e22d4a15c3f29b22f616fbbf12570ee54bd9e0a93aacbcac23ff49",
+    "research/vacancy_independent.txt": "10569c2195495ea6dd268ac3e500804228a5913513b6f043235c70bebf77c578",
+    "research/vacancy_tangent.json": "f1b24579c0f915a8024e31429abb4465f9d6c551b68ac912601b2ba71e249b4e",
+    "research/vacancy_tangent.py": "e967e25e78ab03f7118d0647fd9bcd7847c253ddd64bd04f4d0f7c8ccd71f157",
+    "research/vacancy_tangent_report.md": "93373b4cceb4d5c89629d526356240ee0eca86441608eacbf20f9d5fb52109ca",
+    "research/vitruvian_motion_probe.json": "bdc64389ac01f27026118042d4e7a92116794f032db49ae64c7d24d87b511a8e",
+    "research/vitruvian_motion_probe.py": "d1e392e9f59ec54da54aa201901be0c7e7858743c4b95a057afee0e52b7907f6",
+    "research/void_probe.json": "e8ff64d9fb4eb1a99fafebd5201ed460fa97f7f09f60bbcc9e50e227a135806a",
+    "research/void_probe.py": "948b7d64011a78a4f7f77c09eaeb4a5baa0ece02700bcf5f97950df3d1d96a6b",
+    "research/void_probe.txt": "fbef93c093873973affe56915ebd0d2e828135deaacb3979aa73fb635fbad4b4",
+    "research/volume_barrier.json": "fcd46110f0fda678a072b430250411870aae2090ef5b0807090c7c9a6f259624",
+    "research/volume_barrier.md": "062184f85b6112a4fc6ffa05e67886fdddda9f87f6d66c36c0cc0e34339f60f4",
+    "research/volume_barrier.py": "b5111053ecc4a9f130dade656b3bf5e0ffa5b26a172f35d81f47b01af67689d8",
+    "research/volume_general_search.json": "dc3e5336db765a738b78f395205a2fe48594122644071c7d41133bfd45ba8d73",
+    "research/volume_general_search.py": "e176746be8e827f78adbd1d66aac85748b5d6d7cfb9393d1cfda256759c678e7",
+    "research/volume_layer_certificate.json": "0df70d7818286db02dfa9ef0d84d7efb7b48dd9be78e6a3125d16101c4e94a98",
+    "research/volume_layer_certificate.py": "0804c6bb52f25b326e91d75c39fb7f2d7f055109a12f9dfd3383c81fb010c5e1",
+    "research/volume_layer_proof.md": "84dec17ec8fccf5bccd18750c7cb30763983e8dfd4a0da03400e00f043067c52",
+    "research/volume_path.json": "fd3022ada1d4ccdf2e4a894b80267e5e3847997e54885e792f32c1ac6245d742",
+    "research/volume_path.py": "982fe19a9e9645562803d231f9842782aa44878d70943fab6b2c24b601aac389",
+    "research/volume_path_certificate.json": "02771ddf1be49bce20493bd9a31372ba619171ab9db56cd5fac9058b24c6e2d1",
+    "research/volume_path_certificate.py": "6c4f63f1119d1e6e4e550b5a3dd8fde892170aaac0776b4d7dde10f67d5ca712",
+    "research/volume_path_proof.md": "6f34f68b9dcbc73481ff3d01eb83d935959c696d91014bae052e6d40d45b6a4a",
+    "research/volume_restricted_optimum.json": "baeb4fd85062cb442240f686bb881a20adf5c771239d97cb385e3d5572633449",
+    "research/volume_restricted_optimum.md": "22326361cb261f333d73ee935034f24bc7b404e8b51da5bdc8ba3cadbc0f80f2",
+    "research/volume_restricted_optimum.py": "f1cd1ee768bd529d63b609bd76f26cbe8f5ad2e6d6a4e71ed09d27d43212cb8f"
+  },
+  "python_version": "3.14.6",
+  "workflow_replays": [
+    {
+      "command": "python research/nonuniform_motion.py",
+      "exit_code": 0,
+      "seconds": 0.062
+    },
+    {
+      "command": "python research/vacancy_independent.py",
+      "exit_code": 0,
+      "seconds": 1.588
+    },
+    {
+      "command": "python research/vacancy_tangent.py",
+      "exit_code": 0,
+      "seconds": 0.641
+    },
+    {
+      "command": "python research/centre_extraction.py",
+      "exit_code": 0,
+      "seconds": 0.126
+    },
+    {
+      "command": "python research/volume_barrier.py",
+      "exit_code": 0,
+      "seconds": 0.13
+    },
+    {
+      "command": "python research/volume_path_certificate.py",
+      "exit_code": 0,
+      "seconds": 0.1
+    },
+    {
+      "command": "python research/volume_restricted_optimum.py",
+      "exit_code": 0,
+      "seconds": 0.746
+    },
+    {
+      "command": "python research/volume_layer_certificate.py",
+      "exit_code": 0,
+      "seconds": 0.075
+    },
+    {
+      "command": "python research/passage_verify.py",
+      "exit_code": 0,
+      "seconds": 0.64
+    },
+    {
+      "command": "python research/passage_window_verify.py",
+      "exit_code": 0,
+      "seconds": 55.193
+    },
+    {
+      "command": "python research/connectors_exact.py",
+      "exit_code": 0,
+      "seconds": 0.658
+    },
+    {
+      "command": "python research/connectors_verify.py",
+      "exit_code": 0,
+      "seconds": 0.148
+    },
+    {
+      "command": "python research/connectors_layer_review.py",
+      "exit_code": 0,
+      "seconds": 0.628
+    },
+    {
+      "command": "python research/connectors_volume_review.py",
+      "exit_code": 0,
+      "seconds": 0.785
+    },
+    {
+      "command": "python research/connectors_passage_review.py",
+      "exit_code": 0,
+      "seconds": 0.057
+    },
+    {
+      "command": "python research/boundary_certificate.py",
+      "exit_code": 0,
+      "seconds": 0.086
+    },
+    {
+      "command": "python research/connectors_boundary_review.py",
+      "exit_code": 0,
+      "seconds": 0.071
+    }
+  ],
+  "receipt_comparison": {
+    "command": "git diff --exit-code -- research/connectors_exact.json research/passage_verify.json research/passage_window_verify.json research/connectors_passage_review.json research/volume_path_certificate.json research/volume_layer_certificate.json research/connectors_layer_review.json research/boundary_certificate.json research/connectors_boundary_review.json",
+    "exit_code": 0
+  },
+  "all_passed": true,
+  "scope": "Local composed replay of all published proof increments. No merge or deployment performed; written mathematical reviews are separate from command replays."
+}
