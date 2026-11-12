@@ -1,0 +1,55 @@
+{
+  "covered_plane": {
+    "triangles": 2048,
+    "vertex_checks": 6144,
+    "max_squared_distance_upper_bound": "202766238443119/102400000000000"
+  },
+  "original_free_paths": {
+    "loops": 2,
+    "segments": 16,
+    "exact_segment_site_checks": 32928,
+    "winding_vectors": [
+      [
+        0,
+        0,
+        -1
+      ],
+      [
+        0,
+        1,
+        0
+      ]
+    ]
+  },
+  "skew_free_paths": {
+    "loops": 3,
+    "segments": 24,
+    "exact_segment_site_checks": 49392,
+    "winding_vectors": [
+      [
+        0,
+        0,
+        -1
+      ],
+      [
+        -1,
+        0,
+        1
+      ],
+      [
+        0,
+        -1,
+        0
+      ]
+    ]
+  },
+  "volume_and_angle": {
+    "matched_volume_bracket": true,
+    "original_interval_contains_exact_40_degrees": true
+  },
+  "probe_ratio_interval": [
+    "199/200",
+    "201/200"
+  ],
+  "conclusion": "Continuum winding rank exactly2 on original interval versus rank3 on skew interval, for every probe ratio q/r in[199/200,201/200], with a unique equal-volume skew state for every original state, including exact40deg."
+}
