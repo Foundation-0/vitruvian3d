@@ -1,0 +1,23 @@
+{
+  "verdict": "PASS exact fixed-exterior and fixed-period translation rigidity; linearized common-kernel flexes remain possible and cannot integrate as finite supported retained-length motions.",
+  "independent_finite_field": {
+    "arbitrary_rational_bridge_vectors": true,
+    "box_edges_checked": 1029,
+    "dirichlet_sum": "101713995529/21643221600",
+    "squared_length_excess_sum": "101713995529/21643221600",
+    "linear_sums": [
+      "0",
+      "0",
+      "0"
+    ]
+  },
+  "harmonic_identity": "1/(R+1-x)+1/(R+1+x)-2/(R+1)=2x\u00b2/[(R+1)((R+1)\u00b2-x\u00b2)]>=0",
+  "vacancy_kernel": [
+    1,
+    -1,
+    1
+  ],
+  "single_site_total_quadratic_excess": 18,
+  "optional_spring_quartic_coefficient": "9/16",
+  "scope": "Fixed motif orientations/anchor offsets, homogeneous baseline, fixed exterior or periodic cell. Not arbitrary rotating bodies, nonuniform backgrounds, feasible hard-sphere infinitesimal modes, or a specified physical spring model."
+}
