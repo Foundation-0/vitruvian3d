@@ -1,0 +1,32 @@
+{
+  "endpoint_lattice": [
+    [
+      2,
+      -1,
+      -1
+    ],
+    [
+      1,
+      2,
+      -1
+    ],
+    [
+      1,
+      1,
+      2
+    ]
+  ],
+  "endpoint_volume": 14,
+  "scope": "Continuous one-cell paths with fixed motif \u00b1e_i, fixed motif orientation, prescribed bridge lengths sqrt(2), sphere diameter sqrt(2).",
+  "finite_feasible_perturbation_bound": "det(L+Delta)-14 >= 3r-(69/2+9sqrt(6))*r^2-3sqrt(3)*r^3 > 3r-57r^2-6r^3 for r>0, r=max|Delta_ij|.",
+  "crossing_radius_exact": "1/38",
+  "strict_absolute_volume_excess_lower_bound_exact": "270/6859",
+  "strict_absolute_volume_excess_lower_bound_float": 0.03936433882490159,
+  "strict_peak_volume_lower_bound_exact": "96296/6859",
+  "strict_peak_volume_lower_bound_float": 14.039364338824901,
+  "relative_excess_percent_lower_bound_float": 0.2811738487492971,
+  "fcc_target_distance_infinity": 2,
+  "established": "Every continuous feasible path to this distinct FCC endpoint has a cell volume exceeding the displayed lower bound.",
+  "not_established": "Existence of a path achieving this bound, optimal barrier, energy, forces, or analogous bound with rotating motifs or larger cells.",
+  "arithmetic_checks_passed": true
+}

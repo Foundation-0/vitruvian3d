@@ -1,0 +1,79 @@
+{
+  "scope": "Exact minimax optimum with L1=(2,-1,-1), L2=(1,2,-1) fixed and only the third bridge moving; not unrestricted all-row optimum.",
+  "necessary_spherical_region_constraints": [
+    [
+      1,
+      -1,
+      0,
+      1
+    ],
+    [
+      1,
+      0,
+      -1,
+      1
+    ],
+    [
+      1,
+      1,
+      -1,
+      0
+    ],
+    [
+      1,
+      1,
+      1,
+      0
+    ],
+    [
+      1,
+      0,
+      1,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  "vertices": [
+    [
+      "-1",
+      "0",
+      "1"
+    ],
+    [
+      "0",
+      "-1",
+      "1"
+    ],
+    [
+      "1/3",
+      "4/3",
+      "1/3"
+    ],
+    [
+      "1",
+      "-1",
+      "0"
+    ],
+    [
+      "1",
+      "1",
+      "0"
+    ]
+  ],
+  "boundary_edge_peak_volumes": {
+    "AB": "3*sqrt(22)/2 + 9",
+    "AC": "9*sqrt(2)/2 + 8",
+    "CE": "3*sqrt(22)/2 + 9",
+    "ED": "9*sqrt(2)/2 + 8",
+    "DB": "sqrt(34) + 9"
+  },
+  "restricted_minimax_peak_exact": "3*sqrt(22)/2 + 9",
+  "restricted_minimax_peak_float": 16.035623639735146,
+  "arithmetic_checks_passed": true,
+  "proof_boundary": "Algebra checks plus the explicit radial-retraction and boundary-path argument in volume_restricted_optimum.md; not formal proof-assistant output."
+}
