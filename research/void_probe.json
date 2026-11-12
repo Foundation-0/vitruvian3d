@@ -1,0 +1,175 @@
+{
+  "method": "Voronoi vertices in fundamental parallelepiped, sphere centers replicated over [-2,2]^3. Floating point, sampled angles; no path accessibility claim; bars have zero thickness and are omitted.",
+  "results": [
+    {
+      "angle": 0,
+      "largest_void_radius": 1.8085297435813268,
+      "ratio_to_obstacle_radius": 2.5576472913278483,
+      "motif_origin_clearance": 0.29289321881345254,
+      "cell_midpoint_clearance": 1.8085297435813272,
+      "largest_void_fractional": [
+        0.49999999999999994,
+        0.5000000000000001,
+        0.5000000000000001
+      ],
+      "largest_void_multiplicity": 1,
+      "number_of_voronoi_vertices": 2
+    },
+    {
+      "angle": 15,
+      "largest_void_radius": 1.532826481666901,
+      "ratio_to_obstacle_radius": 2.167743999137966,
+      "motif_origin_clearance": 0.29289321881345254,
+      "cell_midpoint_clearance": 1.5163369855247204,
+      "largest_void_fractional": [
+        0.4999999999999999,
+        0.5529213735098744,
+        0.44707862649012603
+      ],
+      "largest_void_multiplicity": 2,
+      "number_of_voronoi_vertices": 33
+    },
+    {
+      "angle": 30,
+      "largest_void_radius": 1.251749340913129,
+      "ratio_to_obstacle_radius": 1.7702408946109303,
+      "motif_origin_clearance": 0.29289321881345254,
+      "cell_midpoint_clearance": 1.2195787943777128,
+      "largest_void_fractional": [
+        0.49999999999999983,
+        0.5671186909793899,
+        0.4328813090206099
+      ],
+      "largest_void_multiplicity": 2,
+      "number_of_voronoi_vertices": 33
+    },
+    {
+      "angle": 45,
+      "largest_void_radius": 0.966288728456695,
+      "ratio_to_obstacle_radius": 1.366538624951711,
+      "motif_origin_clearance": 0.29289321881345254,
+      "cell_midpoint_clearance": 0.9404569031872199,
+      "largest_void_fractional": [
+        0.5,
+        0.44413250186436287,
+        0.5558674981356373
+      ],
+      "largest_void_multiplicity": 2,
+      "number_of_voronoi_vertices": 33
+    },
+    {
+      "angle": 60,
+      "largest_void_radius": 0.7186645560316895,
+      "ratio_to_obstacle_radius": 1.0163451619368546,
+      "motif_origin_clearance": 0.29289321881345254,
+      "cell_midpoint_clearance": 0.6938712741517745,
+      "largest_void_fractional": [
+        0.5000000000000002,
+        0.7549909920416549,
+        0.2450090079583454
+      ],
+      "largest_void_multiplicity": 2,
+      "number_of_voronoi_vertices": 33
+    },
+    {
+      "angle": 75,
+      "largest_void_radius": 0.49331641671553306,
+      "ratio_to_obstacle_radius": 0.6976547670604043,
+      "motif_origin_clearance": 0.29289321881345254,
+      "cell_midpoint_clearance": 0.4821422106808664,
+      "largest_void_fractional": [
+        0.49999999999999944,
+        0.2058660996232004,
+        0.7941339003767979
+      ],
+      "largest_void_multiplicity": 2,
+      "number_of_voronoi_vertices": 35
+    },
+    {
+      "angle": 85,
+      "largest_void_radius": 0.3564294105637269,
+      "ratio_to_obstacle_radius": 0.5040673064478708,
+      "motif_origin_clearance": 0.29289321881345254,
+      "cell_midpoint_clearance": 0.3547561503107708,
+      "largest_void_fractional": [
+        0.4999999999999916,
+        0.8199226768307656,
+        0.18007732316921646
+      ],
+      "largest_void_multiplicity": 2,
+      "number_of_voronoi_vertices": 35
+    },
+    {
+      "angle": 89,
+      "largest_void_radius": 0.3053100947684688,
+      "ratio_to_obstacle_radius": 0.4317736767509836,
+      "motif_origin_clearance": 0.29289321881345254,
+      "cell_midpoint_clearance": 0.30523581330393834,
+      "largest_void_fractional": [
+        0.5000000000003306,
+        0.16939550848355428,
+        0.8306044915171075
+      ],
+      "largest_void_multiplicity": 6,
+      "number_of_voronoi_vertices": 35
+    },
+    {
+      "angle": 90,
+      "largest_void_radius": 0.29289321881345254,
+      "ratio_to_obstacle_radius": 0.4142135623730952,
+      "motif_origin_clearance": 0.29289321881345254,
+      "cell_midpoint_clearance": 0.29289321881345254,
+      "largest_void_fractional": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "largest_void_multiplicity": 6,
+      "number_of_voronoi_vertices": 18
+    }
+  ],
+  "replication_checks": [
+    {
+      "angle": 0,
+      "maximum_difference": 0.0
+    },
+    {
+      "angle": 15,
+      "maximum_difference": 4.440892098500626e-16
+    },
+    {
+      "angle": 30,
+      "maximum_difference": 2.220446049250313e-16
+    },
+    {
+      "angle": 45,
+      "maximum_difference": 0.0
+    },
+    {
+      "angle": 60,
+      "maximum_difference": 0.0
+    },
+    {
+      "angle": 75,
+      "maximum_difference": 0.0
+    },
+    {
+      "angle": 85,
+      "maximum_difference": 8.881784197001252e-16
+    },
+    {
+      "angle": 89,
+      "maximum_difference": 4.6629367034256575e-15
+    },
+    {
+      "angle": 90,
+      "maximum_difference": 0.0
+    }
+  ],
+  "central_cage": {
+    "room_radius": 0.29289321881345254,
+    "triangular_gate_radius": 0.10938979974117857,
+    "gate_ratio_to_obstacle_radius": 0.15470053837925168,
+    "scope": "Exact upper bound for spherical probes exiting the rigid motif interior. Does not establish a periodic traversal route."
+  }
+}

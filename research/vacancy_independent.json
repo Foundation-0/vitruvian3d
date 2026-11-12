@@ -1,0 +1,693 @@
+{
+  "independent_method": "SymPy direct coordinate polynomial expansion; degree-four Bernstein conversion through exact binomial rationals; no discovery code imported.",
+  "skew_continuum": {
+    "images": 27,
+    "distance_conditions": 512,
+    "distinct_polynomials": 68,
+    "coefficients_checked": 2560,
+    "negative_coefficients": [],
+    "far_image_proof": "C skew => |nL|\u00b2=d\u00b2|n|\u00b2+t\u00b2|nC|\u00b2 >=4|n|\u00b2. For |n|>=2, |nL+v|>=2>sqrt2; remaining integer n lie in[-1,1]^3."
+  },
+  "endpoint": {
+    "determinant": 14,
+    "fcc_index": 7,
+    "coset_inverse_checks": 729,
+    "residue_vector": [
+      5,
+      1,
+      3
+    ],
+    "occupied_condition": "sum(z) odd and dot(z,[5,1,3]) nonzero mod7",
+    "density": "sqrt(2)*pi/7",
+    "fcc_neighbor_step_residues": [
+      1,
+      1,
+      2,
+      2,
+      3,
+      3,
+      4,
+      4,
+      5,
+      5,
+      6,
+      6
+    ],
+    "contacts_per_occupied_site": 10,
+    "vacancy_neighbors_occupied": 12,
+    "saturated": false
+  },
+  "independent_orbits": [
+    {
+      "size": 4,
+      "matrix": [
+        [
+          0,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          0,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          0
+        ]
+      ],
+      "det": 0,
+      "endpoint_coincidences": [
+        {
+          "singular": true
+        }
+      ]
+    },
+    {
+      "size": 24,
+      "matrix": [
+        [
+          0,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          0,
+          -1
+        ],
+        [
+          -1,
+          1,
+          0
+        ]
+      ],
+      "det": 6,
+      "endpoint_coincidences": [
+        {
+          "p": [
+            1,
+            0,
+            0
+          ],
+          "q": [
+            0,
+            0,
+            -1
+          ],
+          "n": [
+            1,
+            0,
+            1
+          ]
+        },
+        {
+          "p": [
+            -1,
+            0,
+            0
+          ],
+          "q": [
+            0,
+            0,
+            1
+          ],
+          "n": [
+            -1,
+            0,
+            -1
+          ]
+        },
+        {
+          "p": [
+            0,
+            1,
+            0
+          ],
+          "q": [
+            0,
+            -1,
+            0
+          ],
+          "n": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "p": [
+            0,
+            -1,
+            0
+          ],
+          "q": [
+            0,
+            1,
+            0
+          ],
+          "n": [
+            -1,
+            -1,
+            -1
+          ]
+        },
+        {
+          "p": [
+            0,
+            0,
+            1
+          ],
+          "q": [
+            -1,
+            0,
+            0
+          ],
+          "n": [
+            1,
+            0,
+            1
+          ]
+        },
+        {
+          "p": [
+            0,
+            0,
+            -1
+          ],
+          "q": [
+            1,
+            0,
+            0
+          ],
+          "n": [
+            -1,
+            0,
+            -1
+          ]
+        }
+      ]
+    },
+    {
+      "size": 12,
+      "matrix": [
+        [
+          0,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          0,
+          -1
+        ],
+        [
+          1,
+          1,
+          0
+        ]
+      ],
+      "det": 12,
+      "endpoint_coincidences": []
+    },
+    {
+      "size": 4,
+      "matrix": [
+        [
+          0,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          0,
+          1
+        ],
+        [
+          -1,
+          1,
+          0
+        ]
+      ],
+      "det": 4,
+      "endpoint_coincidences": [
+        {
+          "p": [
+            1,
+            0,
+            0
+          ],
+          "q": [
+            0,
+            -1,
+            0
+          ],
+          "n": [
+            1,
+            1,
+            0
+          ]
+        },
+        {
+          "p": [
+            1,
+            0,
+            0
+          ],
+          "q": [
+            0,
+            0,
+            -1
+          ],
+          "n": [
+            1,
+            0,
+            1
+          ]
+        },
+        {
+          "p": [
+            -1,
+            0,
+            0
+          ],
+          "q": [
+            0,
+            1,
+            0
+          ],
+          "n": [
+            -1,
+            -1,
+            0
+          ]
+        },
+        {
+          "p": [
+            -1,
+            0,
+            0
+          ],
+          "q": [
+            0,
+            0,
+            1
+          ],
+          "n": [
+            -1,
+            0,
+            -1
+          ]
+        },
+        {
+          "p": [
+            0,
+            1,
+            0
+          ],
+          "q": [
+            -1,
+            0,
+            0
+          ],
+          "n": [
+            1,
+            1,
+            0
+          ]
+        },
+        {
+          "p": [
+            0,
+            1,
+            0
+          ],
+          "q": [
+            0,
+            0,
+            1
+          ],
+          "n": [
+            0,
+            1,
+            -1
+          ]
+        },
+        {
+          "p": [
+            0,
+            -1,
+            0
+          ],
+          "q": [
+            1,
+            0,
+            0
+          ],
+          "n": [
+            -1,
+            -1,
+            0
+          ]
+        },
+        {
+          "p": [
+            0,
+            -1,
+            0
+          ],
+          "q": [
+            0,
+            0,
+            -1
+          ],
+          "n": [
+            0,
+            -1,
+            1
+          ]
+        },
+        {
+          "p": [
+            0,
+            0,
+            1
+          ],
+          "q": [
+            -1,
+            0,
+            0
+          ],
+          "n": [
+            1,
+            0,
+            1
+          ]
+        },
+        {
+          "p": [
+            0,
+            0,
+            1
+          ],
+          "q": [
+            0,
+            1,
+            0
+          ],
+          "n": [
+            0,
+            -1,
+            1
+          ]
+        },
+        {
+          "p": [
+            0,
+            0,
+            -1
+          ],
+          "q": [
+            1,
+            0,
+            0
+          ],
+          "n": [
+            -1,
+            0,
+            -1
+          ]
+        },
+        {
+          "p": [
+            0,
+            0,
+            -1
+          ],
+          "q": [
+            0,
+            -1,
+            0
+          ],
+          "n": [
+            0,
+            1,
+            -1
+          ]
+        }
+      ]
+    },
+    {
+      "size": 12,
+      "matrix": [
+        [
+          0,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          0,
+          1
+        ],
+        [
+          1,
+          -1,
+          0
+        ]
+      ],
+      "det": 8,
+      "endpoint_coincidences": [
+        {
+          "p": [
+            1,
+            0,
+            0
+          ],
+          "q": [
+            0,
+            -1,
+            0
+          ],
+          "n": [
+            1,
+            1,
+            0
+          ]
+        },
+        {
+          "p": [
+            -1,
+            0,
+            0
+          ],
+          "q": [
+            0,
+            1,
+            0
+          ],
+          "n": [
+            -1,
+            -1,
+            0
+          ]
+        },
+        {
+          "p": [
+            0,
+            1,
+            0
+          ],
+          "q": [
+            -1,
+            0,
+            0
+          ],
+          "n": [
+            1,
+            1,
+            0
+          ]
+        },
+        {
+          "p": [
+            0,
+            -1,
+            0
+          ],
+          "q": [
+            1,
+            0,
+            0
+          ],
+          "n": [
+            -1,
+            -1,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "size": 8,
+      "matrix": [
+        [
+          0,
+          -1,
+          -1
+        ],
+        [
+          1,
+          0,
+          -1
+        ],
+        [
+          1,
+          1,
+          0
+        ]
+      ],
+      "det": 14,
+      "endpoint_coincidences": []
+    }
+  ],
+  "limits": "Skew full continuum verified independently. Full-fcc continuum accepted from repo proof plus orbit equivalence, not recertified here. Finite inverse membership checks supplement exact index/coset argument, rather than prove infinite equality by enumeration.",
+  "prior_art_identification": {
+    "source": "https://onlinelibrary.wiley.com/iucr/itc/Cb/ch9o1v0001/",
+    "source_detail": "Koch and Fischer, International Tables for Crystallography C(2006),Table9.1.1.2,type20; text explicitly describes deletion of1/7 of fcc sites.",
+    "hex_basis": [
+      [
+        -2,
+        1,
+        3
+      ],
+      [
+        -1,
+        -3,
+        -2
+      ],
+      [
+        2,
+        -2,
+        2
+      ]
+    ],
+    "origin": [
+      2,
+      0,
+      -1
+    ],
+    "gram": [
+      [
+        14,
+        -7,
+        0
+      ],
+      [
+        -7,
+        14,
+        0
+      ],
+      [
+        0,
+        0,
+        12
+      ]
+    ],
+    "reference_wyckoff": "R-3 18f, x=3/7,y=1/7,z=0,c/a=sqrt42/7",
+    "actual_sites": [
+      [
+        "1/21",
+        "5/21",
+        "2/3"
+      ],
+      [
+        "1/7",
+        "5/7",
+        "0"
+      ],
+      [
+        "10/21",
+        "8/21",
+        "2/3"
+      ],
+      [
+        "11/21",
+        "13/21",
+        "1/3"
+      ],
+      [
+        "13/21",
+        "2/21",
+        "2/3"
+      ],
+      [
+        "16/21",
+        "17/21",
+        "2/3"
+      ],
+      [
+        "17/21",
+        "1/21",
+        "1/3"
+      ],
+      [
+        "19/21",
+        "11/21",
+        "2/3"
+      ],
+      [
+        "2/21",
+        "10/21",
+        "1/3"
+      ],
+      [
+        "2/7",
+        "3/7",
+        "0"
+      ],
+      [
+        "20/21",
+        "16/21",
+        "1/3"
+      ],
+      [
+        "3/7",
+        "1/7",
+        "0"
+      ],
+      [
+        "4/21",
+        "20/21",
+        "2/3"
+      ],
+      [
+        "4/7",
+        "6/7",
+        "0"
+      ],
+      [
+        "5/21",
+        "4/21",
+        "1/3"
+      ],
+      [
+        "5/7",
+        "4/7",
+        "0"
+      ],
+      [
+        "6/7",
+        "2/7",
+        "0"
+      ],
+      [
+        "8/21",
+        "19/21",
+        "1/3"
+      ]
+    ],
+    "exact_reference_orbit_equal": true
+  }
+}

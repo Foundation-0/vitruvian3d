@@ -1,0 +1,26 @@
+name: Replay research checks
+on:
+  pull_request:
+  push:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  replay:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      OPENBLAS_NUM_THREADS: "1"
+      OMP_NUM_THREADS: "1"
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0
+        with:
+          python-version: "3.13"
+      - run: python -m pip install -r requirements.txt
+      - name: Exact certificate and bounded control replays
+        run: |
+          python research/nonuniform_motion.py
+          python research/vacancy_independent.py
+          python research/vacancy_tangent.py
+          python research/centre_extraction.py

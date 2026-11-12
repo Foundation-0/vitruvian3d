@@ -1,0 +1,69 @@
+Independent periodic-grid transport validation
+2026-11-12. gpt-forge. Model: gpt-6.1-sol.
+
+Result
+A separate uniform-grid computation finds rank-two transport for the original
+fold and rank-three transport for the skew fold at matched density. The skew
+rank-three result has explicit, independently rechecked polygonal path witnesses.
+No Voronoi geometry or union-find code from transport_probe.py is used.
+
+Geometry
+Sphere radius and probe radius are both 1/sqrt(2), so the required separation
+between a probe center and any obstacle center is sqrt(2).
+Original: theta=40 degrees, C rows(0,-1,-1),(1,0,-1),(1,-1,0).
+Skew: theta=46.1113417712 degrees, C rows(0,1,1),(-1,0,1),(-1,-1,0).
+The respective cell determinants are 31.118701467217385 and 31.118701467224156.
+The density match is approximate to the supplied angle precision.
+
+Independent method
+Use m^3 uniformly spaced fractional grid points with half-grid offset, periodic
+six-neighbor adjacency, and the given lattice matrix to convert to Euclidean
+coordinates. Keep only nodes whose nearest obstacle separation exceeds sqrt(2).
+Every accepted edge is certified by either a conservative Lipschitz distance
+bound from its endpoints, or the analytic closest-point projection onto the
+segment for all possibly intersecting spheres. A KD-tree supplies candidates.
+
+Breadth-first search assigns integer covering-space cell coordinates. A graph
+edge inconsistent with these assignments gives an integer periodic winding.
+Cross products and scalar triple products select independent winding vectors.
+No graph winding means no grid path, which is weaker than no continuum path.
+
+Results by resolution
+m=32: original rank 2, skew rank 0.
+m=64: original rank 2, skew rank 0.
+m=96: original rank 2, skew rank 3.
+The smaller grids miss the narrow skew connections. At m=96, all free grid nodes
+in each case form one connected component. Original: 60508 free nodes, 171210
+accepted edges. Skew: 75602 free nodes, 216750 accepted edges.
+
+Explicit witness routes
+Each route starts at a grid node and ends at its indicated lattice translation.
+At m=96, reconstruct the cycles using the BFS parent tree. Recheck every segment
+by analytic projection against a larger obstacle image set[-3,3]^3. The smallest
+separation above the required sqrt(2) along each complete route is:
+Original winding(0,0,-1), 180 segments: 0.0005874914162853351.
+Original winding(0,-1,0), 180 segments: 0.0005874914162853351.
+Skew winding(1,0,0), 172 segments: 0.0005895282241035193.
+Skew winding(0,1,0), 198 segments: 0.000002684444420752996.
+Skew winding(0,0,1), 188 segments: 0.00015454624544952722.
+The JSON retains the full lifted fractional coordinates of every witness route.
+These positive margins exceed the 1e-10 acceptance guard substantially, but the
+calculation uses floating-point arithmetic and is not a formal interval proof.
+
+Periodic image control
+For segments beginning in the fundamental cell, a missing translation outside
+[-2,2]^3 has at least one fractional separation >=2-1/m. Therefore its obstacle
+center distance is at least sigma_min(L)*(2-1/m)-1. This bound exceeds 4 in both
+cases, well above sqrt(2). For the larger-image route recheck, segment starts
+are wrapped into the fundamental cell before each projection calculation.
+
+Interpretation and limits
+Independent positive paths establish three-dimensional transport for the skew
+case at this probe size in the sphere-only model. The grid also constructs two
+independent periodic routes for the original case. Its failure to find a third
+is consistent with the Voronoi result but does not independently prove an upper
+bound of two. Connector thickness, joints, mechanics, and physical dynamics
+are absent. This verifies a geometric effect, not its novelty or manufacturability.
+
+Reproduce: python3 research/transport_independent.py
+Numerical evidence and routes: research/transport_independent.json.

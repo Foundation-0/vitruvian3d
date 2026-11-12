@@ -1,0 +1,114 @@
+Periodic accessibility during folding: numerical research assessment
+gpt-forge. gpt-6.1-sol. 2026-11-12
+
+Call
+GO for a narrow geometry/transport follow-up, subject to a prior-art check.
+The strongest question is whether equal-density configurations of the same
+articulated sphere framework can switch an object's unbounded access between
+two and three independent directions. The computations exhibit that effect.
+NO claim of a new packing, anatomical law, practical sieve, or new pore-network
+algorithm follows. Computing pore thresholds is standard work. A useful paper
+would need an exact/robust mechanism-specific theorem or physical design result,
+not just the numerical table below.
+
+Model and meaning
+Sites are +/-e_i+nL, sphere radius r=1/sqrt(2), with
+L=(2+sqrt(2)cos(theta))I+sin(theta)C.
+We test both the original fcc route and the skew vacancy-fcc route.
+A spherical probe of radius q is equivalent to inflating every obstacle sphere
+to radius r+q. Connect periodic Voronoi vertices by their full Voronoi edges.
+each edge is weighted by minimum clearance over its ENTIRE straight segment.
+Segment/site distances use the analytical clamped projection, not vertex-only
+clearance or a sampled segment. The graph retains exact integer cell shifts.
+Weighted union-find tracks cell-offset potentials. a nonzero residual around
+a cycle detects periodic traversal. Rank means the maximum rank of the integer
+winding subgroup WITHIN ONE connected component. Directions from disconnected
+components are never pooled. Rank2 means unbounded transport in a lattice plane.
+rank3 means three linearly independent unbounded periodic directions. This
+does not measure diffusion rates, tortuosity, or dynamic bodily movement.
+
+Matched-density result (critical control)
+Original route at theta=40 degrees:
+    det L = 31.118701467217385
+    largest q/r admitting winding rank2 = 1.12136622761898
+    largest q/r admitting winding rank3 = 0.9752400089184668
+Skew route at theta=46.11134177121956 degrees, SAME det L and packing fraction:
+    largest q/r admitting winding rank3 = 1.0133559623646695
+Thus a probe with q/r=1 has rank2 access on the original route and rank3 access
+on the skew route at the same occupied volume fraction. This is a shape/direction
+effect, not merely extra empty volume. The thresholds at this matched comparison
+agree between replication radii 2,3,4 to below1e-7 in absolute probe radius.
+The advantage is not universal: original45deg and density-matched skew51.452deg
+have rank3 thresholds .916135 and .914292, respectively.
+
+Selected same-angle thresholds q/r
+ angle    original rank2    original rank3    skew rank3
+   0        1.613126          1.613126          1.613126
+  15        1.479544          1.360994          1.479544
+  30        1.282642          1.115359          1.282642
+  45        1.033456           .916135          1.033456
+  60         .749021           .611426           .749021
+  75         .449264           .381901           .449264
+  85         .251032           .227422           .251032
+  89         .173759           .169010           .173759
+  90         .154701           .154701           .154701
+
+On the one-degree grid original rank1=rank2 throughout, while skew rank1=rank2=
+rank3 throughout. Original rank2 equals skew rank3 to tolerance at matching
+angles. These equalities are numerical observations, not all-angle theorems.
+For fixed q/r=1 the original route loses rank3 at theta=38.08216014deg and
+rank2 at46.84412294deg. The geometry changes continuously. the accessible
+network changes topology at probe-specific threshold crossings. These are
+numerical root estimates, not rigorous transition brackets.
+
+Rooms are not passageways
+The fixed octahedron has central room radius/r=sqrt(2)-1=.414214 but its
+triangular exit gate has q/r=2/sqrt(3)-1=.154701. A probe between those sizes
+fits the room and cannot leave it. The room and gate are unchanged by either
+fold because the motif stays fixed. They must not be confused with the larger
+external periodic transport network.
+At90deg the original fcc and vacancy-fcc routes have IDENTICAL transport
+threshold2/sqrt(3)-1 despite the latter having larger vacant rooms. Ordered
+vacancies in this particular pattern do not enlarge the limiting traversal
+throat. The useful effect is in the intermediate motion, not endpoint density.
+
+Checks
+1. Open cubic endpoint agrees with independent square-window geometry:
+   q/r=sqrt(4+2sqrt(2))-1=1.6131259297527523.
+2. Full fcc endpoint agrees with independent triangular-window geometry:
+   q/r=2/sqrt(3)-1=.15470053837925163.
+3. All nine primary angles on both routes agree between site-image cubes
+   [-2,2]^3 and[-3,3]^3. Additional angles0,45,89,90 agree with[-4,4]^3.
+4. A one-degree angle grid evaluates both routes, including rank equality
+   controls. Six additional matched-density comparisons are saved.
+5. Union-find controls reject contractible cycles and detect rank1,2,3 only
+   after independently shifted cycles are added.
+6. JSON retains representative bottleneck locations, nearest supporting sites,
+   segment parameters and winding bases. At45deg the rank2 limiting point is
+   strictly inside a Voronoi segment (parameter .49573), demonstrating why
+   vertex-only clearance would overestimate transport.
+
+Limits and decision criterion
+All Voronoi construction and periodic vertex deduplication are floating point.
+Coordinates are deduplicated at1e-7 and edge-weight batches at1e-9. Replication
+stability is a strong numerical check, not a theorem bounding every omitted
+image. There is no independent second implementation of the entire network.
+The finite periodic graph represents the sphere-obstacle complement through
+the standard Voronoi pore-network construction. no separate voxel or homology
+calculation was performed. Bars and actuator hardware are omitted. Zero-thickness
+contact links lie inside the contacting sphere pair, but finite rods add obstacles.
+No manufacturing tolerances, force model, thermal motion, adsorption, flow,
+or finite-size sample boundaries are modeled.
+
+Recommended bounded follow-up: independently reproduce the matched-density
+rank2/rank3 counterexample. derive exact active throat formulas and certify the
+absence of bypasses near40deg. test stability to finite rods and mild motif
+asymmetry. If that directional window survives and prior art does not already
+cover the same framework, it merits a focused research project. If it disappears
+under tiny realistic perturbations, retain it as a geometric illustration rather
+than a materials proposal. A broad Vitruvian/anatomical theory remains unsupported.
+
+Reproduce: python3 research/transport_probe.py
+Data: research/transport_probe.json
+Canonical motion source:
+https://github.com/Foundation-0/incentre-lattices/blob/main/results/fold-continuous-fcc/PROOF.md
