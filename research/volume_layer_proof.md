@@ -107,7 +107,9 @@ This finite interfacial geometric excursion does not disappear as N grows. Its c
 
 ## Finite contact rods
 
-The contact-framework theorem in `connectors_proof.md` applies at every configuration here: all sphere centres remain at least 2r apart and every prescribed segment remains length 2r, with r=1/sqrt(2). Contact capsules of radius a<r/2 therefore have no nonincident intersections. Incident overlaps stay inside their shared junction spheres.
+The [contact-framework theorem](https://github.com/Foundation-0/vitruvian3d/blob/0bb354ee74f48e921a1350c3d6d7dd4063397639/research/connectors_proof.md) applies at every configuration here: all sphere centres remain at least 2r apart and every prescribed segment remains length 2r, with r=1/sqrt(2).
+
+Contact capsules of radius a<r/2 therefore have no nonincident intersections. Incident overlaps stay inside their shared junction spheres.
 
 Equal-radius probe exclusion acquires no additional obstruction from these rods. This is a composition of established geometric hypotheses, not a new mechanical model.
 
