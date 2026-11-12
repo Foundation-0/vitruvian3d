@@ -1,0 +1,67 @@
+<div id="room-reach-v1">
+  <h2>Fits inside. Can it enter?</h2>
+  <div class="rr-control">
+    <label class="form-label" for="rr-radius">Probe radius / obstacle radius: <output id="rr-value" class="tabular-nums">0.280</output></label>
+    <input id="rr-radius" class="form-range" type="range" min="0.1" max="0.5" step="0.001" value="0.28">
+  </div>
+  <div class="rr-diagram">
+    <svg id="rr-face" role="img" aria-labelledby="rr-svg-title rr-svg-desc">
+      <title id="rr-svg-title">Cross section through a triangular octahedron face</title>
+      <desc id="rr-svg-desc">Three mutually tangent obstacle spheres cut by their common center plane. The central probe circle changes radius. A dashed circle marks the largest face opening.</desc>
+      <g id="rr-geometry"></g>
+    </svg>
+  </div>
+  <div class="viz-row text-small"><span class="rr-key rr-obstacle">Obstacle cross sections</span><span class="rr-key rr-probe">Probe</span><span class="rr-key rr-gate">Face opening</span></div>
+  <div class="rr-rulers">
+    <div class="viz-row"><span>Face opening limit</span><span class="tabular-nums">0.1547</span></div>
+    <div class="rr-track"><span id="rr-gate-bar" class="rr-capacity"></span><span class="rr-cursor"></span></div>
+    <div class="viz-row"><span>Central room limit</span><span class="tabular-nums">0.4142</span></div>
+    <div class="rr-track"><span id="rr-room-bar" class="rr-capacity"></span><span class="rr-cursor"></span></div>
+  </div>
+  <div id="rr-status" aria-live="polite">Fits central room; too large for every face opening.</div>
+  <div class="text-small text-muted">Local sphere-only geometry · Global transport untested</div>
+</div>
+<style>
+#room-reach-v1 {display:grid;gap:calc(var(--font-size-base)*1);color:var(--foreground)}
+#room-reach-v1 h2 {padding-right:95px}
+#room-reach-v1 .rr-control {display:grid;gap:calc(var(--font-size-base)*.5)}
+#room-reach-v1 .rr-diagram {width:100%;min-width:0}
+#room-reach-v1 #rr-face {display:block;width:100%;height:270px}
+#room-reach-v1 .rr-rulers {display:grid;gap:calc(var(--font-size-base)*.5)}
+#room-reach-v1 .rr-rulers .viz-row {justify-content:space-between}
+#room-reach-v1 .rr-track {height:12px;background:var(--muted);position:relative}
+#room-reach-v1 .rr-capacity {height:100%;display:block;background:var(--foreground);opacity:.18}
+#room-reach-v1 .rr-cursor {position:absolute;top:-3px;height:18px;width:3px;background:var(--viz-series-1)}
+#room-reach-v1 .rr-key {display:inline-flex;align-items:center;gap:calc(var(--font-size-base)*.35)}
+#room-reach-v1 .rr-key:before {content:"";width:12px;height:12px;display:inline-block;border-radius:50%}
+#room-reach-v1 .rr-obstacle:before {background:var(--foreground);opacity:.18}
+#room-reach-v1 .rr-probe:before {background:var(--viz-series-1)}
+#room-reach-v1 .rr-gate:before {border:1px dashed var(--foreground)}
+</style>
+<script>
+(()=>{
+ const root=document.getElementById('room-reach-v1');
+ const input=root.querySelector('#rr-radius'),out=root.querySelector('#rr-value'),status=root.querySelector('#rr-status'),svg=root.querySelector('#rr-face'),geom=root.querySelector('#rr-geometry');
+ const gate=2/Math.sqrt(3)-1,room=Math.sqrt(2)-1;
+ root.querySelector('#rr-gate-bar').style.width=(100*gate/.5)+'%';
+ root.querySelector('#rr-room-bar').style.width=(100*room/.5)+'%';
+ let q=.28;
+ function draw(){
+  const w=Math.max(280,svg.getBoundingClientRect().width),h=270;
+  svg.setAttribute('viewBox',`0 0 ${w} ${h}`);
+  const R=Math.min(66,(w-24)/4),cx=w/2,cy=145;
+  const points=[[cx,cy-2*R/Math.sqrt(3)],[cx-R,cy+R/Math.sqrt(3)],[cx+R,cy+R/Math.sqrt(3)]];
+  geom.innerHTML=points.map(([x,y])=>`<circle cx="${x}" cy="${y}" r="${R}" fill="var(--foreground)" fill-opacity=".13" stroke="var(--border)" stroke-width="1"/>`).join('')+`<polygon points="${points.map(p=>p.join(',')).join(' ')}" fill="none" stroke="var(--border)" stroke-width="1"/><circle cx="${cx}" cy="${cy}" r="${gate*R}" fill="none" stroke="var(--foreground)" stroke-dasharray="3 3" stroke-width="1"/><circle cx="${cx}" cy="${cy}" r="${q*R}" fill="var(--viz-series-1)" fill-opacity=".42" stroke="var(--viz-series-1)" stroke-width="1.5"/>`;
+  out.value=q.toFixed(3);
+  root.querySelectorAll('.rr-cursor').forEach(el=>el.style.left=`calc(${100*q/.5}% - 1.5px)`);
+  status.textContent=q>room?'Too large for the central room.':q>gate?'Fits central room; too large for every face opening.':'Small enough for a face opening; full route untested.';
+  svg.setAttribute('aria-label',`Probe radius ratio ${q.toFixed(3)}. ${status.textContent}`);
+ }
+ function apply(state){const v=state?.modelContent?.probeRadiusRatio;if(typeof v==='number'&&Number.isFinite(v)){q=Math.min(.5,Math.max(.1,v));input.value=q;draw();}}
+ apply(window.openai?.widgetState);draw();
+ input.addEventListener('input',()=>{q=Number(input.value);draw();});
+ input.addEventListener('change',()=>{window.openai?.setWidgetState?.({modelContent:{probeRadiusRatio:q},privateContent:null})?.catch(()=>{});});
+ window.addEventListener('openai:set_globals',event=>apply(event.detail?.globals?.widgetState));
+ new ResizeObserver(draw).observe(svg);
+})();
+</script>

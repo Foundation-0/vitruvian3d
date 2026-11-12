@@ -1,0 +1,111 @@
+<div id="vitruvian-lattice-motion">
+  <h3>Three coordinated spatial sweeps</h3>
+  <div class="vl-controls">
+    <div class="vl-angle">
+      <div class="viz-row"><label for="vl-angle">Link angle</label><output id="vl-value" class="tabular-nums" for="vl-angle">25°</output></div>
+      <input id="vl-angle" class="form-range" type="range" min="0" max="90" step="1" value="25" aria-describedby="vl-description">
+    </div>
+    <div><label class="form-label" for="vl-view">View</label><select id="vl-view" class="form-select"><option value="0">Oblique</option><option value="1">Opposite side</option><option value="2">From above</option></select></div>
+  </div>
+  <svg class="vl-scene" role="img" aria-labelledby="vl-title vl-description">
+    <title id="vl-title">An octahedron with three links sweeping quarter circles</title>
+    <desc id="vl-description">The six central vertices stay fixed at plus and minus the three unit axes. Three links of length square root of two swing together from the positive vertices. Faint octahedra show translated neighbors. Dashed curves show the full ninety-degree sweeps. This is a geometric model, not measured human motion.</desc>
+    <g id="vl-drawing"></g>
+  </svg>
+  <div class="vl-legend text-small">
+    <span><i class="vl-key vl-fixed"></i>Fixed octahedron</span>
+    <span><i class="vl-key vl-link"></i>Equal-length links</span>
+    <span><i class="vl-key vl-arc"></i>90° sweep</span>
+    <span><i class="vl-key vl-ghost"></i>Neighbor copies</span>
+  </div>
+  <div id="vl-status" class="text-small tabular-nums" aria-live="polite">Link length: √2 units · cubic → fcc</div>
+</div>
+<style>
+  #vitruvian-lattice-motion { display:grid; gap:calc(var(--font-size-base)*.75); color:var(--foreground); }
+  #vitruvian-lattice-motion .vl-controls { display:grid; grid-template-columns:minmax(0,1fr) auto; gap:calc(var(--font-size-base)*1.25); align-items:end; }
+  #vitruvian-lattice-motion .vl-angle { min-width:0; }
+  #vitruvian-lattice-motion .vl-angle .viz-row { justify-content:space-between; }
+  #vitruvian-lattice-motion .vl-scene { display:block; width:100%; overflow:visible; }
+  #vitruvian-lattice-motion .vl-legend { display:flex; flex-wrap:wrap; column-gap:calc(var(--font-size-base)*1); row-gap:calc(var(--font-size-base)*.5); }
+  #vitruvian-lattice-motion .vl-legend span { display:inline-flex; align-items:center; gap:calc(var(--font-size-base)*.4); }
+  #vitruvian-lattice-motion .vl-key { display:inline-block; width:20px; height:0; border-top:2px solid var(--foreground); }
+  #vitruvian-lattice-motion .vl-key.vl-link { border-top:4px solid var(--viz-series-1); }
+  #vitruvian-lattice-motion .vl-key.vl-arc { border-top:2px dashed var(--viz-series-1); opacity:.65; }
+  #vitruvian-lattice-motion .vl-key.vl-ghost { opacity:.25; }
+  #vitruvian-lattice-motion .vl-scene text { fill:var(--foreground); font:inherit; font-weight:500; }
+  @media(max-width:380px) { #vitruvian-lattice-motion .vl-controls { grid-template-columns:minmax(0,1fr); } }
+</style>
+<script>
+(() => {
+  const root=document.getElementById('vitruvian-lattice-motion');
+  const angle=root.querySelector('#vl-angle'), view=root.querySelector('#vl-view');
+  const value=root.querySelector('#vl-value'), scene=root.querySelector('.vl-scene');
+  const drawing=root.querySelector('#vl-drawing'), status=root.querySelector('#vl-status');
+  const NS='http://www.w3.org/2000/svg', rt=Math.SQRT2;
+  const axes=[[1,0,0],[0,1,0],[0,0,1]];
+  const C=[[0,-1,-1],[1,0,-1],[1,-1,0]];
+  const motif=axes.flatMap(p=>[p,p.map(x=>-x)]);
+  const add=(a,b)=>a.map((x,i)=>x+b[i]);
+  const edges=[];
+  for(let i=0;i<6;i++) for(let j=i+1;j<6;j++) if(Math.floor(i/2)!==Math.floor(j/2)) edges.push([i,j]);
+  function geometry(deg){
+    const t=deg*Math.PI/180;
+    const links=axes.map((p,i)=>p.map((x,j)=>rt*Math.cos(t)*x+Math.sin(t)*C[i][j]));
+    const lattice=axes.map((p,i)=>add(p.map(x=>2*x),links[i]));
+    return {links,lattice,ends:axes.map((p,i)=>add(p,links[i]))};
+  }
+  function project(p){
+    const cameras=[[-.70,.55],[2.28,.44],[-.72,1.10]];
+    const [yaw,pitch]=cameras[Number(view.value)];
+    const x=Math.cos(yaw)*p[0]-Math.sin(yaw)*p[1];
+    const y=Math.sin(yaw)*p[0]+Math.cos(yaw)*p[1];
+    return [x,Math.sin(pitch)*y-Math.cos(pitch)*p[2],Math.cos(pitch)*y+Math.sin(pitch)*p[2]];
+  }
+  function element(tag,attrs){const el=document.createElementNS(NS,tag);for(const [k,v] of Object.entries(attrs))el.setAttribute(k,v);return el;}
+  function render(){
+    const w=Math.max(280,root.clientWidth), h=Math.max(280,Math.min(440,w*.68));
+    scene.setAttribute('viewBox',`0 0 ${w} ${h}`);scene.style.height=h+'px';
+    const cloud=[...motif];
+    for(let a=0;a<=90;a+=3){const g=geometry(a);g.lattice.forEach(L=>motif.forEach(p=>cloud.push(add(L,p))));}
+    const projected=cloud.map(project), xs=projected.map(p=>p[0]), ys=projected.map(p=>p[1]);
+    const xmin=Math.min(...xs),xmax=Math.max(...xs),ymin=Math.min(...ys),ymax=Math.max(...ys);
+    const scale=Math.min((w-40)/(xmax-xmin),(h-34)/(ymax-ymin));
+    const toScreen=p=>{const q=project(p);return [w/2+scale*(q[0]-(xmin+xmax)/2),h/2+scale*(q[1]-(ymin+ymax)/2),q[2]];};
+    drawing.replaceChildren();
+    const shapes=[];
+    function line(a,b,color,width,opacity=1,dash=''){
+      const p=toScreen(a),q=toScreen(b);
+      shapes.push({depth:(p[2]+q[2])/2,el:element('line',{x1:p[0],y1:p[1],x2:q[0],y2:q[1],stroke:color,'stroke-width':width,opacity,'stroke-dasharray':dash,'stroke-linecap':'round'})});
+    }
+    function dot(p,r,color,opacity=1){const q=toScreen(p);shapes.push({depth:q[2],el:element('circle',{cx:q[0],cy:q[1],r,fill:color,opacity})});}
+    const g=geometry(Number(angle.value));
+    g.lattice.forEach(L=>edges.forEach(([i,j])=>line(add(L,motif[i]),add(L,motif[j]),'var(--foreground)',1,.16)));
+    for(let i=0;i<3;i++){
+      const points=[];for(let a=0;a<=90;a+=2)points.push(toScreen(geometry(a).ends[i]));
+      const path=element('polyline',{points:points.map(p=>p.slice(0,2).join(',')).join(' '),fill:'none',stroke:'var(--viz-series-1)','stroke-width':1.5,'stroke-dasharray':'4 5',opacity:.55});
+      drawing.append(path);
+    }
+    edges.forEach(([i,j])=>line(motif[i],motif[j],'var(--foreground)',1.5,.7));
+    motif.forEach(p=>dot(p,3.3,'var(--foreground)'));
+    g.ends.forEach((p,i)=>{line(axes[i],p,'var(--viz-series-1)',4);dot(p,5,'var(--viz-series-1)');});
+    shapes.sort((a,b)=>a.depth-b.depth).forEach(s=>drawing.append(s.el));
+    g.ends.forEach((p,i)=>{const q=toScreen(p);const text=element('text',{x:q[0]+9,y:q[1]-8});text.textContent=String(i+1);drawing.append(text);});
+    value.textContent=angle.value+'°';
+    const state=Number(angle.value)===0?'open cubic configuration':Number(angle.value)===90?'fcc endpoint':'coordinated sweep';
+    status.textContent='Link length: √2 units · '+state;
+    scene.setAttribute('aria-label',`Three equal links at ${angle.value} degrees. ${state}. Dashed paths show quarter circles; the central octahedron stays fixed.`);
+  }
+  function restore(saved){
+    const a=saved?.modelContent?.angle, v=saved?.privateContent?.view;
+    if(Number.isFinite(a)&&a>=0&&a<=90)angle.value=String(a);
+    if([0,1,2].includes(v))view.value=String(v);
+    render();
+  }
+  function save(){window.openai?.setWidgetState?.({modelContent:{angle:Number(angle.value),linkLength:'sqrt(2)',model:'coordinated geometric link sweep'},privateContent:{view:Number(view.value)}})?.catch(()=>{});}
+  angle.addEventListener('input',render);angle.addEventListener('change',save);
+  view.addEventListener('change',()=>{render();save();});
+  window.addEventListener('openai:set_globals',e=>{if(e.detail?.globals?.widgetState)restore(e.detail.globals.widgetState);});
+  new ResizeObserver(render).observe(root);
+  restore(window.openai?.widgetState);
+})();
+</script>
