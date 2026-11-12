@@ -1,0 +1,450 @@
+{
+  "scope": "Numerical optimized sampled configurations in a four-parameter restricted family; no path or full periodic non-overlap certificate.",
+  "rows": [
+    {
+      "beta_deg": 45.0,
+      "theta_deg": [
+        90.0,
+        90.0,
+        90.0
+      ],
+      "volume": 14.000000000000004,
+      "minimum_squared_gap": 0.0,
+      "sigma_min": 1.9999999999999996,
+      "solver_success": true
+    },
+    {
+      "beta_deg": 42.5,
+      "theta_deg": [
+        90.0,
+        90.0,
+        88.28991463181052
+      ],
+      "volume": 14.292629135569097,
+      "minimum_squared_gap": -6.536993168992922e-13,
+      "sigma_min": 2.041858879474488,
+      "solver_success": true
+    },
+    {
+      "beta_deg": 40.0,
+      "theta_deg": [
+        90.0,
+        90.0,
+        86.69431738899293
+      ],
+      "volume": 14.559909261577598,
+      "minimum_squared_gap": -8.748557434046234e-14,
+      "sigma_min": 2.080049682515778,
+      "solver_success": true
+    },
+    {
+      "beta_deg": 37.5,
+      "theta_deg": [
+        90.0,
+        90.0,
+        85.21151977642724
+      ],
+      "volume": 14.802353747034864,
+      "minimum_squared_gap": -1.1235457009206584e-12,
+      "sigma_min": 2.114387363137122,
+      "solver_success": true
+    },
+    {
+      "beta_deg": 35.0,
+      "theta_deg": [
+        89.999999999989,
+        90.0,
+        83.83945485886153
+      ],
+      "volume": 15.020602902685912,
+      "minimum_squared_gap": -1.9533263895255004e-12,
+      "sigma_min": 2.144683549731465,
+      "solver_success": true
+    },
+    {
+      "beta_deg": 32.5,
+      "theta_deg": [
+        90.0,
+        90.0,
+        82.57581026769405
+      ],
+      "volume": 15.215378749909748,
+      "minimum_squared_gap": -3.597122599785507e-13,
+      "sigma_min": 2.1707598998603976,
+      "solver_success": true
+    },
+    {
+      "beta_deg": 30.0,
+      "theta_deg": [
+        90.0,
+        90.0,
+        81.41813858829825
+      ],
+      "volume": 15.387447581163778,
+      "minimum_squared_gap": -2.922107000813412e-13,
+      "sigma_min": 2.1924705095562125,
+      "solver_success": true
+    },
+    {
+      "beta_deg": 27.5,
+      "theta_deg": [
+        90.0,
+        90.0,
+        80.36394773586156
+      ],
+      "volume": 15.5375896081317,
+      "minimum_squared_gap": -3.26183524634871e-13,
+      "sigma_min": 2.2097301968824454,
+      "solver_success": true
+    },
+    {
+      "beta_deg": 25.0,
+      "theta_deg": [
+        89.99999999998803,
+        89.99999999999264,
+        79.41077403154624
+      ],
+      "volume": 15.666574839108716,
+      "minimum_squared_gap": -8.553602270922056e-12,
+      "sigma_min": 2.222541247119424,
+      "solver_success": true
+    },
+    {
+      "beta_deg": 22.5,
+      "theta_deg": [
+        90.0,
+        90.0,
+        78.55624060076482
+      ],
+      "volume": 15.775144284150317,
+      "minimum_squared_gap": -1.7030821197749901e-13,
+      "sigma_min": 2.2310089576464467,
+      "solver_success": true
+    },
+    {
+      "beta_deg": 20.0,
+      "theta_deg": [
+        90.0,
+        90.0,
+        77.79810351971607
+      ],
+      "volume": 15.863995615178094,
+      "minimum_squared_gap": -2.0672352718520415e-13,
+      "sigma_min": 2.2353388741673013,
+      "solver_success": true
+    },
+    {
+      "beta_deg": 17.5,
+      "theta_deg": [
+        90.0,
+        90.0,
+        77.13428786957631
+      ],
+      "volume": 15.933772480840696,
+      "minimum_squared_gap": 0.0,
+      "sigma_min": 2.2358156315166555,
+      "solver_success": true
+    },
+    {
+      "beta_deg": 15.0,
+      "theta_deg": [
+        90.0,
+        89.99999999997965,
+        76.5629155883849
+      ],
+      "volume": 15.985056768755975,
+      "minimum_squared_gap": -8.83448869615222e-12,
+      "sigma_min": 2.232770514239566,
+      "solver_success": true
+    },
+    {
+      "beta_deg": 12.5,
+      "theta_deg": [
+        90.0,
+        90.0,
+        76.08232672301712
+      ],
+      "volume": 16.018363210268895,
+      "minimum_squared_gap": -1.5765166949677223e-13,
+      "sigma_min": 2.2265476938466406,
+      "solver_success": true
+    },
+    {
+      "beta_deg": 10.0,
+      "theta_deg": [
+        90.0,
+        90.0,
+        75.69109542896707
+      ],
+      "volume": 16.034135822948077,
+      "minimum_squared_gap": -6.139533326177116e-13,
+      "sigma_min": 2.2174768608410127,
+      "solver_success": true
+    },
+    {
+      "beta_deg": 7.5,
+      "theta_deg": [
+        89.99999999999552,
+        90.0,
+        75.3880418144692
+      ],
+      "volume": 16.03274578186996,
+      "minimum_squared_gap": -4.460654068338954e-12,
+      "sigma_min": 2.2058554512376785,
+      "solver_success": true
+    },
+    {
+      "beta_deg": 5.0,
+      "theta_deg": [
+        89.99999999999969,
+        90.0,
+        75.1722405178378
+      ],
+      "volume": 16.01449039682953,
+      "minimum_squared_gap": -3.5083047578154947e-14,
+      "sigma_min": 2.1919399046984167,
+      "solver_success": true
+    },
+    {
+      "beta_deg": 2.5,
+      "theta_deg": [
+        89.99999999999588,
+        90.0,
+        75.04302670507217
+      ],
+      "volume": 15.97959295143559,
+      "minimum_squared_gap": -2.398525822400188e-12,
+      "sigma_min": 2.175943580424712,
+      "solver_success": true
+    },
+    {
+      "beta_deg": 0.0,
+      "theta_deg": [
+        90.0,
+        90.0,
+        75.0000000000178
+      ],
+      "volume": 15.928203230273724,
+      "minimum_squared_gap": -1.0760281554667017e-12,
+      "sigma_min": 2.158038736567569,
+      "solver_success": true
+    },
+    {
+      "beta_deg": -2.5,
+      "theta_deg": [
+        89.99999999999733,
+        90.0,
+        75.04302670507371
+      ],
+      "volume": 15.860398623276957,
+      "minimum_squared_gap": -2.4933388687031766e-12,
+      "sigma_min": 2.138360528731403,
+      "solver_success": true
+    },
+    {
+      "beta_deg": -5.0,
+      "theta_deg": [
+        89.99999999999545,
+        89.9999999999997,
+        75.17224051786683
+      ],
+      "volume": 15.776185755094838,
+      "minimum_squared_gap": -1.7845724897824766e-12,
+      "sigma_min": 2.1170116917198447,
+      "solver_success": true
+    },
+    {
+      "beta_deg": -7.5,
+      "theta_deg": [
+        90.0,
+        90.0,
+        75.38804181440418
+      ],
+      "volume": 15.675502641478099,
+      "minimum_squared_gap": -5.520028878436278e-13,
+      "sigma_min": 2.094067153950009,
+      "solver_success": true
+    },
+    {
+      "beta_deg": -10.0,
+      "theta_deg": [
+        90.0,
+        90.0,
+        75.69109542896652
+      ],
+      "volume": 15.558221427895589,
+      "minimum_squared_gap": -5.808686864838819e-13,
+      "sigma_min": 2.069578231091356,
+      "solver_success": true
+    },
+    {
+      "beta_deg": -12.5,
+      "theta_deg": [
+        89.9999999999979,
+        89.9999999999968,
+        76.08232672303342
+      ],
+      "volume": 15.424151818332616,
+      "minimum_squared_gap": -1.128208637624084e-12,
+      "sigma_min": 2.0435762828923276,
+      "solver_success": true
+    },
+    {
+      "beta_deg": -15.0,
+      "theta_deg": [
+        89.999999999996,
+        90.0,
+        76.56291558827836
+      ],
+      "volume": 15.273045356624321,
+      "minimum_squared_gap": -2.537747789688183e-12,
+      "sigma_min": 2.0160758449503033,
+      "solver_success": true
+    },
+    {
+      "beta_deg": -17.5,
+      "theta_deg": [
+        90.0,
+        90.0,
+        77.1342878695792
+      ],
+      "volume": 15.104600779710891,
+      "minimum_squared_gap": -1.4654943925052066e-13,
+      "sigma_min": 1.9870773085316034,
+      "solver_success": true
+    },
+    {
+      "beta_deg": -20.0,
+      "theta_deg": [
+        90.0,
+        90.0,
+        77.7981035197215
+      ],
+      "volume": 14.918470722483905,
+      "minimum_squared_gap": -5.220268661787486e-13,
+      "sigma_min": 1.9565692463209963,
+      "solver_success": true
+    },
+    {
+      "beta_deg": -22.5,
+      "theta_deg": [
+        90.0,
+        90.0,
+        78.55624060076616
+      ],
+      "volume": 14.71427011785116,
+      "minimum_squared_gap": -2.473576898864849e-13,
+      "sigma_min": 1.9245304885945678,
+      "solver_success": true
+    },
+    {
+      "beta_deg": -25.0,
+      "theta_deg": [
+        89.99999999999994,
+        90.0,
+        79.41077403139553
+      ],
+      "volume": 14.491586701530778,
+      "minimum_squared_gap": -1.9984014443252818e-15,
+      "sigma_min": 1.890932053148403,
+      "solver_success": true
+    },
+    {
+      "beta_deg": -27.5,
+      "theta_deg": [
+        90.0,
+        90.0,
+        80.36394773585631
+      ],
+      "volume": 14.249994097250166,
+      "minimum_squared_gap": -3.197442310920451e-14,
+      "sigma_min": 1.8557390289048121,
+      "solver_success": true
+    },
+    {
+      "beta_deg": -30.0,
+      "theta_deg": [
+        89.99999999999999,
+        89.99999999999997,
+        81.41813858831213
+      ],
+      "volume": 13.989068018951532,
+      "minimum_squared_gap": -1.0587086762825493e-12,
+      "sigma_min": 1.8189125099408563,
+      "solver_success": true
+    },
+    {
+      "beta_deg": -32.5,
+      "theta_deg": [
+        90.0,
+        90.0,
+        82.57581026769583
+      ],
+      "volume": 13.70840617519659,
+      "minimum_squared_gap": -4.565237077258644e-13,
+      "sigma_min": 1.7804116746017045,
+      "solver_success": true
+    },
+    {
+      "beta_deg": -35.0,
+      "theta_deg": [
+        89.99999999998606,
+        89.99999999999204,
+        83.83945485887219
+      ],
+      "volume": 13.407652485341126,
+      "minimum_squared_gap": -2.5215385335286555e-12,
+      "sigma_min": 1.7401961031267295,
+      "solver_success": true
+    },
+    {
+      "beta_deg": -37.5,
+      "theta_deg": [
+        90.0,
+        90.0,
+        85.21151977641236
+      ],
+      "volume": 13.08652620093697,
+      "minimum_squared_gap": -3.423927807943983e-13,
+      "sigma_min": 1.6982284258697546,
+      "solver_success": true
+    },
+    {
+      "beta_deg": -40.0,
+      "theta_deg": [
+        89.99999999999658,
+        89.99999999999532,
+        86.69431738899947
+      ],
+      "volume": 12.744856446201782,
+      "minimum_squared_gap": -4.2454928461665986e-13,
+      "sigma_min": 1.6544773910444897,
+      "solver_success": true
+    },
+    {
+      "beta_deg": -42.5,
+      "theta_deg": [
+        90.0,
+        90.0,
+        88.2899146374081
+      ],
+      "volume": 12.382622519087718,
+      "minimum_squared_gap": -2.829372292012522e-10,
+      "sigma_min": 1.6089214336157418,
+      "solver_success": false
+    },
+    {
+      "beta_deg": -45.0,
+      "theta_deg": [
+        90.0,
+        90.0,
+        90.0
+      ],
+      "volume": 12.0,
+      "minimum_squared_gap": -4.440892098500626e-16,
+      "sigma_min": 1.561552812808831,
+      "solver_success": true
+    }
+  ],
+  "peak_sample_volume": 16.034135822948077
+}

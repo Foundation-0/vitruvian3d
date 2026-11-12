@@ -1,0 +1,39 @@
+{
+  "review": "PASS finite projection, actual contact witnesses, tangent inequality, determinant expansion and exact lower bound. No author implementation imported.",
+  "cofactor": [
+    [
+      5,
+      -3,
+      -1
+    ],
+    [
+      1,
+      5,
+      -3
+    ],
+    [
+      3,
+      1,
+      5
+    ]
+  ],
+  "projection_contact_slack": [
+    "0",
+    "q1",
+    "q2",
+    "0",
+    "q3",
+    "0"
+  ],
+  "determinant_quadratic_polynomial": "2*d11*d22 - d11*d23 + d11*d32 + 2*d11*d33 - 2*d12*d21 + d12*d23 - d12*d31 - d12*d33 + d13*d21 - d13*d22 - 2*d13*d31 + d13*d32 - d21*d32 + d21*d33 + d22*d31 + 2*d22*d33 - d23*d31 - 2*d23*d32",
+  "strict_absolute_barrier_lower_bound": "270/6859",
+  "strict_peak_lower_bound": "96296/6859",
+  "limitations": "Bound restricted to stated one-cell fixed-motif bridge family. No claim about energy, sharpness, larger cells or motif rotations.",
+  "upper_path_independent_rational_certificate": {
+    "parameter": "w in[0,1], D=4w\u00b2-8w+6, q=(4w\u00b2-12w+6)/D, z=(4w-4w\u00b2)/D",
+    "finite_comparisons": 2374,
+    "interior_quadratic_vertex_checks": 246,
+    "method": "Expand actual rational coordinate distance numerators, divide by positive denominator, check endpoint values and integer quadratic discriminant at any interior minimum.",
+    "all_passed": true
+  }
+}
