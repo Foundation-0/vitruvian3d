@@ -1,0 +1,32 @@
+{
+  "totals": {
+    "original": {
+      "tiles": 90,
+      "segment_site_checks": 2963520,
+      "plane_vertex_checks": 2211840
+    },
+    "skew": {
+      "tiles": 110,
+      "segment_site_checks": 5433120
+    }
+  },
+  "volume_and_angle": {
+    "matched_volume_bracket": true,
+    "original_interval_contains_exact_40_degrees": true
+  },
+  "probe_ratio_interval": [
+    "199/200",
+    "201/200"
+  ],
+  "half_angle_intervals": {
+    "original": [
+      "71/200",
+      "91/250"
+    ],
+    "skew": [
+      "83/200",
+      "213/500"
+    ]
+  },
+  "conclusion": "Same rank2/rank3 and matched-volume theorem holds throughout the widened closed parameter intervals; original window spans over0.9degrees and includes exact40deg."
+}

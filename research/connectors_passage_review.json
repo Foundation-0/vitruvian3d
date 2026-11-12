@@ -1,0 +1,20 @@
+{
+  "probe_size_interval": [
+    "199/200",
+    "201/200"
+  ],
+  "probe_upper_bound_squared_integer_slack": 41,
+  "geometry_review": "PASS plane convexity, periodic separator, exact segment distance, matrix interval error, omitted-image singular-value bound, and independent winding determinants.",
+  "standard_library_verifier": "Executed successfully as passage_verify.py; output retained in passage_verify.json.",
+  "integer_overflow": {
+    "plane_label_maximum_translation": 1,
+    "conservative_plane_coordinate_bound": 800000000,
+    "conservative_plane_three_square_sum_bound": 1920000000000000000,
+    "int64_limit": 9223372036854775807,
+    "maximum_recentered_scaled_coordinate": 1278854,
+    "conservative_loop_matrix_product_bound": 51346248000000,
+    "conservative_loop_site_vector_coordinate_bound": 52346248000000,
+    "squared_loop_arithmetic": "Python arbitrary precision integers; no int64 products after conversion."
+  },
+  "limitations": "Discovery topology is unnecessary for acceptance. The saved loops and sphere labels are the witnesses. This audit does not claim hardware realization or historical novelty."
+}

@@ -1,0 +1,40 @@
+name: Certified passage
+
+on:
+  pull_request:
+    paths:
+      - 'research/passage_*'
+      - 'research/connectors_passage_review.py'
+      - 'research/connectors_passage_review.json'
+      - '.github/workflows/certified-passage.yml'
+  push:
+    branches:
+      - gpt-forge/certified-passage
+    paths:
+      - 'research/passage_*'
+      - 'research/connectors_passage_review.py'
+      - 'research/connectors_passage_review.json'
+      - '.github/workflows/certified-passage.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  standalone-verifier:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ['3.11', '3.12', '3.13']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Verify continuum witnesses without scientific dependencies
+        run: python research/passage_verify.py
+      - name: Audit fixed-width discovery arithmetic
+        run: python research/connectors_passage_review.py
+      - name: Verify the wider parameter window
+        run: python research/passage_window_verify.py
+      - name: Check saved verifier receipts
+        run: git diff --exit-code -- research/passage_verify.json research/passage_window_verify.json research/connectors_passage_review.json
