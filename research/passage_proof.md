@@ -42,9 +42,9 @@ the following statements hold in the continuum, not merely on a graph or a spati
 1. For every $s\in I_o$, the maximum periodic winding rank of a connected free-space component is **exactly two**.
 2. For every $s\in I_v$, there is a connected free-space component with winding rank **three**.
 3. For every original parameter in $I_o$, there is a unique skew parameter in $I_v$ with exactly the same cell volume. Both configurations therefore have the same physical sphere packing fraction.
-4. The original interval contains the exact angle $40^\circ$. Its equal-volume skew angle is numerically about $46.11134177^\circ$. the theorem uses the rigorous interval, not that decimal approximation.
+4. The original interval contains the exact angle $40^\circ$. Its equal-volume skew angle is numerically about $46.11134177^\circ$. The theorem uses the rigorous interval, not that decimal approximation.
 
-Here a free path is a path of the probe's center outside the obstacle spheres inflated to radius $r+q$. Winding rank is the rank of the image in $\mathbb Z^3$ of loops within **one connected component** of the periodic free space. Directions in disconnected components are not pooled. The statement guarantees paths. it does not quantify flow rates, diffusion, mechanical work, or bodily motion.
+Here a free path is a path of the probe's center outside the obstacle spheres inflated to radius $r+q$. Winding rank is the rank of the image in $\mathbb Z^3$ of loops within **one connected component** of the periodic free space. Directions in disconnected components are not pooled. The statement guarantees paths. It does not quantify flow rates, diffusion, mechanical work, or bodily motion.
 
 The original and skew sphere frameworks are globally nonoverlapping along these paths. The existing exact folding and sign-pattern certificates establish that separate condition. The passage proof below also makes sense directly as a statement about the complement of the specified obstacle union.
 
@@ -65,7 +65,7 @@ $$
 
 The corresponding distance upper bound is about 1.40717414. Even the smallest permitted probe has exclusion distance about 1.41067803. The cover therefore has strict slack.
 
-Any lifted continuous path with nonzero first winding must cross one of these planes by the intermediate value theorem applied to its first fractional coordinate. Every point of every such plane is forbidden. Consequently **no path anywhere in the original continuum can have nonzero first winding**. This is a direct obstruction. it does not assume that a finite Voronoi graph captures all possible bypasses.
+Any lifted continuous path with nonzero first winding must cross one of these planes by the intermediate value theorem applied to its first fractional coordinate. Every point of every such plane is forbidden. Consequently **no path anywhere in the original continuum can have nonzero first winding**. This is a direct obstruction. It does not assume that a finite Voronoi graph captures all possible bypasses.
 
 ## Explicit polylines prove positive access
 
@@ -258,8 +258,8 @@ The first program discovers convenient witnesses using NumPy/SciPy, then accepts
 
 The discovery program also rejects an insufficient plane-cover squared radius of 1.93 and rejects the proposed free loops when the exclusion radius is enlarged to 1.43. The independent verifier reconstructs the grid topology, requires the saved sphere labels to be real motif/image centers, checks common loop basepoints and exact endpoint shifts, and checks independent winding vectors.
 
-The trusted mathematical ingredients are convexity of balls, continuity of lifted fractional coordinates, the projection formula, rational interval enclosure, the stated singular-value bound, and the determinant/angle arguments above. The arithmetic implementations have not been formalized. Reimplementation reduces shared-code risk. it does not replace review of the written argument.
+The trusted mathematical ingredients are convexity of balls, continuity of lifted fractional coordinates, the projection formula, rational interval enclosure, the stated singular-value bound, and the determinant/angle arguments above. The arithmetic implementations have not been formalized. Reimplementation reduces shared-code risk. It does not replace review of the written argument.
 
 The exact theorem establishes a robust change in the dimension of accessible motion at matched volume. It does not prove the numerically observed optimal pore thresholds or every transition angle. In particular, the numerical throat curve from `transport_probe.py` is not silently promoted to a theorem by this certificate. Novelty and practical value require separate literature and physical-design work.
 
-Canonical original-motion proof: [continuous fold to fcc]$https://github.com/Foundation-0/incentre-lattices/blob/main/results/fold-continuous-fcc/PROOF.md$.
+Canonical original-motion proof: [continuous fold to fcc](https://github.com/Foundation-0/incentre-lattices/blob/main/results/fold-continuous-fcc/PROOF.md).
