@@ -1,0 +1,96 @@
+Independent review: signed coordination and vacancy endpoint
+Reviewer: gpt-forge, gpt-6.1-sol. 2026-11-12.
+
+Verdict
+The mathematics checked here passes independent verification. The endpoint and
+its 1/7 vacancy interpretation are established prior art. Do not present either
+as a new sphere packing. A standalone publication case is not established by
+this branch. The signed classification may be a useful explicit lemma in a
+larger configuration-space study.
+
+Independent evidence
+No discovery implementation was imported. SymPy directly expands rationalized
+coordinate vectors with cos(theta)=(1-u^2)/(1+u^2),sin(theta)=2u/(1+u^2).
+The skew representative has C^T=-C. Thus |nL|^2=d^2|n|^2+t^2|nC|^2>=4|n|^2.
+Because each motif difference has norm<=2, all |n|>=2 are safe with pair distance
+at least 2>sqrt2. Only 27 images in[-1,1]^3 remain. Their 512 nontrivial distance
+inequalities give 68 distinct quartics. all 2560 exact Bernstein coefficients
+are nonnegative. This proves continuous nonoverlap for that representative
+subject to script correctness and the written reduction.
+
+Independent sign-matrix relabeling and coordinate-gauge enumeration returns
+six orbits, sizes4,24,12,4,12,8, endpoint determinants4,6,8,0,12,14. For the
+nonsingular rejected orbits, exact inverses produce motif coincidence witnesses.
+Only20 choices avoid endpoint coincidences. The full-fcc continuum is not
+recertified here. the existing repo proof plus conjugacy supplies that branch.
+Full and proper signed-permutation conjugacy agree because P and-P induce the
+same conjugation and have opposite determinant in dimension 3. No chirality
+claim survives. Motif inversion also makes every packing centrosymmetric.
+
+Vacancy interpretation
+H=Z^3(2I+C) has index 14 in Z^3. Every H vector has even coordinate sum and residue
+5z1+z2+3z3=0mod7. The joint parity/residue kernel has the same index 14, hence
+is exactlyH. Six motif cosets occupy the six nonzero residue classes in the
+odd-parity fcc translate. Exact inverse membership agrees at 729 integer sites,
+as a supplemental implementation check. The 12 fcc nearest-neighbor steps have
+mod7 residues1..6 each twice. Every occupied site therefore has 10 occupied
+neighbors. every vacancy has 12 occupied neighbors. Filling vacancies gives fcc,
+so the endpoint is unsaturated.
+
+Exact primary-source identification
+Koch and Fischer, International Tables for Crystallography C(2006),chapter 9.1,
+Table 9.1.1.2,type 20 lists R-3,18f,x=3/7,y=1/7,z=0,c/a=sqrt42/7,density0.6347.
+https://onlinelibrary.wiley.com/iucr/itc/Cb/ch9o1v0001/
+The text immediately after the layer description explicitly states that this
+packing comes from fcc by systematically removing1/7 of spheres per triangular
+layer. It cites Sowa and Koch 1999, listed as submitted in that bibliography.
+Only the 2006 source publication is directly established here.
+
+Identification is exact, rather than a density or sequence match. Choose hex
+basis rows(-2,1,3),(-1,-3,-2),(2,-2,2), and origin(2,0,-1).
+The Gram matrix is[[14,-7,0],[-7,14,0],[0,0,12]],giving c/a=sqrt42/7.
+Motif point(1,0,0) maps to(3/7,1/7,0). Generate all 18 sites of the standard
+R-3 18f orbit using threefold rotations,inversion,and R-centering. These exact
+rational coordinates equal all 18 actual motif sites modulo the hex cell.
+The replay script asserts equality of the full sets.
+
+Comparison to existing repo cubic fold
+Pinned source: results/fold-3d-cubic/PROOF.md at commit
+2d374fff2a59cc9331566733043a4bb25c1040bf. downloaded as vacancy_prior_cubic.md.
+That path alternately rotates octahedra about[111] while retaining cubic lattice.
+Its 60-degree endpoint has six contacts/site and a coordination-sequence match
+to sms. Epinet confirms sms degree 6:
+https://epinet.anu.edu.au/sqc2708
+Our endpoint has 10 contacts and is not that endpoint contact graph. Distinct
+endpoint graphs do not establish novelty of our motion. Borcea-Streinu Section 7
+and octahedral-tilt literature still require the lead's separate motion audit.
+
+Question that remains worth defining
+A connection between the skew route and full-fcc route exists trivially through
+their common open start. A useful question needs a constraint: find the minimum
+cell-volume increase needed to switch endpoints, or prove a monotone densifying
+route exists or fails within a precisely defined bridge-direction space.
+Asynchronous timing cannot repair a prescribed endpoint with coincident sites.
+A broader classification of collision-free paths may be substantive, but is
+not solved and its novelty is not established here.
+
+Reproduce: python3 research/vacancy_independent.py
+Evidence: research/vacancy_independent.json
+
+Brief independent review of centre_dynamics_report.md
+The exact tetrahedral-family four-cycle formulas check out. For the face-pyramid
+rays (1,1,1),(1,-1,-1),(1,1,-1), the three inward unit side normals are
+(0,1,-1)/sqrt2,(1,0,1)/sqrt2,(1,-1,0)/sqrt2. Equating their distances yields
+centre ray (3,1,-1), matching the reported p=-1 orientation. These side planes
+do not depend on epsilon. Tetrahedral symmetry makes all twelve radii equal.
+
+For a regular face pyramid, the side-plane distance at axial coordinate c is
+c*rho/sqrt(h^2+rho^2), while the base distance is h-c. Equating them gives the
+reported c=h/(1+rho/sqrt(h^2+rho^2)). Substitution yields the reported ratio
+c_hex/c_tri=(7-2sqrt6)/5=(sqrt6-1)/(sqrt6+1). Converting this ratio to the two
+opposite tetrahedron radii gives epsilon=1/sqrt6 exactly. Triangular-face normals
+have negative parity for Q_-, so the next P has negative epsilon, confirming the
+cycle signs. Cube symmetry supplies the opposite orientation on the next step.
+The stated fixed-frame four-cycle and shape-class two-cycle are consistent.
+The support gap 5/sqrt33-1/sqrt3 is also correct. This review checks the explicit
+family and formulas, not generic LP behavior or publication novelty.

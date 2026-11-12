@@ -1,0 +1,691 @@
+{
+  "model": "L=(2+sqrt(2) cos(theta)) I+sin(theta) C; motif=+-unit axes; radius=1/sqrt(2)",
+  "finite_image_bound": "For every nonsingular-endpoint orbit symmetric-part min eigenvalue >= -sqrt(2). Thus |n L+v| >= (2-sqrt(2))|n|-2. If |n|^2 >=34, this exceeds sqrt(2), since (2+sqrt(2))/(2-sqrt(2))=3+2sqrt(2), whose square=17+12sqrt(2)<34. Enumerate |n|^2<=33.",
+  "image_count": 799,
+  "motif_difference_count": 19,
+  "orbits": [
+    {
+      "representative": "++++++",
+      "matrix": [
+        [
+          0,
+          1,
+          1
+        ],
+        [
+          1,
+          0,
+          1
+        ],
+        [
+          1,
+          1,
+          0
+        ]
+      ],
+      "members": [
+        "++++++",
+        "+-+---",
+        "-+--+-",
+        "---+-+"
+      ],
+      "orbit_size": 4,
+      "proper_rotation_orbit_size": 4,
+      "proper_and_full_orbits_equal": true,
+      "invariants": {
+        "symmetric_pair_count": 3,
+        "reciprocal_products": [
+          1,
+          1,
+          1
+        ],
+        "directed_triangle_products": [
+          1,
+          1
+        ],
+        "det_C": 2,
+        "sum_reciprocal_products": 3
+      },
+      "symmetric_part_eigenvalues": [
+        -1.0000000000000002,
+        -1.0,
+        1.9999999999999998
+      ],
+      "endpoint": {
+        "determinant": 4,
+        "contact_degrees": [
+          36,
+          36,
+          36,
+          36,
+          36,
+          36
+        ],
+        "collision": {
+          "n": [
+            1,
+            -1,
+            0
+          ],
+          "p": [
+            1,
+            0,
+            0
+          ],
+          "q": [
+            0,
+            1,
+            0
+          ],
+          "distance_squared": 0
+        }
+      },
+      "sampled_minimum": {
+        "angle_degrees": 90,
+        "distance_squared": 0.0,
+        "n": [
+          -1,
+          0,
+          1
+        ],
+        "v": [
+          1,
+          0,
+          -1
+        ]
+      },
+      "uniform_singular_value_lower_bound": "2-sqrt(2)",
+      "bernstein": {
+        "all_nonnegative": false,
+        "coefficients_checked": 28484,
+        "first_negative": {
+          "n": [
+            -1,
+            0,
+            1
+          ],
+          "v": [
+            1,
+            0,
+            -1
+          ],
+          "coefficient": 3,
+          "pair_times_12": [
+            -48,
+            0
+          ]
+        }
+      }
+    },
+    {
+      "representative": "+++++-",
+      "matrix": [
+        [
+          0,
+          1,
+          1
+        ],
+        [
+          1,
+          0,
+          1
+        ],
+        [
+          1,
+          -1,
+          0
+        ]
+      ],
+      "members": [
+        "+++++-",
+        "++++-+",
+        "+++-++",
+        "+++---",
+        "++-+++",
+        "++--+-",
+        "+-++++",
+        "+-++--",
+        "+-+-+-",
+        "+-+--+",
+        "+--+-+",
+        "+-----",
+        "-+++++",
+        "-++-+-",
+        "-+-++-",
+        "-+-+-+",
+        "-+--++",
+        "-+----",
+        "--++-+",
+        "--+---",
+        "---+++",
+        "---+--",
+        "----+-",
+        "-----+"
+      ],
+      "orbit_size": 24,
+      "proper_rotation_orbit_size": 24,
+      "proper_and_full_orbits_equal": true,
+      "invariants": {
+        "symmetric_pair_count": 2,
+        "reciprocal_products": [
+          1,
+          1,
+          -1
+        ],
+        "directed_triangle_products": [
+          1,
+          -1
+        ],
+        "det_C": 0,
+        "sum_reciprocal_products": 1
+      },
+      "symmetric_part_eigenvalues": [
+        -1.4142135623730951,
+        0.0,
+        1.4142135623730951
+      ],
+      "endpoint": {
+        "determinant": 6,
+        "contact_degrees": [
+          24,
+          24,
+          24,
+          24,
+          24,
+          24
+        ],
+        "collision": {
+          "n": [
+            1,
+            -1,
+            0
+          ],
+          "p": [
+            1,
+            0,
+            0
+          ],
+          "q": [
+            0,
+            1,
+            0
+          ],
+          "distance_squared": 0
+        }
+      },
+      "sampled_minimum": {
+        "angle_degrees": 90,
+        "distance_squared": 0.0,
+        "n": [
+          -1,
+          1,
+          0
+        ],
+        "v": [
+          1,
+          -1,
+          0
+        ]
+      },
+      "uniform_singular_value_lower_bound": "2-sqrt(2)",
+      "bernstein": {
+        "all_nonnegative": false,
+        "coefficients_checked": 29429,
+        "first_negative": {
+          "n": [
+            -1,
+            1,
+            0
+          ],
+          "v": [
+            1,
+            -1,
+            0
+          ],
+          "coefficient": 3,
+          "pair_times_12": [
+            -48,
+            0
+          ]
+        }
+      }
+    },
+    {
+      "representative": "++++--",
+      "matrix": [
+        [
+          0,
+          1,
+          1
+        ],
+        [
+          1,
+          0,
+          1
+        ],
+        [
+          -1,
+          -1,
+          0
+        ]
+      ],
+      "members": [
+        "++++--",
+        "++-+-+",
+        "++--++",
+        "+-+-++",
+        "+--+--",
+        "+---+-",
+        "-++++-",
+        "-++---",
+        "-+---+",
+        "--++++",
+        "--+--+",
+        "---++-"
+      ],
+      "orbit_size": 12,
+      "proper_rotation_orbit_size": 12,
+      "proper_and_full_orbits_equal": true,
+      "invariants": {
+        "symmetric_pair_count": 1,
+        "reciprocal_products": [
+          1,
+          -1,
+          -1
+        ],
+        "directed_triangle_products": [
+          -1,
+          -1
+        ],
+        "det_C": -2,
+        "sum_reciprocal_products": -1
+      },
+      "symmetric_part_eigenvalues": [
+        -1.0,
+        0.0,
+        1.0
+      ],
+      "endpoint": {
+        "determinant": 8,
+        "contact_degrees": [
+          17,
+          17,
+          17,
+          17,
+          19,
+          19
+        ],
+        "collision": {
+          "n": [
+            1,
+            -1,
+            0
+          ],
+          "p": [
+            1,
+            0,
+            0
+          ],
+          "q": [
+            0,
+            1,
+            0
+          ],
+          "distance_squared": 0
+        }
+      },
+      "sampled_minimum": {
+        "angle_degrees": 90,
+        "distance_squared": 0.0,
+        "n": [
+          -1,
+          1,
+          0
+        ],
+        "v": [
+          1,
+          -1,
+          0
+        ]
+      },
+      "uniform_singular_value_lower_bound": "2-sqrt(2)",
+      "bernstein": {
+        "all_nonnegative": false,
+        "coefficients_checked": 29429,
+        "first_negative": {
+          "n": [
+            -1,
+            1,
+            0
+          ],
+          "v": [
+            1,
+            -1,
+            0
+          ],
+          "coefficient": 3,
+          "pair_times_12": [
+            -48,
+            0
+          ]
+        }
+      }
+    },
+    {
+      "representative": "+++-+-",
+      "matrix": [
+        [
+          0,
+          1,
+          1
+        ],
+        [
+          1,
+          0,
+          -1
+        ],
+        [
+          1,
+          -1,
+          0
+        ]
+      ],
+      "members": [
+        "+++-+-",
+        "+-++-+",
+        "-+-+++",
+        "------"
+      ],
+      "orbit_size": 4,
+      "proper_rotation_orbit_size": 4,
+      "proper_and_full_orbits_equal": true,
+      "invariants": {
+        "symmetric_pair_count": 3,
+        "reciprocal_products": [
+          1,
+          1,
+          1
+        ],
+        "directed_triangle_products": [
+          -1,
+          -1
+        ],
+        "det_C": -2,
+        "sum_reciprocal_products": 3
+      },
+      "symmetric_part_eigenvalues": [
+        -1.9999999999999998,
+        1.0,
+        1.0000000000000002
+      ],
+      "endpoint": {
+        "determinant": 0,
+        "contact_degrees": [
+          58,
+          58,
+          58,
+          58,
+          58,
+          58
+        ],
+        "collision": {
+          "n": [
+            -3,
+            3,
+            3
+          ],
+          "p": [
+            1,
+            0,
+            0
+          ],
+          "q": [
+            1,
+            0,
+            0
+          ],
+          "distance_squared": 0
+        }
+      },
+      "sampled_minimum": {
+        "angle_degrees": 90,
+        "distance_squared": 0.0,
+        "n": [
+          -3,
+          3,
+          3
+        ],
+        "v": [
+          0,
+          0,
+          0
+        ]
+      },
+      "bernstein": {
+        "all_nonnegative": false,
+        "reason": "singular endpoint with exact overlap witness"
+      }
+    },
+    {
+      "representative": "+++--+",
+      "matrix": [
+        [
+          0,
+          1,
+          1
+        ],
+        [
+          1,
+          0,
+          -1
+        ],
+        [
+          -1,
+          1,
+          0
+        ]
+      ],
+      "members": [
+        "+++--+",
+        "++-++-",
+        "++----",
+        "+-+++-",
+        "+--+++",
+        "+----+",
+        "-+++-+",
+        "-++-++",
+        "-+-+--",
+        "--++--",
+        "--+-+-",
+        "----++"
+      ],
+      "orbit_size": 12,
+      "proper_rotation_orbit_size": 12,
+      "proper_and_full_orbits_equal": true,
+      "invariants": {
+        "symmetric_pair_count": 1,
+        "reciprocal_products": [
+          1,
+          -1,
+          -1
+        ],
+        "directed_triangle_products": [
+          1,
+          1
+        ],
+        "det_C": 2,
+        "sum_reciprocal_products": -1
+      },
+      "symmetric_part_eigenvalues": [
+        -1.0,
+        0.0,
+        1.0
+      ],
+      "endpoint": {
+        "determinant": 12,
+        "contact_degrees": [
+          12,
+          12,
+          12,
+          12,
+          12,
+          12
+        ],
+        "collision": null
+      },
+      "sampled_minimum": {
+        "angle_degrees": 7,
+        "distance_squared": 1.9999999999999991,
+        "n": [
+          0,
+          -1,
+          0
+        ],
+        "v": [
+          0,
+          2,
+          0
+        ]
+      },
+      "uniform_singular_value_lower_bound": "2-sqrt(2)",
+      "bernstein": {
+        "all_nonnegative": true,
+        "coefficients_checked": 75900,
+        "distance_conditions": 15180
+      }
+    },
+    {
+      "representative": "++-+--",
+      "matrix": [
+        [
+          0,
+          1,
+          1
+        ],
+        [
+          -1,
+          0,
+          1
+        ],
+        [
+          -1,
+          -1,
+          0
+        ]
+      ],
+      "members": [
+        "++-+--",
+        "++---+",
+        "+--++-",
+        "+---++",
+        "-+++--",
+        "-++--+",
+        "--+++-",
+        "--+-++"
+      ],
+      "orbit_size": 8,
+      "proper_rotation_orbit_size": 8,
+      "proper_and_full_orbits_equal": true,
+      "invariants": {
+        "symmetric_pair_count": 0,
+        "reciprocal_products": [
+          -1,
+          -1,
+          -1
+        ],
+        "directed_triangle_products": [
+          -1,
+          1
+        ],
+        "det_C": 0,
+        "sum_reciprocal_products": -3
+      },
+      "symmetric_part_eigenvalues": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "endpoint": {
+        "determinant": 14,
+        "contact_degrees": [
+          10,
+          10,
+          10,
+          10,
+          10,
+          10
+        ],
+        "collision": null
+      },
+      "sampled_minimum": {
+        "angle_degrees": 7,
+        "distance_squared": 1.9999999999999991,
+        "n": [
+          0,
+          -1,
+          0
+        ],
+        "v": [
+          0,
+          2,
+          0
+        ]
+      },
+      "uniform_singular_value_lower_bound": "2-sqrt(2)",
+      "bernstein": {
+        "all_nonnegative": true,
+        "coefficients_checked": 75900,
+        "distance_conditions": 15180
+      }
+    }
+  ],
+  "controls": {
+    "original_key": "--+-+-",
+    "original_accepted": true,
+    "one_sign_flip_key": "+-+-+-",
+    "one_sign_flip_rejected_by_exact_endpoint_overlap": true,
+    "quartic_geometry_comparisons": 1280,
+    "max_float_residual": 6.821210263296962e-13,
+    "orbit_partition_count": 64
+  },
+  "skew_endpoint": {
+    "representative_C": [
+      [
+        0,
+        1,
+        1
+      ],
+      [
+        -1,
+        0,
+        1
+      ],
+      [
+        -1,
+        -1,
+        0
+      ]
+    ],
+    "residue_vector_mod7": [
+      5,
+      1,
+      3
+    ],
+    "missing_odd_fcc_site": [
+      1,
+      -1,
+      1
+    ],
+    "occupied_residues": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "vacancy_residue": 0,
+    "fcc_occupancy_fraction": "6/7",
+    "packing_density": "sqrt(2)*pi/7"
+  }
+}

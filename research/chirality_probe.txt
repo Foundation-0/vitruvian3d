@@ -1,0 +1,109 @@
+Directional compatibility in the exact quarter-circle motion
+gpt-forge, gpt-6.1-sol. 2026-11-12
+
+Scope
+Enumerate all 64 matrices C with diagonal zero and off-diagonal entries +/-1,
+using L(theta)=(2+sqrt(2)cos(theta))I+sin(theta)C, 0<=theta<=pi/2.
+The motif is {+/-e_i}. spheres have radius 1/sqrt(2).
+Each bridge has length sqrt(2), regardless of C. Equal local reach therefore
+does not guarantee globally compatible movement.
+
+Result
+Twenty of the 64 coordination choices preserve non-overlap for the whole
+continuous motion. Twelve give fcc. Eight give a periodic vacancy pattern
+occupying six sevenths of an fcc lattice. The remaining 44 have exact site
+coincidences at the endpoint. four also have a singular endpoint lattice.
+
+Classification by cubic signed-permutation conjugation
+Here k counts reciprocal pairs Cij=Cji, and T is the sum of the two directed
+triangle products C12*C23*C31 and C13*C32*C21.
+
+  k   T   choices   det L(90deg)   result
+  3  +2      4          4        overlapping sites
+  2   0     24          6        overlapping sites
+  1  -2     12          8        overlapping sites
+  3  -2      4          0        singular. overlapping sites
+  1  +2     12         12        collision-free, fcc, 12 contacts/site
+  0   0      8         14        collision-free, vacancy fcc, 10 contacts/site
+
+The 64 matrices partition into exactly these six orbits. For d=2+sqrt(2)cos(theta)
+and t=sin(theta), det L=d^3-d*t^2*(2k-3)+t^3*T. T=det C is an orientation-loop
+invariant here, not a measure of chirality.
+
+Why this is not chirality
+Every full cubic conjugation P C P^T has the same action as (-P) C (-P)^T.
+In dimension three one of P and -P is a proper rotation. Consequently full
+and proper cubic conjugacy orbits coincide. Moreover, every infinite set
+{p+nL} in this model is centrosymmetric because p and -p both belong to the
+motif and n ranges over all integers. The model cannot distinguish geometric
+enantiomers. Directed labels or a different motif could change that conclusion,
+but are additional assumptions.
+
+The unexpected alternative endpoint
+A representative of the eight extra feasible choices is the skew matrix
+    [ 0  1  1 ]
+    [-1  0  1 ]
+    [-1 -1  0 ].
+Its endpoint lattice L=2I+C has determinant 14 and lies in D3 (even coordinate
+sum), which has determinant 2. Thus L has index 7 in D3. The six distinct motif
+cosets fill six of the seven cosets in the odd-parity translate of D3.
+More explicitly, the endpoint centers are the integer points z with odd
+coordinate sum and 5*z1+z2+3*z3 not congruent to zero mod 7.
+The motif residues are +/-5,+/-1,+/-3, all six nonzero residues mod 7.
+For example, the odd-parity fcc site (1,-1,1) is missing: its residue is 7.
+Its density is sqrt(2)*pi/7 = 0.6346975625940523, exactly 6/7 of fcc density.
+This endpoint interpretation is a deduction in this probe. no priority claim
+or literature search is supplied.
+
+The skew path also increases density strictly. Here det L=d*(d^2+3t^2), and
+d/dtheta det L = -3*sin(theta)*[5sqrt(2)+4cos(theta)-sqrt(2)cos(theta)^2],
+which is negative on the open interval.
+
+Exact non-overlap certificate and bounds
+For each nonsingular-endpoint orbit, S=(C+C^T)/2 is a signed graph on three
+vertices. With k=0,1,2 active edges its smallest eigenvalue is respectively
+0,-1,-sqrt(2). With k=3 and T=+2 it is -1. The remaining k=3,T=-2 case has
+eigenvalue -2 and is rejected by exact endpoint witnesses.
+Therefore all non-rejected classes have sigma_min(L)>=2-sqrt(2)>0 uniformly.
+For any motif difference v, |v|<=2. All translations with |n|^2>=34 are safe:
+  |nL+v| >= (2-sqrt(2))*sqrt(34)-2 > sqrt(2).
+Enumerating the 799 integer n with |n|^2<=33 and the 19 motif differences
+leaves 15180 nontrivial distance inequalities per representative.
+Put s=tan(theta/2). each inequality becomes a quartic over Q(sqrt(2)).
+For EACH accepted representative all 75900 degree-four Bernstein coefficients
+are nonnegative. The sign checks use integer arithmetic p+q*sqrt(2), not a
+floating-point tolerance. This certifies every real theta in the interval,
+subject to the written finite-image bound and correctness of the script.
+Symmetry transfers each certificate to its whole orbit.
+
+For rejected classes, the JSON contains integer endpoint witnesses with
+distance squared exactly zero. A negative Bernstein coefficient alone is
+never used as evidence of collision.
+
+Controls and evidence limits
+The published original matrix is accepted. Flipping its C12 sign produces
+an exact endpoint collision and is rejected. Orbit sizes sum to 64.
+An independent direct geometric calculation matches 1280 randomly selected
+quartic evaluations across all 64 matrices. max floating residual 6.83e-13.
+The one-degree angle scan is discovery/checking only. The accepted continuum
+claims rest on integer certificates, not that scan. This is one implementation,
+not a proof-assistant formalization or independent specialist review.
+Contacts reported for rejected patterns count represented pairs even when
+sites coincide, so their contact degrees are not physical coordination numbers.
+
+Conceptual implication and next experiment
+The local arms all reach the same distances, yet most coordination rules fail.
+One locally indistinguishable choice reaches full close packing. another
+reaches an ordered pattern of vacancies. The promising abstraction is global
+compatibility of coordinated reach, with a discrete direction rule controlling
+the eventual occupancy pattern. It is not handedness selection.
+Next test: permit independently timed theta_i(t), ask whether a rejected
+shared-angle rule can avoid collision to a useful endpoint, and whether a
+skew route can connect to the full-fcc route without overlap. Distinguish
+unavoidable endpoint impossibility from obstruction caused only by synchronous
+timing. The present 64-choice test does not answer those path-space questions.
+
+Canonical source formula:
+https://github.com/Foundation-0/incentre-lattices/blob/main/results/fold-continuous-fcc/PROOF.md
+Reproduce: python3 research/chirality_probe.py
+Machine-readable evidence: research/chirality_probe.json
