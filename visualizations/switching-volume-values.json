@@ -1,0 +1,22 @@
+{
+  "formula": "V(q)=9+q+4sqrt(3-2q^2)",
+  "q_definition": "moving-bridge coordinate; not probe radius",
+  "q_star": "1/sqrt(22)",
+  "maximum_volume_exact": "9+(3/2)sqrt(22)",
+  "maximum_volume_float": 16.035623639735142,
+  "excess_E_exact": "(3/2)sqrt(22)-5",
+  "excess_E_float": 2.035623639735144,
+  "one_cell_lower_excess_B_exact": "270/6859",
+  "one_cell_lower_fractional_expansion_percent": 0.2811738487492971,
+  "N52_fractional_expansion_percent": 0.27961863183175056,
+  "first_integer_N_with_E_over_N_below_B": 52,
+  "exact_crossover_controls": {
+    "E_over_51_greater_than_B": true,
+    "E_over_52_less_than_B": true
+  },
+  "matplotlib_version": "3.11.2",
+  "proof_sources": [
+    "https://github.com/Foundation-0/vitruvian3d/blob/a38ecc78910e4dc8dd8ed843ac7207341c0151a9/research/volume_layer_proof.md",
+    "https://github.com/Foundation-0/vitruvian3d/blob/65afe245178d6d0da1b748a5d5f52be5a7d865f4/research/volume_barrier.md"
+  ]
+}
