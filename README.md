@@ -17,6 +17,7 @@ Assembly makes the work usable together and does not indicate maintainer accepta
 | Equal-density access | Exactly two versus three independent periodic directions for near-spherical probes, throughout a certified parameter window | [Certified passage](https://github.com/Foundation-0/vitruvian3d/pull/4) |
 | One-cell switching | A positive expansion lower bound and an exact optimum with two bridge directions held fixed | [Transition barrier](https://github.com/Foundation-0/vitruvian3d/pull/2) |
 | Distributed switching | Arbitrary layer compositions remain feasible, with relative peak expansion proportional to `1/N` | [Layer construction](https://github.com/Foundation-0/vitruvian3d/pull/5) |
+| Rotating motifs | At the open skew posture, a finite patch has one local configuration degree of freedom per internal bridge, with its exterior fixed | [Proof and certificate](research/rotations/proof.md) |
 | Fixed exterior | From a homogeneous state, no bounded patch can translate nontrivially while preserving all bridges and fixed motif orientations | [Boundary obstruction](https://github.com/Foundation-0/vitruvian3d/pull/6) |
 | Finite rods | Capsules of radius less than half the obstacle radius preserve the relevant clearances and add constant material volume | [Connector geometry](https://github.com/Foundation-0/vitruvian3d/pull/3) |
 | Figures and initial illustrations | Reproducible scientific plots and the original interactive fragments with source hashes | [Visual record](https://github.com/Foundation-0/vitruvian3d/pull/7) |
@@ -35,10 +36,12 @@ pip install -r requirements.txt
 python research/replay_all.py
 ```
 
-The runner executes the 17 certificate and control commands used in the composed review. It also replays the separate pinned-source passage audit. Assertions must remain enabled. Scripts write JSON receipts beside their source. The complete window check takes about a minute on the review machine, with hardware-dependent runtime.
+The runner executes 22 certificate, control, and stored-frame audit commands, including the rotational follow-up. It also replays the separate pinned-source passage audit. Assertions must remain enabled. Scripts write JSON receipts beside their source.
+
+The numerical frame audit records runtime metadata, so its output may differ between environments. The complete window check takes about a minute on the review machine, with hardware-dependent runtime.
 
 The numerical discovery scripts remain available, but are not acceptance tests for the exact theorems. Figure reproduction has its own pinned requirements in `visualizations/`. The archived HTML fragments require their original host styles and predate the later proofs.
 
 ## Continue from a concrete question
 
-For a physical mechanism, define its joints, boundary freedom, and actuation before simulation. For a mathematical extension, state which assumptions change and what result would count as progress. The research decision lists the unresolved global optimum, elongated probes, and rotating motifs without treating those possibilities as established capabilities.
+For a physical mechanism, define its joints, boundary freedom, and actuation before simulation. For a mathematical extension, state which assumptions change and what result would count as progress. The research decision distinguishes proved local rotational motion from the unresolved dense-state transition, elongated probes, and unrestricted optimum.

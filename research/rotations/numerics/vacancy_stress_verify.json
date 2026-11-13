@@ -1,0 +1,26 @@
+{
+  "verified": [
+    {
+      "motifs": 1,
+      "degrees_of_freedom": 6,
+      "bar_rank_exact": 5,
+      "full_contact_rank_exact": 6,
+      "positive_stress_equilibrium_exact": true,
+      "sphere_contact_rows": 36,
+      "minimum_positive_weight": "1",
+      "conclusion": "All retained-bar-compatible hard-contact first-order velocities are zero."
+    },
+    {
+      "motifs": 2,
+      "degrees_of_freedom": 12,
+      "bar_rank_exact": 10,
+      "full_contact_rank_exact": 12,
+      "positive_stress_equilibrium_exact": true,
+      "sphere_contact_rows": 67,
+      "minimum_positive_weight": "1",
+      "conclusion": "All retained-bar-compatible hard-contact first-order velocities are zero."
+    }
+  ],
+  "proof": "For Jv=0 and Av>=0, positive weights w and equilibrium w^T A+lambda^T J=0 imply every Av row is zero. Full stacked rank then forces v=0.",
+  "scope": "Vacancy state, fixed exterior, rigid-body variables for the specified one- and two-motif patches. No statement about every finite patch follows."
+}
