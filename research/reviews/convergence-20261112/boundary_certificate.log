@@ -1,0 +1,81 @@
+{
+  "theorem": "No nontrivial finitely supported motif translation preserves every bridge length from a homogeneous baseline; fixed-period periodic translations are constant.",
+  "identity": "sum_edges (|b_i+D_i u|^2-|b_i|^2)=sum_edges |D_i u|^2",
+  "scope": "Fixed motif orientations and anchor offsets, all retained lattice bridges, homogeneous baseline, fixed exterior or fixed periodic cell. No sphere non-overlap assumption is needed.",
+  "finite_rational_checks": [
+    {
+      "support_sites": 1,
+      "affected_or_incident_edges": 6,
+      "total_squared_length_excess": "21/100",
+      "discrete_dirichlet_sum": "21/100",
+      "telescoping_linear_terms": [
+        "0",
+        "0",
+        "0"
+      ],
+      "max_squared_length_excess": "107/200",
+      "support_box_radius": 0,
+      "max_displacement_squared": "7/200",
+      "line_path_dirichlet_lower_bound": "21/100"
+    },
+    {
+      "support_sites": 27,
+      "affected_or_incident_edges": 108,
+      "total_squared_length_excess": "99/10",
+      "discrete_dirichlet_sum": "99/10",
+      "telescoping_linear_terms": [
+        "0",
+        "0",
+        "0"
+      ],
+      "max_squared_length_excess": "11/8",
+      "support_box_radius": 1,
+      "max_displacement_squared": "3/25",
+      "line_path_dirichlet_lower_bound": "9/25"
+    },
+    {
+      "support_sites": 125,
+      "affected_or_incident_edges": 450,
+      "total_squared_length_excess": "48",
+      "discrete_dirichlet_sum": "48",
+      "telescoping_linear_terms": [
+        "0",
+        "0",
+        "0"
+      ],
+      "max_squared_length_excess": "11/8",
+      "support_box_radius": 2,
+      "max_displacement_squared": "3/25",
+      "line_path_dirichlet_lower_bound": "6/25"
+    }
+  ],
+  "periodic_rational_check": {
+    "periods": [
+      2,
+      3,
+      2
+    ],
+    "total_squared_length_excess": "276/25",
+    "discrete_dirichlet_sum": "276/25"
+  },
+  "localized_infinitesimal_counterexample": {
+    "support_sites": 1,
+    "affected_or_incident_edges": 6,
+    "total_squared_length_excess": "9/50",
+    "discrete_dirichlet_sum": "9/50",
+    "telescoping_linear_terms": [
+      "0",
+      "0",
+      "0"
+    ],
+    "max_squared_length_excess": "3/100",
+    "every_first_order_bridge_change_zero": true,
+    "every_affected_exact_squared_length_increase": "3/100",
+    "displacement_direction": [
+      1,
+      -1,
+      1
+    ]
+  },
+  "evidence_boundary": "Exact replay examples support the analytic telescoping proof; examples alone are not the universal proof. Dirichlet sum is a mathematical quadratic form, not a specified elastic energy."
+}

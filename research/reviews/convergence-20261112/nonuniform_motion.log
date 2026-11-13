@@ -1,0 +1,25 @@
+{
+  "statement": "Any separated angle sequences theta_i(k) in [40deg,50deg] define a globally non-overlapping, bar-preserving infinite framework through integrated cell increments.",
+  "evidence": "Written analytic construction and bounds plus exact integer-pair certificate for nearby cell translations. Not a formal proof-assistant result.",
+  "nearby_distance_conditions": 488,
+  "all_nearby_comparisons_strictly_positive": true,
+  "weakest_comparison": {
+    "translation": [
+      -1,
+      0,
+      0
+    ],
+    "motif_difference": [
+      1,
+      -1,
+      0
+    ],
+    "a": 255,
+    "b": -80
+  },
+  "row_perturbation_upper_bound": "1/8",
+  "far_translation_argument": "|m|>=2 => distance > (9/4-1/4)|m|-2 >=2>sqrt(2)",
+  "positions": "X(n)=sum_i S_i(n_i), where S_i(k+1)-S_i(k)=L_i(k)",
+  "example": "theta_1(k,t)=45deg+5deg*sin(2*pi*k/m-omega*t), theta_2=theta_3=45deg, any positive integer m.",
+  "scope": "Kinematic traveling modulation, fixed motif orientations; no actuation, material stability, forces, finite rods, or autonomous wave dynamics established."
+}

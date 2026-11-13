@@ -1,0 +1,15 @@
+{
+  "path": "q:1 to -1; z=(sqrt(3-2q^2)-1)/2; L rows (2,-1,-1),(1,2,-1),(1+z,q,2+z)",
+  "scope": "One-cell fixed motif \u00b1e_i, all three prescribed bridges length sqrt(2), sphere diameter sqrt(2). Continuum path, not just sampled frames.",
+  "finite_classes_checked": 2374,
+  "all_exact_minimum_checks_passed": true,
+  "volume": "9+q+4sqrt(3-2q^2)",
+  "peak_parameter": "1/sqrt(22)",
+  "peak_volume_exact": "9+(3/2)*sqrt(22)",
+  "peak_volume_float": 16.035623639735142,
+  "initial_volume": 14,
+  "final_volume": 12,
+  "relative_peak_expansion_percent": 14.540168855251023,
+  "far_translation_bound": "sigma_min>6/5; |n|>=3 => separation>8/5>sqrt(2)",
+  "claims_excluded": "Global minimax optimality, energy, actuator forces, rod thickness, and stability."
+}
