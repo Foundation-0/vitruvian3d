@@ -1,0 +1,42 @@
+{
+  "input_sha256": {
+    "two_body_branch.py": "0851128479fc2589557d3721e0deaba95f44bff9f6b1e7b298e9ad3212d4b06a",
+    "two_body_branch.json": "c66ae4fb2e87af09dfa6c4f4670018c221d5c0e009a71fe19862602678030fc0",
+    "vacancy_stress_verify.py": "f06353438f9063af2fec74c432f23ed1df4aedc64b0cc786bbfad30081a52ae0",
+    "vacancy_stress_verify.json": "4b4d0ca0a7e66b07bf6072c2b4592c95f61d16b2f9f19f13406acc1d08c0d7a1",
+    "finite_branch_audit.py": "74f8fe2be937fac4ff758dad056b46f5476bb49b2a6ae8afb755503cfa3aa44a",
+    "finite_branch_audit.json": "b2598976e12b4f2fcd6f1af3b0c39d03f1868a968f1623f1de5857bcd72b11d4",
+    "README.md": "a2740563f4f70428079d9b142bb6b6883997000a5b14b552b04ab42844d7c1b0"
+  },
+  "author_code_imported": false,
+  "exact_vacancy_controls": [
+    {
+      "motifs": 1,
+      "genuine_prescribed_bar_count": 6,
+      "contact_rows": 36,
+      "bar_rank": 5,
+      "stacked_rank": 6,
+      "minimum_positive_weight": "1",
+      "exact_equilibrium_and_label_reconstruction_passed": true
+    },
+    {
+      "motifs": 2,
+      "genuine_prescribed_bar_count": 11,
+      "contact_rows": 67,
+      "bar_rank": 10,
+      "stacked_rank": 12,
+      "minimum_positive_weight": "1",
+      "exact_equilibrium_and_label_reconstruction_passed": true
+    }
+  ],
+  "finite_frame_audit": {
+    "distinct_frames": 81,
+    "quaternion_maximum_bar_squared_residual": 2.4424906541753444e-15,
+    "minimum_nonbar_squared_gap": 1.9652951555070364,
+    "omitted_image_lower_bound": 3.8391739399519764,
+    "maximum_phase_constraint_residual": 2.7755575615628914e-17,
+    "scope": "Floating-point stored-frame audit only; no interpolation/continuation certification."
+  },
+  "inference": "Zero hard-contact tangent cone implies local isolation by normalized secants in a smooth rigid-pose chart. Only the specified vacancy one-/two-motif patches are covered.",
+  "verdict": "PASS with stated local/numerical limits."
+}

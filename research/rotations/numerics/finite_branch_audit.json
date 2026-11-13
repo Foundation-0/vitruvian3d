@@ -1,0 +1,24 @@
+{
+  "stored_frames": 81,
+  "unique_parameters": 81,
+  "parameter_range": [
+    -0.2,
+    0.2
+  ],
+  "independent_rodrigues_maximum_bar_squared_residual": 2.220446049250313e-15,
+  "independent_minimum_nonbar_squared_gap": 1.9652951555070364,
+  "omitted_image_distance_lower_bound": 3.8391739399519764,
+  "minimum_sampled_augmented_jacobian_singular_value": 0.9600461437076366,
+  "maximum_adjacent_coordinate_step": 0.005167519497004145,
+  "source_sha256": {
+    "two_body_branch.py": "0851128479fc2589557d3721e0deaba95f44bff9f6b1e7b298e9ad3212d4b06a",
+    "two_body_branch.json": "c66ae4fb2e87af09dfa6c4f4670018c221d5c0e009a71fe19862602678030fc0",
+    "finite_branch_audit.py": "74f8fe2be937fac4ff758dad056b46f5476bb49b2a6ae8afb755503cfa3aa44a"
+  },
+  "library_versions": {
+    "python": "3.14.6",
+    "numpy": "2.5.4",
+    "scipy": "1.18.1"
+  },
+  "scope": "Independent floating-point frame audit. Central differences and sampled singular values are diagnostics, not an interval continuation proof. The exact IFT result separately establishes a local continuum near the initial frame."
+}
