@@ -1,0 +1,326 @@
+{
+  "schema": "foundation0-research-review-1",
+  "review_date": "2026-11-12",
+  "recorded_at_utc": "2026-11-13T03:15:06.341786+00:00",
+  "repository": "https://github.com/Foundation-0/vitruvian3d",
+  "main_commit": "e7445d56b9ecfd97b408653a2726f3bab70a6e4c",
+  "research_current_branch_observed": "39ab4a3567b8f19459c67b72e48cf520bf47fc86",
+  "remote_main_refresh": "git ls-remote origin refs/heads/main returned the reviewed main commit after checks",
+  "contributions": [
+    {
+      "number": 1,
+      "title": "Record the reproducible Vitruvian lattice research baseline",
+      "state": "closed",
+      "merged": true,
+      "head_sha": "0c6f0e7fc0d696cd10bd5d0648a53cbd1c2f3076",
+      "base_sha": "ed871273228a74020ae0d2648272c409456ff8ad",
+      "merge_commit_sha": "15a73317efbea8052b7829d0839ce61b2b90893b",
+      "merged_at": "2026-11-12T23:15:22Z",
+      "url": "https://github.com/Foundation-0/vitruvian3d/pull/1"
+    },
+    {
+      "number": 2,
+      "title": "Certify the transition barrier and the exact one-moving-bridge optimum",
+      "state": "closed",
+      "merged": true,
+      "head_sha": "65afe245178d6d0da1b748a5d5f52be5a7d865f4",
+      "base_sha": "15a73317efbea8052b7829d0839ce61b2b90893b",
+      "merge_commit_sha": "701578bf87e65f4fe737de58ab33c3a1242c1df3",
+      "merged_at": "2026-11-12T23:36:01Z",
+      "url": "https://github.com/Foundation-0/vitruvian3d/pull/2"
+    },
+    {
+      "number": 3,
+      "title": "Preserve transport through finite contact rods",
+      "state": "closed",
+      "merged": true,
+      "head_sha": "0bb354ee74f48e921a1350c3d6d7dd4063397639",
+      "base_sha": "15a73317efbea8052b7829d0839ce61b2b90893b",
+      "merge_commit_sha": "ac8e84c4b663a7b5a9fbea6bccd7afc19e2f82a1",
+      "merged_at": "2026-11-12T23:37:20Z",
+      "url": "https://github.com/Foundation-0/vitruvian3d/pull/3"
+    },
+    {
+      "number": 4,
+      "title": "Certify different passage dimensions at matched volume",
+      "state": "closed",
+      "merged": true,
+      "head_sha": "4c50aa10adc5027f813741b5f16ba8a4bdf38b97",
+      "base_sha": "15a73317efbea8052b7829d0839ce61b2b90893b",
+      "merge_commit_sha": "fa0a46507aebfbc16a0b233cd8b0f10c98060f65",
+      "merged_at": "2026-11-12T23:47:07Z",
+      "url": "https://github.com/Foundation-0/vitruvian3d/pull/4"
+    },
+    {
+      "number": 5,
+      "title": "Certify independent switching layers and supercell volume scaling",
+      "state": "closed",
+      "merged": true,
+      "head_sha": "64c2a4693eb6f31aabbeed3113379786aa58284c",
+      "base_sha": "ac8e84c4b663a7b5a9fbea6bccd7afc19e2f82a1",
+      "merge_commit_sha": "da5e702d9b91bd88da53a23e927e4184f4b54e50",
+      "merged_at": "2026-11-12T23:51:53Z",
+      "url": "https://github.com/Foundation-0/vitruvian3d/pull/5"
+    },
+    {
+      "number": 6,
+      "title": "Prove fixed-boundary rigidity for retained-bridge translations",
+      "state": "closed",
+      "merged": true,
+      "head_sha": "8dd4ad360471f5dc7bd2e57e5bebd6afbfd13602",
+      "base_sha": "15a73317efbea8052b7829d0839ce61b2b90893b",
+      "merge_commit_sha": "f1b25344c414c63677b5e8f7dfb75a37f172890f",
+      "merged_at": "2026-11-12T23:53:52Z",
+      "url": "https://github.com/Foundation-0/vitruvian3d/pull/6"
+    },
+    {
+      "number": 7,
+      "title": "Add switching-volume figure and archive initial explainers",
+      "state": "closed",
+      "merged": true,
+      "head_sha": "49f9986e5adabbf92f5d4a3c02d4d62b317905d5",
+      "base_sha": "15a73317efbea8052b7829d0839ce61b2b90893b",
+      "merge_commit_sha": "bfa4518ab85577466622b90397268bf87576c323",
+      "merged_at": "2026-11-12T23:55:48Z",
+      "url": "https://github.com/Foundation-0/vitruvian3d/pull/7"
+    },
+    {
+      "number": 8,
+      "title": "Document the research decision and reproducible complete snapshot",
+      "state": "closed",
+      "merged": true,
+      "head_sha": "13618235449ce8ad85ad9953fe3ccdbdc9f5e55e",
+      "base_sha": "ac8e84c4b663a7b5a9fbea6bccd7afc19e2f82a1",
+      "merge_commit_sha": "e7445d56b9ecfd97b408653a2726f3bab70a6e4c",
+      "merged_at": "2026-11-12T23:57:52Z",
+      "url": "https://github.com/Foundation-0/vitruvian3d/pull/8"
+    }
+  ],
+  "origin": {
+    "repository": "Foundation-0/incentre-lattices",
+    "pr": 99,
+    "head": "a350bd69721ae187d09bdad0936c5f9c6c81d39d",
+    "state": "closed",
+    "merged": false,
+    "proof_git_blob": "d2c30958033c0646d9aa00c3a07fd5e577a8bb6d",
+    "script_git_blob": "dc5337c6a2b7960d9fd97cda0d8231d9e27130f9",
+    "checker_identical_to_current_main": true,
+    "current_checker_git_blob": "dc5337c6a2b7960d9fd97cda0d8231d9e27130f9",
+    "proof_text_reviewed": true,
+    "proof_byte_identity_not_claimed": true
+  },
+  "strongest_result": {
+    "statement": "The same prescribed bar graph and occupied fraction admit different maximum periodic winding ranks of connected free-space components.",
+    "ranks": [
+      2,
+      3
+    ],
+    "probe_radius_ratio": [
+      "199/200",
+      "201/200"
+    ],
+    "original_half_angle_window": [
+      "355/1000",
+      "364/1000"
+    ],
+    "skew_half_angle_window": [
+      "415/1000",
+      "426/1000"
+    ],
+    "finite_capsule_radius_ratio": "0 < a/r < 1/2",
+    "proof_mechanisms": [
+      "covered periodic planes",
+      "connected positive-clearance polygonal loops",
+      "exact rational interval checks",
+      "analytic all-image bounds",
+      "exact equal-volume bracketing"
+    ],
+    "does_not_imply": [
+      "local dimension",
+      "spectral dimension",
+      "fractal dimension",
+      "diffusion coefficients",
+      "constant-density switching path",
+      "material stability",
+      "gravity"
+    ]
+  },
+  "supercell_result": {
+    "one_cell_path_peak_strict_lower": "14 + 270/6859",
+    "one_cell_minimax_lower_non_strict": "14 + 270/6859",
+    "restricted_one_cell_exact_optimum": "9 + 3*sqrt(22)/2",
+    "N_layer_sequential_peak": "14*N + E",
+    "E": "3*sqrt(22)/2 - 5",
+    "relative_peak_expansion": "E/(14*N)",
+    "first_N_for_this_upper_bound_below_certified_one_cell_lower": 52,
+    "absolute_normal_height_excess": "E/sqrt(35)",
+    "scope": "Exact optimum within product of certified layer arcs. Period vector changes. Planar front is infinite in its two transverse directions. This is volume, not energy."
+  },
+  "boundary_result": {
+    "identity": "sum_edges (squared_length_new - squared_length_old) = sum_edges |D u|^2",
+    "assumptions": [
+      "homogeneous initial framework",
+      "fixed motif orientations and offsets",
+      "all prescribed bridges retained",
+      "finitely supported translations with fixed exterior, or periodic translations with fixed period"
+    ],
+    "conclusion": "Only zero finite-support translation, or common translation for a fixed periodic cell.",
+    "does_not_establish": "Rigidity with rotating motifs or mechanical stability for a specified spring law."
+  },
+  "current_review": {
+    "model_as_specified_in_brief": "gpt-6-astra, ultra reasoning",
+    "human_mathematical_review": false,
+    "formal_proof_assistant_verification": false,
+    "written_proofs_read": true,
+    "python_version": "3.14.6 (v3.14.6:c63aec69bd5, Jun 10 2026, 08:07:54) [Clang 21.0.0 (clang-2100.1.1.101)]",
+    "targeted_checks": [
+      {
+        "command": "python3 research/nonuniform_motion.py",
+        "exit_code": 0,
+        "seconds": 0.079,
+        "log_sha256": "9e594f8daee48d3311c91d2f03250a33dd32a6f1eae68779a312ef9e74d558c6"
+      },
+      {
+        "command": "python3 research/volume_path_certificate.py",
+        "exit_code": 0,
+        "seconds": 0.062,
+        "log_sha256": "6fc1e2c4887b7dfa90b9e4720c1030bba688d38a996b3ae72e31b32e2e5ee126"
+      },
+      {
+        "command": "python3 research/volume_layer_certificate.py",
+        "exit_code": 0,
+        "seconds": 0.078,
+        "log_sha256": "0df70d7818286db02dfa9ef0d84d7efb7b48dd9be78e6a3125d16101c4e94a98"
+      },
+      {
+        "command": "python3 research/passage_verify.py",
+        "exit_code": 0,
+        "seconds": 0.785,
+        "log_sha256": "5ea5a630810394adae6f1bea152fd26342e80c1f043f4a1cdddd2a4f4d43e4a5"
+      },
+      {
+        "command": "python3 research/connectors_verify.py",
+        "exit_code": 0,
+        "seconds": 0.282,
+        "log_sha256": "104a4ad24b7f9ab4b0c05c40fb93f4a2d55f0ebd2e701dd1af3da8fedd81a7c8"
+      },
+      {
+        "command": "python3 research/boundary_certificate.py",
+        "exit_code": 0,
+        "seconds": 0.068,
+        "log_sha256": "573d34bc1a95ce2aff751f10abaa02820acf734e3b9a2d15a93380d0ba3c1f86"
+      },
+      {
+        "command": "python3 research/connectors_boundary_review.py",
+        "exit_code": 0,
+        "seconds": 0.072,
+        "log_sha256": "d268aede71dc61c9d1a5cdccfea50f28bfe6fe0bbd1829b096d3f3d35d250841"
+      },
+      {
+        "command": "python3 research/reviews/passage_audit.py",
+        "exit_code": 0,
+        "seconds": 0.902,
+        "log_sha256": "d4366f08af096602dc3e501191685b83712bb0559387f2099f8914fc862f9995"
+      }
+    ],
+    "all_targeted_checks_passed": true,
+    "changed_generated_receipts": [],
+    "repository_status_after_checks": "",
+    "broad_search_or_full_replay_rerun": false
+  },
+  "reused_composed_evidence": {
+    "source": "research/reviews/composed.json",
+    "source_sha256": "88239941c66c0caf15d722d90d2c845b6ebaf0bb171fd3df2e3a1bbc763d930b",
+    "files_bound": 88,
+    "matching_files": 87,
+    "differences": [
+      {
+        "file": "README.md",
+        "recorded": "ccac13b882fcec325da9fcd80c2edead41d9d60de223b5978b4bd597ce8faa14",
+        "current": "df62b3c0093c20452e0e1471b69a4b4b00da79a1b2be6de72c00294ffa352a0b"
+      }
+    ],
+    "recorded_workflow_count": 17,
+    "recorded_all_passed": true,
+    "wide_check_recorded_seconds": 55.193,
+    "full_replay_not_newly_executed": true
+  },
+  "source_sha256": {
+    "research/nonuniform_motion_proof.md": "eb026b94fb4434578d462e3fe68a277b1887043d450af774675e49702fa4ce1e",
+    "research/nonuniform_motion.py": "153d2f38a4a7fef8cb8c1393a1e4ea7ac51dc23c1541184aefe175cda3dc50d7",
+    "research/passage_proof.md": "2a82d76b85d4b62d3d95a7c6de99b5871aebba4f941c335e428f182241ddd74c",
+    "research/passage_verify.py": "4c8fb018cc2dcd09ee40467f80c689a6d95c6a877582ec11af15fe32c9f96dac",
+    "research/passage_window_verify.py": "0fb6c0c78c20645799ef76a97cf75feb776dd5eb13078186df9a51b0cb117d66",
+    "research/connectors_proof.md": "cc328d5b84f3bd0b02c1cc85dd51d50e77835acc2592f8af30ac14ce0594d441",
+    "research/volume_barrier.md": "062184f85b6112a4fc6ffa05e67886fdddda9f87f6d66c36c0cc0e34339f60f4",
+    "research/volume_restricted_optimum.md": "22326361cb261f333d73ee935034f24bc7b404e8b51da5bdc8ba3cadbc0f80f2",
+    "research/volume_path_proof.md": "6f34f68b9dcbc73481ff3d01eb83d935959c696d91014bae052e6d40d45b6a4a",
+    "research/volume_path_certificate.py": "6c4f63f1119d1e6e4e550b5a3dd8fde892170aaac0776b4d7dde10f67d5ca712",
+    "research/volume_layer_proof.md": "84dec17ec8fccf5bccd18750c7cb30763983e8dfd4a0da03400e00f043067c52",
+    "research/volume_layer_certificate.py": "0804c6bb52f25b326e91d75c39fb7f2d7f055109a12f9dfd3383c81fb010c5e1",
+    "research/boundary_proof.md": "6259c659e5cc8ff9f3a594596c9afc4647e0c8dbb4f8eeee41c79bf7fe9de972",
+    "research/boundary_certificate.py": "40c860356f7c36b74db25d4406991ba01382dd9bc1acc3f6f0976f483caa84a6",
+    "research/connectors_boundary_review.py": "08760f09dd0fb84562fe7afcb7c9169e167b01cbbce1820cdae4cc23f60ad2b0",
+    "research/status.md": "9cfbe2d8a1ec244169ad4a6415f3efa5b4e4087fada6c966e1a327e724b68777",
+    "research/reviews/composed.json": "88239941c66c0caf15d722d90d2c845b6ebaf0bb171fd3df2e3a1bbc763d930b"
+  },
+  "mechanics_comparison": {
+    "repository": "Foundation-0/incentre-lattices",
+    "pr": 100,
+    "head": "09bbff34eddd2a8fb110c91dfb57ff0307ed7d6f",
+    "state": "open",
+    "draft": true,
+    "evidence_used": "Live PR description and prior root review context. No independent mechanics replay here.",
+    "assessment": "Different assumptions and absent energy law mean Vitruvian geometry does not remove the fixed-angle endpoint instability."
+  },
+  "crossrepo_reference": {
+    "repository": "Foundation-0/physics0",
+    "commit": "3007774b935495335a59f54c5e9b5d5454eab635",
+    "path": "notes/convergences-20261112.md",
+    "connection": "Graph-only observables, embedded geometry and accessible complement space are distinct. Density controls do not make them equivalent."
+  },
+  "primary_sources": [
+    {
+      "url": "https://pi.math.cornell.edu/~connelly/pdf/10.1137_S0895480192229236.pdf",
+      "verified": "Full primary PDF, abstract and definitions separating first-order rigidity, prestress stability, second-order rigidity and rigidity."
+    },
+    {
+      "url": "https://scholarworks.smith.edu/csc_facpubs/261/",
+      "verified": "Author repository abstract and publication metadata. Full PDF access returned 403. No new Section 7 priority comparison claimed."
+    },
+    {
+      "url": "https://arxiv.org/abs/1404.2263",
+      "verified": "Primary author abstract, corroborated by PMC indexed article text, describing dynamics and prototypes of a different nonlinear linkage."
+    }
+  ],
+  "next_test": {
+    "status": "proposed, not run",
+    "question": "Does a specified reflected diffusion on the exact matched-volume free-space components have effective tensor ranks two and three?",
+    "model": [
+      "probe radius equals obstacle radius",
+      "same constant positive isotropic microscopic diffusivity",
+      "reflecting obstacle boundaries",
+      "one connected periodic component at a time"
+    ],
+    "prerequisites": [
+      "establish required domain regularity",
+      "define and justify invariant measure in periodic quotient",
+      "prove existence of homogenized long-time covariance"
+    ],
+    "acceptance": [
+      "zero diffusion normal to covered planes",
+      "positive lower bounds in the certified unbounded directions",
+      "positive definiteness in skew component supported by analytic bounds or controlled numerical errors"
+    ],
+    "falsification_or_stop": "Failure of regularity, invariant-measure or homogenization assumptions blocks the inference. Positive mesh eigenvalues alone do not establish positivity.",
+    "positivity_established_here": false,
+    "gravity_inference": false
+  },
+  "hosted_ci": {
+    "combined_status_api_response": {
+      "statuses": []
+    },
+    "passing_hosted_ci_claimed": false
+  },
+  "public_actions_performed": false
+}

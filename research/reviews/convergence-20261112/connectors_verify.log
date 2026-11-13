@@ -1,0 +1,9 @@
+{
+  "saved_loops": 3,
+  "segments": 18,
+  "minimum_site_distance": 1.4179630639981604,
+  "minimum_margin_above_equal_probe": 0.0037495016250652657,
+  "minimum_accepted_margin": 0.0035,
+  "route_family": "Matched-volume skew configuration at 46.1113417712 degrees",
+  "arithmetic": "Floating-point full-image projection with analytic omitted-image bound; not an interval certificate."
+}

@@ -23,6 +23,10 @@ Assembly makes the work usable together and does not indicate maintainer accepta
 
 The earlier [distributed-fold proof](research/nonuniform_motion_proof.md) covers arbitrary separated phase sequences from 40 to 50 degrees. The [centre-extraction result](research/centre_dynamics_report.md) gives an alternative cycle and discontinuity, ruling out universal regularization. The [vacancy identification](research/vacancy_independent.txt) matches a known packing. These results remain part of the record.
 
+The [cross-project review](research/reviews/convergence-20261112/REVIEW.md) connects these results to the retained-variable studies. A subsequent [conductivity theorem](research/transport-conductivity-20261112/README.md) derives rank two versus rank three for a declared static operator on probe-center accessible space.
+
+Its proof, exact checks and independent review distinguish this result from diffusion and material performance.
+
 ## Reproduce the complete snapshot
 
 ```sh

@@ -1,0 +1,158 @@
+{
+  "source_commit": "e7445d56b9ecfd97b408653a2726f3bab70a6e4c",
+  "source_sha256": {
+    "research/passage_certificate.json": "deabfc3b90da4666a45b8d09021c22827c1e6b3284876c49eb81a7fe0f8dc0c7",
+    "research/passage_verify.py": "4c8fb018cc2dcd09ee40467f80c689a6d95c6a877582ec11af15fe32c9f96dac",
+    "research/passage_proof.md": "2a82d76b85d4b62d3d95a7c6de99b5871aebba4f941c335e428f182241ddd74c",
+    "research/connectors_proof.md": "cc328d5b84f3bd0b02c1cc85dd51d50e77835acc2592f8af30ac14ce0594d441"
+  },
+  "python": "3.14.6",
+  "inherited_exact_checks": {
+    "plane": {
+      "triangles": 2048,
+      "vertex_checks": 6144,
+      "max_squared_distance_upper_bound": "202766238443119/102400000000000"
+    },
+    "original": {
+      "loops": 2,
+      "segments": 16,
+      "exact_segment_site_checks": 32928,
+      "winding_vectors": [
+        [
+          0,
+          0,
+          -1
+        ],
+        [
+          0,
+          1,
+          0
+        ]
+      ]
+    },
+    "skew": {
+      "loops": 3,
+      "segments": 24,
+      "exact_segment_site_checks": 49392,
+      "winding_vectors": [
+        [
+          0,
+          0,
+          -1
+        ],
+        [
+          -1,
+          0,
+          1
+        ],
+        [
+          0,
+          -1,
+          0
+        ]
+      ]
+    },
+    "volume_and_angle": {
+      "matched_volume_bracket": true,
+      "original_interval_contains_exact_40_degrees": true
+    }
+  },
+  "lattice_bounds": {
+    "smallest_singular_value_strict_lower": "2",
+    "operator_norm_strict_upper": "8",
+    "cell_volume_strict_upper": "81"
+  },
+  "loop_length_bounds": {
+    "original": [
+      {
+        "winding": [
+          0,
+          0,
+          -1
+        ],
+        "physical_length_strict_upper": "1245723/62500"
+      },
+      {
+        "winding": [
+          0,
+          1,
+          0
+        ],
+        "physical_length_strict_upper": "296736/15625"
+      }
+    ],
+    "skew": [
+      {
+        "winding": [
+          0,
+          0,
+          -1
+        ],
+        "physical_length_strict_upper": "683363/62500"
+      },
+      {
+        "winding": [
+          -1,
+          0,
+          1
+        ],
+        "physical_length_strict_upper": "1220887/62500"
+      },
+      {
+        "winding": [
+          0,
+          -1,
+          0
+        ],
+        "physical_length_strict_upper": "991143/62500"
+      }
+    ]
+  },
+  "tube_and_tensor_bounds": {
+    "equal_radius": {
+      "kernel_cube_half_width": "1/1000",
+      "exclusion_radius_squared_upper": "2",
+      "squared_tube_clearance_slack": "69569/16000000",
+      "kernel_squared_L2_norm": "8000000000/27",
+      "original_K_over_sigma_lower_on_unblocked_plane": "1/4800000000000",
+      "skew_K_over_sigma_global_lower": "1/21600000000000"
+    },
+    "full_probe_ratio_window": {
+      "kernel_cube_half_width": "1/4000000",
+      "exclusion_radius_squared_upper": "160801/80000",
+      "squared_tube_clearance_slack": "4579001/4000000000000",
+      "kernel_squared_L2_norm": "512000000000000000000/27",
+      "original_K_over_sigma_lower_on_unblocked_plane": "1/307200000000000000000000",
+      "skew_K_over_sigma_global_lower": "1/1382400000000000000000000"
+    }
+  },
+  "original_insulating_slab": {
+    "plane_distance_strict_upper": "176/125",
+    "physical_slab_half_width": "1/500",
+    "fractional_slab_half_width": "1/4000",
+    "minimum_exclusion_radius_squared": "159201/80000",
+    "strict_squared_margin": "153/80000",
+    "normal_direction": "g=L^{-1}e_1; kernel is span(g)"
+  },
+  "skew_W_transpose_W_minus_one_third_identity_leading_minors": [
+    "2/3",
+    "4/9",
+    "2/27"
+  ],
+  "controls_rejected": {
+    "equal_radius_kernel_half_width_1_over_100": true,
+    "window_kernel_half_width_1_over_1000000": true,
+    "physical_slab_half_width_1_over_10": true,
+    "dependent_winding_set": true
+  },
+  "conclusion": "The defined bulk variational conductivity has rank exactly two on the original certified interval and three on the skew interval. The same holds for the component containing the saved loops.",
+  "domain_scope": "Open probe-center free space, uniform positive scalar conductivity there, zero outside; periodic correctors. The full probe-radius window is certified on the narrow parameter intervals only.",
+  "proof_dependency": "Current convolution, Hilbert-space projection, zero-contrast limit, and insulating-strip corrector are proved in THEOREM.md; this script does not formalize those arguments.",
+  "not_established": [
+    "Brownian limit law",
+    "per-particle diffusivity",
+    "transport rates beyond conservative variational bounds",
+    "hardware performance",
+    "gravity"
+  ]
+}
