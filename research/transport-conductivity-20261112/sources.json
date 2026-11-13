@@ -1,0 +1,37 @@
+{
+  "date": "2026-11-12",
+  "scope": "Primary-source verification for the static variational transport follow-up. No historical-priority claim.",
+  "sources": [
+    {
+      "title": "Introduction to Homogenization Theory, Lecture 1",
+      "author": "Grégoire Allaire",
+      "url": "https://www.cmap.polytechnique.fr/~allaire/homog/lect1.pdf",
+      "locators": [
+        "Section 1.1, equation 1.1",
+        "Section 1.2.3, equations 1.14–1.16"
+      ],
+      "verified": "Full primary-author PDF accessed. Periodic potential-energy characterization is stated for bounded uniformly positive definite conductivity. The text allows discontinuous coefficients.",
+      "used_for": "Context for the positive-contrast periodic cell tensor. The follow-up proves the zero-contrast cell limit directly and does not borrow a degenerate homogenization theorem.",
+      "not_claimed": "Interchange of contrast and homogenization limits; Brownian invariance principle."
+    },
+    {
+      "title": "Regularized homogenization on irregularly perforated domains",
+      "authors": [
+        "Martin Heida",
+        "Benedikt Jahnel",
+        "Anh Duc Vu"
+      ],
+      "doi": "10.3934/nhm.2025010",
+      "url": "https://aimspress.com/aimspress-data/nhm/2025/1/PDF/nhm-20-01-010.pdf",
+      "locators": [
+        "Section 1",
+        "Section 8.1, Theorem 57"
+      ],
+      "verified": "Full primary research PDF accessed. The paper treats analytical difficulties from irregular geometry and states a variational formulation for its stochastic setting.",
+      "used_for": "Boundary between a direct static cell-energy argument and additional homogenization obligations. No theorem from the stochastic model is applied to the periodic Vitruvian domain."
+    }
+  ],
+  "proof_ingredients": "Finite-energy convolution currents, distributional periodic divergence, Cauchy-Schwarz, an explicit periodic corrector, Hilbert-space projection and a direct infimum limit argument are derived in THEOREM.md.",
+  "original_source": "https://github.com/Foundation-0/vitruvian3d/tree/e7445d56b9ecfd97b408653a2726f3bab70a6e4c",
+  "no_new_geometric_discovery_search": true
+}
