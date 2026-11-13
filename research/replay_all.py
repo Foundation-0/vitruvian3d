@@ -26,12 +26,19 @@ CHECKS = (
     "connectors_passage_review.py",
     "boundary_certificate.py",
     "connectors_boundary_review.py",
+    "rotations/certificate.py",
+    "rotations/single_platform.py",
+    "rotations/open_patch_review.py",
+    "rotations/numerics/vacancy_stress_verify.py",
+    "rotations/numerics/finite_branch_audit.py",
 )
 STABLE_RECEIPTS = (
     "connectors_exact.json", "passage_verify.json", "passage_window_verify.json",
     "connectors_passage_review.json", "volume_path_certificate.json",
     "volume_layer_certificate.json", "connectors_layer_review.json",
     "boundary_certificate.json", "connectors_boundary_review.json",
+    "rotations/certificate.json", "rotations/single_platform.json",
+    "rotations/open_patch_review.json", "rotations/numerics/vacancy_stress_verify.json",
 )
 
 
@@ -53,7 +60,7 @@ def main():
     changed = [str(path.relative_to(ROOT)) for path in receipts if path.read_bytes() != before[path]]
     if changed:
         raise SystemExit("Review regenerated receipt differences: " + ", ".join(changed))
-    print("PASS: 17 composed checks, pinned-source audit, and unchanged acceptance receipts.")
+    print(f"PASS: {len(CHECKS)} composed checks, pinned-source audit, and unchanged acceptance receipts.")
 
 
 if __name__ == "__main__":

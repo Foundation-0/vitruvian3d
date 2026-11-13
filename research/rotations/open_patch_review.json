@@ -1,0 +1,194 @@
+{
+  "verdict": "PASS local analytic compact mechanisms at the specified open skew baseline, subject to relative-neighborhood wording.",
+  "scope": "Any finite free motif patch S, exterior fixed; rigid translations and rotations allowed; all incident prescribed bridges retained. Local existence, not a certified finite amplitude or dense-endpoint continuation.",
+  "bridge_determinant": "a*(a**2 + 3*t**2)",
+  "torque_determinant": "2*t**3",
+  "port_determinant": "-16*a*t**3*(a**2 + 3*t**2)",
+  "independent_actual_anchor_jacobians": {
+    "one": {
+      "nodes": 1,
+      "internal_edges": 0,
+      "actual_jacobian_rank": 6,
+      "local_dimension": 0
+    },
+    "edge": {
+      "nodes": 2,
+      "internal_edges": 1,
+      "actual_jacobian_rank": 11,
+      "local_dimension": 1
+    },
+    "disconnected": {
+      "nodes": 2,
+      "internal_edges": 0,
+      "actual_jacobian_rank": 12,
+      "local_dimension": 0
+    },
+    "bent_four": {
+      "nodes": 4,
+      "internal_edges": 3,
+      "actual_jacobian_rank": 21,
+      "local_dimension": 3
+    },
+    "cube": {
+      "nodes": 8,
+      "internal_edges": 12,
+      "actual_jacobian_rank": 36,
+      "local_dimension": 12
+    }
+  },
+  "universal_rank_argument": "Every motif port is used once. In port coordinates the row Gram matrix is diagonal with entries1 or2. Thus all6|S|-E rows are independent for every finite S.",
+  "exact_near_distance_classes": 488,
+  "minimum_squared_nondesignated_intermotif_distance": "6-sqrt2>4",
+  "tight_examples": [
+    {
+      "n": [
+        -1,
+        0,
+        0
+      ],
+      "v": [
+        1,
+        0,
+        -1
+      ]
+    },
+    {
+      "n": [
+        -1,
+        0,
+        0
+      ],
+      "v": [
+        1,
+        -1,
+        0
+      ]
+    },
+    {
+      "n": [
+        0,
+        -1,
+        0
+      ],
+      "v": [
+        1,
+        1,
+        0
+      ]
+    },
+    {
+      "n": [
+        0,
+        -1,
+        0
+      ],
+      "v": [
+        0,
+        1,
+        -1
+      ]
+    },
+    {
+      "n": [
+        0,
+        0,
+        -1
+      ],
+      "v": [
+        1,
+        0,
+        1
+      ]
+    },
+    {
+      "n": [
+        0,
+        0,
+        -1
+      ],
+      "v": [
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "n": [
+        0,
+        0,
+        1
+      ],
+      "v": [
+        0,
+        -1,
+        -1
+      ]
+    },
+    {
+      "n": [
+        0,
+        0,
+        1
+      ],
+      "v": [
+        -1,
+        0,
+        -1
+      ]
+    },
+    {
+      "n": [
+        0,
+        1,
+        0
+      ],
+      "v": [
+        0,
+        -1,
+        1
+      ]
+    },
+    {
+      "n": [
+        0,
+        1,
+        0
+      ],
+      "v": [
+        -1,
+        -1,
+        0
+      ]
+    },
+    {
+      "n": [
+        1,
+        0,
+        0
+      ],
+      "v": [
+        -1,
+        1,
+        0
+      ]
+    },
+    {
+      "n": [
+        1,
+        0,
+        0
+      ],
+      "v": [
+        -1,
+        0,
+        1
+      ]
+    }
+  ],
+  "far_distance_bound": "|n|>=2 =>|nL+v|>=3|n|-2>=4",
+  "packing_neighborhood": "On the bridge-preserving manifold, every actual site displacement<1/4 ensures every other intermotif separation>3/2>sqrt2.",
+  "explicit_pair_tangent_checked": true,
+  "independent_symbolic_pair_minor": "-64*rho**2*(rho**2 + 3)**2",
+  "physical_connector_corollary": "Existing contact-capsule theorem applies without an orientation assumption when a/r<1/2.",
+  "author_modules_imported": false
+}
