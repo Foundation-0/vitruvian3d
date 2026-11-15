@@ -32,6 +32,8 @@ jobs:
           python-version: ${{ matrix.python-version }}
       - name: Verify continuum witnesses without scientific dependencies
         run: python research/passage_verify.py
+      - name: Reject a corrupted witness with and without python -O
+        run: python research/passage_verify_modes.py
       - name: Audit fixed-width discovery arithmetic
         run: python research/connectors_passage_review.py
       - name: Verify the wider parameter window
