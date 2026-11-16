@@ -12,10 +12,10 @@ import json
 from pathlib import Path
 import sys
 
-PIN = "e7445d56b9ecfd97b408653a2726f3bab70a6e4c"
+PIN = "98cc64c4d78191a20ff3bdc291e213e73ec8b4b4"
 HASHES = {
     "research/passage_certificate.json": "deabfc3b90da4666a45b8d09021c22827c1e6b3284876c49eb81a7fe0f8dc0c7",
-    "research/passage_verify.py": "4c8fb018cc2dcd09ee40467f80c689a6d95c6a877582ec11af15fe32c9f96dac",
+    "research/passage_verify.py": "6125e05c942f171fefcd00472fcadc93797aa0913d1c205964174757ae34497d",
     "research/passage_proof.md": "2a82d76b85d4b62d3d95a7c6de99b5871aebba4f941c335e428f182241ddd74c",
     "research/connectors_proof.md": "cc328d5b84f3bd0b02c1cc85dd51d50e77835acc2592f8af30ac14ce0594d441",
 }

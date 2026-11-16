@@ -36,9 +36,9 @@ The cited [Allaire cell formula](https://www.cmap.polytechnique.fr/~allaire/homo
 | Reviewed artifact | SHA-256 |
 |---|---|
 | `THEOREM.md` | `9cf373dd9c9c5451fe76b38a04258abfa6f1ac978aade05e6c3250b8a4a28d7d` |
-| `check.py` | `6f7e8bec76180aec8f651412ec212a2d1c22678881aa9967c028bf36474f2ba8` |
-| `certificate.json` | `29c20b3be2b6b2764764090e080e585c17f1e30ea1c6aa2a142d0d1c80744ac4` |
+| `check.py` | `399129bdab3ce448a329988dfdfdc3ace4c28077b249b6986391c84865cb0eda` |
+| `certificate.json` | `24d8424c3874965100acdb15e4368cd7902aa354823da7246be1f02c99ea20bd` |
 
-These hashes were unchanged at the end of review. No author source was edited. The result concerns conductivity on probe-center accessible space, normalized by whole-cell volume.
+The check.py and certificate.json hashes above were updated by the assert fix, which re-bound them to the fixed passage verifier. The review itself edited no author source. The result concerns conductivity on probe-center accessible space, normalized by whole-cell volume.
 
 Dividing by conducting fraction preserves rank but needs further justification before being called per-particle diffusivity. Brownian existence, long-time covariance, practical transport rates, mechanics, and gravity remain outside this result.

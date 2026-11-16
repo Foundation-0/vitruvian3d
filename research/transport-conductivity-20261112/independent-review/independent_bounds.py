@@ -13,11 +13,11 @@ parser.add_argument('--source-root', type=Path, required=True)
 parser.add_argument('--output', type=Path, default=HERE / 'independent-bounds.json')
 args = parser.parse_args()
 SOURCE = args.source_root.resolve()
-PIN = 'e7445d56b9ecfd97b408653a2726f3bab70a6e4c'
+PIN = '98cc64c4d78191a20ff3bdc291e213e73ec8b4b4'
 FROZEN = {
     'THEOREM.md': '9cf373dd9c9c5451fe76b38a04258abfa6f1ac978aade05e6c3250b8a4a28d7d',
-    'check.py': '6f7e8bec76180aec8f651412ec212a2d1c22678881aa9967c028bf36474f2ba8',
-    'certificate.json': '29c20b3be2b6b2764764090e080e585c17f1e30ea1c6aa2a142d0d1c80744ac4',
+    'check.py': '399129bdab3ce448a329988dfdfdc3ace4c28077b249b6986391c84865cb0eda',
+    'certificate.json': '24d8424c3874965100acdb15e4368cd7902aa354823da7246be1f02c99ea20bd',
 }
 for name, digest in FROZEN.items():
     if not (hashlib.sha256((FOLLOWUP/name).read_bytes()).hexdigest() == digest):
