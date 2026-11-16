@@ -29,11 +29,14 @@ def main():
             C=core.C_ORIGINAL if route=='original' else core.C_SKEW
             loops=base['original_free_loops'] if route=='original' else base['free_loops']
             free=core.loops_check(loops,F(5671,4000),C,interval)
-            assert free['accepted'],(route,k,free)
+            if not (free['accepted']):
+                raise AssertionError((route,k,free))
             result={'route':route,'interval':[str(x) for x in interval],'free_path_minimum_certified_distance_margin':free['minimum_certified_distance_margin_float']}
             if route=='original':
                 core.ORIGINAL_INTERVAL=interval
-                plane=core.plane_check(N,triangles,labels,F(399**2,80000));assert plane['accepted'],(k,plane)
+                plane=core.plane_check(N,triangles,labels,F(399**2,80000))
+                if not (plane['accepted']):
+                    raise AssertionError((k,plane))
                 result['plane_distance_squared_upper_bound']=plane['largest_distance_squared_upper_bound_fraction']
             cells.append(result)
             if (k-lo+1)%10==0:print(route,k-lo+1,'/',hi-lo,flush=True)

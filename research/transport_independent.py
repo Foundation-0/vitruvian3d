@@ -22,7 +22,8 @@ def run(name,degree,C,m):
  sites=((ns@L)[:,None,:]+P).reshape(-1,3);tree=cKDTree(sites)
  sigma=np.linalg.svd(L,compute_uv=False)[-1]
  omitted_bound=sigma*(2-1/m)-1
- assert omitted_bound>np.sqrt(2)
+ if not (omitted_bound>np.sqrt(2)):
+     raise AssertionError('assert omitted_bound>np.sqrt(2)')
  # Half-grid offset avoids relying on vertices exactly on periodic boundaries.
  ijk=np.indices((m,m,m),dtype=np.int32).reshape(3,-1).T
  points=((ijk+.5)/m)@L
@@ -97,8 +98,10 @@ def run(name,degree,C,m):
     rel=sites3[near]-segment_start;tau=np.clip(rel@step/(step@step),0,1)
     sep=float(np.min(np.linalg.norm(rel-tau[:,None]*step,axis=1)))
     minsep=min(minsep,sep)
-   assert minsep>np.sqrt(2)+1e-10
-   assert np.max(np.abs(fracroute[-1]-fracroute[0]-wind))<1e-12
+   if not (minsep>np.sqrt(2)+1e-10):
+       raise AssertionError('assert minsep>np.sqrt(2)+1e-10')
+   if not (np.max(np.abs(fracroute[-1]-fracroute[0]-wind))<1e-12):
+       raise AssertionError('assert np.max(np.abs(fracroute[-1]-fracroute[0]-wind))<1e-12')
    witnesses.append(dict(winding=wind.tolist(),segments=len(fracroute)-1,minimum_site_distance=minsep,clearance_above_required_distance=float(minsep-np.sqrt(2)),fractional_lifted_route=np.array(fracroute).tolist()))
    if len(chosen)==3:break
  return dict(case=name,angle=degree,resolution=m,determinant=float(np.linalg.det(L)),free_grid_nodes=len(ids),accepted_edges=len(U),exact_edge_checks=uncertain_count,max_winding_rank=max([c['rank'] for c in components],default=0),winding_components=components,witness_routes=witnesses,omitted_image_distance_lower_bound=float(omitted_bound),seconds=round(time.time()-start,2))

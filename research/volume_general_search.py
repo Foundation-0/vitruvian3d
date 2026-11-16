@@ -42,7 +42,8 @@ def main():
                          constraints=[{'type':'ineq','fun':lambda x:gaps(x,q)}],
                          options={'ftol':2e-10,'maxiter':250})
             if gaps(res.x,q).min()>-1e-6 and (best is None or res.fun<best.fun):best=res
-        assert best is not None
+        if not (best is not None):
+            raise AssertionError('assert best is not None')
         last=best.x;L=lattice(last,q)
         row={'q':float(q),'parameters':best.x.tolist(),'lattice':L.tolist(),'volume':float(np.linalg.det(L)),
              'minimum_squared_gap':float(gaps(best.x,q).min()),

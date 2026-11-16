@@ -102,7 +102,8 @@ def cone_probe(theta,patch):
     result['positive_contact_stress_found']=bool(sol.success)
     if sol.success and theta==90:
         ints=np.rint(np.r_[A,J]).astype(int)
-        assert np.max(np.abs(np.r_[A,J]-ints))<1e-12
+        if not (np.max(np.abs(np.r_[A,J]-ints))<1e-12):
+            raise AssertionError('assert np.max(np.abs(np.r_[A,J]-ints))<1e-12')
         weights=[Fraction(float(x)).limit_denominator(100000) for x in sol.x]
         exact=[sum(Fraction(int(ints[i,j]))*weights[i] for i in range(len(weights))) for j in range(dof)]
         result['stress_exact_rational_equilibrium']=all(x==0 for x in exact)
@@ -148,7 +149,8 @@ def main():
     u=np.array([2*(rho*rho+1),-2*(rho+1),-2*(rho-1)])/(rho*(rho*rho+3))
     analytic=np.r_[u,[1,1,-1],u,[-1,-1,1]];analytic/=np.linalg.norm(analytic)
     if analytic@tangent<0:analytic=-analytic
-    assert np.max(np.abs(tangent-analytic))<1e-12
+    if not (np.max(np.abs(tangent-analytic))<1e-12):
+        raise AssertionError('assert np.max(np.abs(tangent-analytic))<1e-12')
     def equations(x,t):return np.r_[residual(x,L,index,bars),tangent@x-t]
     states=[];terminations=[]
     zero=np.zeros(12)

@@ -23,7 +23,8 @@ for base in [0, 20, 45, 70]:
     # On the (1,2) square, paths 1 then 2 vs 2 then 1 differ by this vector.
     mismatch = cell_rows(base)[0] + cell_rows(base + delta)[1] - cell_rows(base)[0] - cell_rows(base)[1]
     expected_norm = 2 * np.sqrt(2) * np.sin(np.deg2rad(delta) / 2)
-    assert abs(np.linalg.norm(mismatch) - expected_norm) < 1e-12
+    if not (abs(np.linalg.norm(mismatch) - expected_norm) < 1e-12):
+        raise AssertionError('assert abs(np.linalg.norm(mismatch) - expected_norm) < 1e-12')
     records.append({'base_degrees': base, 'phase_step_degrees': delta,
                     'closure_error_vector': mismatch.tolist(),
                     'closure_error_norm': float(np.linalg.norm(mismatch))})

@@ -13,7 +13,8 @@ from pathlib import Path
 C = ((0, -1, -1), (1, 0, -1), (1, -1, 0))
 P = [tuple(s if j == i else 0 for j in range(3)) for i in range(3) for s in [-1, 1]]
 V = sorted({tuple(a-b for a, b in zip(p, q)) for p in P for q in P})
-assert len(P) == len(set(P)) == 6 and len(V) == 19
+if not (len(P) == len(set(P)) == 6 and len(V) == 19):
+    raise AssertionError('assert len(P) == len(set(P)) == 6 and len(V) == 19')
 
 
 def sign_quadratic(a, b):
@@ -44,21 +45,27 @@ def check():
             # 64*(|nL0+v|^2 - (sqrt(2)+|n|_1/8)^2), L0=3I+C/sqrt(2).
             a = 64*dot(u, u) + 32*dot(z, z) - 128 - steps*steps
             b = 64*dot(u, z) - 16*steps
-            assert sign_quadratic(a, b) > 0, (n, v, a, b)
+            if not (sign_quadratic(a, b) > 0):
+                raise AssertionError((n, v, a, b))
             checks.append({'translation': n, 'motif_difference': v, 'a': a, 'b': b})
     # Symmetric part of L0 has minimum eigenvalue 3-1/sqrt(2).
     # For |n| >= 2, use sigma0 > 9/4 and sqrt(3)/8 < 1/4.
     # Then |X(n+m)-X(n)+v| > (9/4-1/4)|m|-2 >= 2 > sqrt(2).
     # The first two rational bounds follow from sqrt(2)>4/3 and sqrt(3)<2.
-    assert 2 > (4/3)**2 and 3 < 2**2
+    if not (2 > (4/3)**2 and 3 < 2**2):
+        raise AssertionError('assert 2 > (4/3)**2 and 3 < 2**2')
     # Every phase deviation <=5deg has chord displacement
     # 2sqrt(2)sin(5deg/2) <= sqrt(2)*pi/36 < 1/8.
     # Prove the last comparison with pi < 22/7 and integer arithmetic.
-    assert 2 * (22 * 8)**2 < (7 * 36)**2
+    if not (2 * (22 * 8)**2 < (7 * 36)**2):
+        raise AssertionError('assert 2 * (22 * 8)**2 < (7 * 36)**2')
     # Sanity checks for the exact sign function, including near cancellation.
-    assert sign_quadratic(1, -1) < 0 and sign_quadratic(-1, 1) > 0
-    assert sign_quadratic(3, -2) > 0 and sign_quadratic(-3, 2) < 0
-    assert len(checks) == 26*19-6 == 488
+    if not (sign_quadratic(1, -1) < 0 and sign_quadratic(-1, 1) > 0):
+        raise AssertionError('assert sign_quadratic(1, -1) < 0 and sign_quadratic(-1, 1) > 0')
+    if not (sign_quadratic(3, -2) > 0 and sign_quadratic(-3, 2) < 0):
+        raise AssertionError('assert sign_quadratic(3, -2) > 0 and sign_quadratic(-3, 2) < 0')
+    if not (len(checks) == 26*19-6 == 488):
+        raise AssertionError('assert len(checks) == 26*19-6 == 488')
     weakest = min(checks, key=lambda q: q['a'] + math.sqrt(2)*q['b'])
     result = {
         'statement': 'Any separated angle sequences theta_i(k) in [40deg,50deg] define a globally non-overlapping, bar-preserving infinite framework through integrated cell increments.',

@@ -33,7 +33,8 @@ def lattice(s,C):
 
 def bounds(interval,C):
     lo,hi=interval
-    assert 0<=lo<=hi<1
+    if not (0<=lo<=hi<1):
+        raise AssertionError('assert 0<=lo<=hi<1')
     # sin(2atan s) increases and cos(2atan s) decreases on this interval.
     tlo,thi=2*lo/(1+lo*lo),2*hi/(1+hi*hi)
     clo,chi=(1-hi*hi)/(1+hi*hi),(1-lo*lo)/(1+lo*lo)
@@ -65,7 +66,8 @@ def volume_bracket():
     shi=determinant(SKEW_INTERVAL[0],'skew')
     slo=determinant(SKEW_INTERVAL[1],'skew')
     a=sign_pair(shi[0]-ohi[0],shi[1]-ohi[1]);b=sign_pair(olo[0]-slo[0],olo[1]-slo[1])
-    assert a==b==1
+    if not (a==b==1):
+        raise AssertionError('assert a==b==1')
     return {'skew_low_s_volume_above_all_original_volumes':True,'skew_high_s_volume_below_all_original_volumes':True,'scope':'For every original half-angle parameter in its interval there exists a unique equal-volume skew parameter in its interval, by continuity and strict determinant decrease.'}
 
 
@@ -96,7 +98,8 @@ def plane_check(N,triangles,labels,limit_squared=F(2)):
             lows[:,:,j]+=np.minimum(a,b);highs[:,:,j]+=np.maximum(a,b)
     lows-=N*D*ps[:,None,:];highs-=N*D*ps[:,None,:]
     absolute=np.maximum(np.abs(lows),np.abs(highs))
-    assert int(absolute.max())<10**9 # excludes int64 square overflow
+    if not (int(absolute.max())<10**9):  # excludes int64 square overflow
+        raise AssertionError('assert int(absolute.max())<10**9')
     sq=np.sum(absolute*absolute,axis=2)
     maximum=int(sq.max());den=(N*D)**2
     accepted=maximum*limit_squared.denominator<limit_squared.numerator*den
@@ -170,7 +173,8 @@ def loop_discovery(C=C_SKEW,interval=SKEW_INTERVAL,target_rank=3):
             points=[coords[x]+FGRID*offsets[x] for x in reversed(ancestry(u))]
             points += [coords[x]+FGRID*(offsets[x]+wind) for x in ancestry(v)]
             loops.append({'winding':wind.tolist(),'fractional_vertices_scaled':[p.tolist() for p in points]})
-        assert rank([np.array(x['winding']) for x in loops])==target_rank
+        if not (rank([np.array(x['winding']) for x in loops])==target_rank):
+            raise AssertionError("assert rank([np.array(x['winding']) for x in loops])==target_rank")
         return loops
     raise AssertionError('No rank3 component in discovery graph')
 
@@ -178,17 +182,20 @@ def loop_discovery(C=C_SKEW,interval=SKEW_INTERVAL,target_rank=3):
 def loops_check(loops,radius_upper=F(1414213563,10**9),C=C_SKEW,interval=SKEW_INTERVAL):
     lower,upper=bounds(interval,C)
     # Skew C has symmetric part zero; original C has symmetric-part min eigenvalue -1.
-    assert int(lower[0,0])-max(int(abs(lower[0,1])),int(abs(upper[0,1])))>2*D
+    if not (int(lower[0,0])-max(int(abs(lower[0,1])),int(abs(upper[0,1])))>2*D):
+        raise AssertionError('assert int(lower[0,0])-max(int(abs(lower[0,1])),int(abs(upper[0,1])))>2*D')
     center=(lower+upper)//2;delta=np.maximum(center-lower,upper-center)
     ns=list(itertools.product(range(-3,4),repeat=3))
     tests=0;minimum_margin=math.inf;segment_count=0
     for loop in loops:
         points=np.array(loop['fractional_vertices_scaled'],dtype=np.int64)
-        assert np.array_equal(points[-1]-points[0],FGRID*np.array(loop['winding']))
+        if not (np.array_equal(points[-1]-points[0],FGRID*np.array(loop['winding']))):
+            raise AssertionError("assert np.array_equal(points[-1]-points[0],FGRID*np.array(loop['winding']))")
         for first,second in zip(points,points[1:]):
             shift=np.floor((first+second)/(2*FGRID)).astype(np.int64)
             first=first-FGRID*shift;second=second-FGRID*shift
-            assert max(np.abs(first).max(),np.abs(second).max())<2*FGRID
+            if not (max(np.abs(first).max(),np.abs(second).max())<2*FGRID):
+                raise AssertionError('assert max(np.abs(first).max(),np.abs(second).max())<2*FGRID')
             step=(second-first)@center
             vv=sum(int(x)**2 for x in step)
             if vv==0:continue
@@ -215,22 +222,41 @@ def loops_check(loops,radius_upper=F(1414213563,10**9),C=C_SKEW,interval=SKEW_IN
 
 
 def main():
-    assert SQLO*SQLO<2<SQHI*SQHI
-    N,triangles,labels=plane_discovery();plane=plane_check(N,triangles,labels);assert plane['accepted']
-    loops=loop_discovery();free=loops_check(loops);assert free['accepted']
+    if not (SQLO*SQLO<2<SQHI*SQHI):
+        raise AssertionError('assert SQLO*SQLO<2<SQHI*SQHI')
+    N,triangles,labels=plane_discovery();plane=plane_check(N,triangles,labels)
+    if not (plane['accepted']):
+        raise AssertionError("assert plane['accepted']")
+    loops=loop_discovery();free=loops_check(loops)
+    if not (free['accepted']):
+        raise AssertionError("assert free['accepted']")
     original_loops=loop_discovery(C_ORIGINAL,ORIGINAL_INTERVAL,2)
-    original_free=loops_check(original_loops,C=C_ORIGINAL,interval=ORIGINAL_INTERVAL);assert original_free['accepted']
+    original_free=loops_check(original_loops,C=C_ORIGINAL,interval=ORIGINAL_INTERVAL)
+    if not (original_free['accepted']):
+        raise AssertionError("assert original_free['accepted']")
     # A nonzero interval of probe sizes, not just one specially tuned radius.
-    small_probe_plane=plane_check(N,triangles,labels,F(399**2,80000));assert small_probe_plane['accepted']
-    assert F(5671,4000)**2>F(401**2,80000)
-    large_probe_skew=loops_check(loops,F(5671,4000));assert large_probe_skew['accepted']
-    large_probe_original=loops_check(original_loops,F(5671,4000),C_ORIGINAL,ORIGINAL_INTERVAL);assert large_probe_original['accepted']
+    small_probe_plane=plane_check(N,triangles,labels,F(399**2,80000))
+    if not (small_probe_plane['accepted']):
+        raise AssertionError("assert small_probe_plane['accepted']")
+    if not (F(5671,4000)**2>F(401**2,80000)):
+        raise AssertionError('assert F(5671,4000)**2>F(401**2,80000)')
+    large_probe_skew=loops_check(loops,F(5671,4000))
+    if not (large_probe_skew['accepted']):
+        raise AssertionError("assert large_probe_skew['accepted']")
+    large_probe_original=loops_check(original_loops,F(5671,4000),C_ORIGINAL,ORIGINAL_INTERVAL)
+    if not (large_probe_original['accepted']):
+        raise AssertionError("assert large_probe_original['accepted']")
     bracket=volume_bracket()
     def tan20poly(s):return s**6-33*s**4+27*s*s-3
-    assert tan20poly(ORIGINAL_INTERVAL[0])<0<tan20poly(ORIGINAL_INTERVAL[1])
+    if not (tan20poly(ORIGINAL_INTERVAL[0])<0<tan20poly(ORIGINAL_INTERVAL[1])):
+        raise AssertionError('assert tan20poly(ORIGINAL_INTERVAL[0])<0<tan20poly(ORIGINAL_INTERVAL[1])')
     # A plane-cover control below the actual maximum cannot pass; sufficiently enlarged obstacles block the proposed loops.
-    plane_control=plane_check(N,triangles,labels,F(193,100));assert not plane_control['accepted']
-    free_control=loops_check(loops,F(143,100));assert not free_control['accepted']
+    plane_control=plane_check(N,triangles,labels,F(193,100))
+    if not (not plane_control['accepted']):
+        raise AssertionError("assert not plane_control['accepted']")
+    free_control=loops_check(loops,F(143,100))
+    if not (not free_control['accepted']):
+        raise AssertionError("assert not free_control['accepted']")
     output={'model':'Sphere centers +/-e_i+nL, obstacle radius1/sqrt(2), probe radius1/sqrt(2); excluded center distance sqrt(2).','half_angle_intervals':{'original':[str(x) for x in ORIGINAL_INTERVAL],'skew':[str(x) for x in SKEW_INTERVAL]},'integer_lattice_enclosure_scale':D,'fractional_polyline_scale':FGRID,'plane_certificate':plane,'free_loop_certificate':free,'original_free_loop_certificate':original_free,'probe_ratio_interval':['199/200','201/200'],'probe_size_window_certificates':{'smallest_probe_plane':small_probe_plane,'largest_probe_skew_free':large_probe_skew,'largest_probe_original_free':large_probe_original},'matched_volume_bracket':bracket,'controls':{'insufficient_plane_cover_radius_squared_1_93_rejected':True,'loop_obstacle_radius_1_43_rejected':True,'original_interval_contains_tan20_by_polynomial_sign':True},'plane_grid_size':N,'plane_sphere_labels':labels,'free_loops':loops,'original_free_loops':original_loops}
     BASE.with_suffix('.json').write_text(json.dumps(output,indent=2)+'\n')
     print(json.dumps({k:v for k,v in output.items() if k not in ['plane_sphere_labels','free_loops','original_free_loops']},indent=2))

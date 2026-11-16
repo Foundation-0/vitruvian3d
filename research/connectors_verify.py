@@ -20,20 +20,27 @@ def main():
  for loop in data['results']:
   points=np.array(loop['euclidean_route']);wind=np.array(loop['winding'])
   if root is None:root=points[0]
-  assert np.linalg.norm(points[0]-root)<1e-12
-  assert np.linalg.norm(points[-1]-points[0]-wind@L)<1e-12
+  if not (np.linalg.norm(points[0]-root)<1e-12):
+      raise AssertionError('assert np.linalg.norm(points[0]-root)<1e-12')
+  if not (np.linalg.norm(points[-1]-points[0]-wind@L)<1e-12):
+      raise AssertionError('assert np.linalg.norm(points[-1]-points[0]-wind@L)<1e-12')
   frac=points@np.linalg.inv(L)
   omitted_gap=min(5-float(frac.max()),5+float(frac.min()))
   omitted_bound=np.linalg.svd(L,compute_uv=False)[-1]*omitted_gap-1
-  assert omitted_bound>2
+  if not (omitted_bound>2):
+      raise AssertionError('assert omitted_bound>2')
   for a,b in zip(points,points[1:]):
-   delta=b-a;vv=float(delta@delta);assert vv>0
+   delta=b-a;vv=float(delta@delta)
+   if not (vv>0):
+       raise AssertionError('assert vv>0')
    rel=sites-a;t=np.clip(rel@delta/vv,0,1)
    nearest=float(np.linalg.norm(rel-t[:,None]*delta,axis=1).min())
-   assert nearest>math.sqrt(2)+.0035
+   if not (nearest>math.sqrt(2)+.0035):
+       raise AssertionError('assert nearest>math.sqrt(2)+.0035')
    minimum=min(minimum,nearest);segments+=1
   winds.append(wind)
- assert abs(round(np.linalg.det(winds)))==1
+ if not (abs(round(np.linalg.det(winds)))==1):
+     raise AssertionError('assert abs(round(np.linalg.det(winds)))==1')
  result=dict(saved_loops=len(winds),segments=segments,minimum_site_distance=minimum,minimum_margin_above_equal_probe=minimum-math.sqrt(2),minimum_accepted_margin=.0035,route_family='Matched-volume skew configuration at 46.1113417712 degrees',arithmetic='Floating-point full-image projection with analytic omitted-image bound; not an interval certificate.')
  print(json.dumps(result,indent=2))
 

@@ -44,14 +44,18 @@ def main():
   bounds=[(x-.2,x+.2) for x in z[:-1]]+[(np.sqrt(2),np.sqrt(2)+.1)]
   opt=minimize(lambda z:-z[-1],z,method='SLSQP',bounds=bounds,constraints=[dict(type='ineq',fun=con)],options=dict(maxiter=400,ftol=1e-12))
   rr=unpack(opt.x);minimum=min(clearance(x,y) for x,y in zip(rr,rr[1:]))
-  assert minimum>np.sqrt(2)
+  if not (minimum>np.sqrt(2)):
+      raise AssertionError('assert minimum>np.sqrt(2)')
   fractional=rr@np.linalg.inv(L)
-  assert np.max(np.abs(fractional[-1]-fractional[0]-np.array(witness['winding'])))<1e-12
+  if not (np.max(np.abs(fractional[-1]-fractional[0]-np.array(witness['winding'])))<1e-12):
+      raise AssertionError("assert np.max(np.abs(fractional[-1]-fractional[0]-np.array(witness['winding'])))<1e-12")
   omitted_fractional_gap=min(5-fractional.max(),5+fractional.min())
   omitted_lower=np.linalg.svd(L,compute_uv=False)[-1]*omitted_fractional_gap-1
-  assert omitted_lower>minimum
+  if not (omitted_lower>minimum):
+      raise AssertionError('assert omitted_lower>minimum')
   all_site_minimum=min(float(np.sqrt(ds_segment(x,y,sites).min())) for x,y in zip(rr,rr[1:]))
-  assert abs(all_site_minimum-minimum)<1e-12
+  if not (abs(all_site_minimum-minimum)<1e-12):
+      raise AssertionError('assert abs(all_site_minimum-minimum)<1e-12')
   result=dict(winding=witness['winding'],segments=len(rr)-1,solver_success=bool(opt.success),solver_message=str(opt.message),minimum_site_distance=float(minimum),probe_clearance_above_equal_radius=float(minimum-np.sqrt(2)),euclidean_route=rr.tolist(),fractional_route=(rr@np.linalg.inv(L)).tolist(),candidate_constraint_minimum=float(con(opt.x).min()),omitted_site_distance_lower_bound=float(omitted_lower),independent_full_image_projection_minimum=all_site_minimum)
   results.append(result);print(json.dumps(result),flush=True)
   Path(__file__).with_suffix('.json').write_text(json.dumps(dict(method='Greedy visibility simplification followed by constrained waypoint optimization; analytic segment clearance. Local numerical optimization, no optimality claim.',results=results),indent=2)+'\n')

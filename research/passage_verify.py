@@ -38,7 +38,8 @@ def lattice_box(interval,C,scale):
             lr.append((q[0]*scale).__floor__());hr.append((q[1]*scale).__ceil__())
         lo.append(lr);hi.append(hr)
     # Uniform sigma_min(L)>2 follows from these d-t bounds for both matrices.
-    assert dbounds[0]-sinbounds[1]>2
+    if not (dbounds[0]-sinbounds[1]>2):
+        raise AssertionError('assert dbounds[0]-sinbounds[1]>2')
     return lo,hi
 
 
@@ -52,7 +53,8 @@ def verify_plane(data):
             a=(0,j,k);b=(0,j+1,k);c=(0,j,k+1);d=(0,j+1,k+1)
             for triangle in [(a,b,d),(a,c,d)]:
                 label=next(labels);n=label['n'];p=label['p']
-                assert tuple(p) in MOTIF and len(n)==3 and all(type(x) is int for x in n)
+                if not (tuple(p) in MOTIF and len(n)==3 and all(type(x) is int for x in n)):
+                    raise AssertionError('assert tuple(p) in MOTIF and len(n)==3 and all(type(x) is int for x in n)')
                 for vertex in triangle:
                     w=sub(vertex,tuple(N*x for x in n));squared=0
                     for col in range(3):
@@ -61,10 +63,13 @@ def verify_plane(data):
                         high=sum(max(t) for t in terms)-N*scale*p[col]
                         squared+=max(low*low,high*high)
                     bound=F(squared,(N*scale)**2)
-                    assert bound<F(399**2,80000)
+                    if not (bound<F(399**2,80000)):
+                        raise AssertionError('assert bound<F(399**2,80000)')
                     maximum=max(maximum,bound);count+=1
-    assert next(labels,None) is None
-    assert count==6*N*N
+    if not (next(labels,None) is None):
+        raise AssertionError('assert next(labels,None) is None')
+    if not (count==6*N*N):
+        raise AssertionError('assert count==6*N*N')
     return {'triangles':2*N*N,'vertex_checks':count,'max_squared_distance_upper_bound':str(maximum)}
 
 
@@ -80,13 +85,16 @@ def verify_loops(data,kind):
     winds=[]
     for loop in loops:
         points=loop['fractional_vertices_scaled'];wind=loop['winding'];winds.append(wind)
-        assert points[0]==root
-        assert sub(points[-1],points[0])==tuple(grid*x for x in wind)
+        if not (points[0]==root):
+            raise AssertionError('assert points[0]==root')
+        if not (sub(points[-1],points[0])==tuple(grid*x for x in wind)):
+            raise AssertionError('assert sub(points[-1],points[0])==tuple(grid*x for x in wind)')
         for left,right in zip(points,points[1:]):
             # Recenter each segment by one exact integer lattice translation.
             shift=tuple((a+b)//(2*grid) for a,b in zip(left,right))
             left=sub(left,tuple(grid*x for x in shift));right=sub(right,tuple(grid*x for x in shift))
-            assert all(abs(x)<2*grid for x in left+right)
+            if not (all(abs(x)<2*grid for x in left+right)):
+                raise AssertionError('assert all(abs(x)<2*grid for x in left+right)')
             step=matvec_row(sub(right,left),center);vv=dot(step,step)
             if vv==0:continue
             segments+=1;H=grid*scale
@@ -100,12 +108,17 @@ def verify_loops(data,kind):
                     elif av<=-vv:numerator,denominator=aa+2*av+vv,1
                     else:numerator,denominator=aa*vv-av*av,vv
                     # 5671/4000 > (r+q) for every q/r<=201/200.
-                    assert numerator*4000**2 > (5671*H+E*4000)**2*denominator
+                    if not (numerator*4000**2 > (5671*H+E*4000)**2*denominator):
+                        raise AssertionError('assert numerator*4000**2 > (5671*H+E*4000)**2*denominator')
                     tests+=1
-    if kind=='skew':assert abs(determinant(winds))==1
+    if kind=='skew':
+        if not (abs(determinant(winds))==1):
+            raise AssertionError('assert abs(determinant(winds))==1')
     else:
-        assert len(winds)==2 and all(w[0]==0 for w in winds)
-        assert winds[0][1]*winds[1][2]-winds[0][2]*winds[1][1]!=0
+        if not (len(winds)==2 and all(w[0]==0 for w in winds)):
+            raise AssertionError('assert len(winds)==2 and all(w[0]==0 for w in winds)')
+        if not (winds[0][1]*winds[1][2]-winds[0][2]*winds[1][1]!=0):
+            raise AssertionError('assert winds[0][1]*winds[1][2]-winds[0][2]*winds[1][1]!=0')
     return {'loops':len(loops),'segments':segments,'exact_segment_site_checks':tests,'winding_vectors':winds}
 
 
@@ -132,18 +145,25 @@ def volume(s,C):
 
 def verify_volume_and_angle(data):
     original=tuple(map(F,data['half_angle_intervals']['original']));skew=tuple(map(F,data['half_angle_intervals']['skew']))
-    assert sign(add(volume(skew[0],SKEW),neg(volume(original[0],ORIGINAL))))==1
-    assert sign(add(volume(original[1],ORIGINAL),neg(volume(skew[1],SKEW))))==1
+    if not (sign(add(volume(skew[0],SKEW),neg(volume(original[0],ORIGINAL))))==1):
+        raise AssertionError('assert sign(add(volume(skew[0],SKEW),neg(volume(original[0],ORIGINAL))))==1')
+    if not (sign(add(volume(original[1],ORIGINAL),neg(volume(skew[1],SKEW))))==1):
+        raise AssertionError('assert sign(add(volume(original[1],ORIGINAL),neg(volume(skew[1],SKEW))))==1')
     def polynomial(x):return x**6-33*x**4+27*x*x-3
-    assert polynomial(original[0])<0<polynomial(original[1])
-    assert 0<original[0]<original[1]<F(37,100)
-    assert 9-22*F(37,100)**2>0 # derivative is positive throughout containing interval
+    if not (polynomial(original[0])<0<polynomial(original[1])):
+        raise AssertionError('assert polynomial(original[0])<0<polynomial(original[1])')
+    if not (0<original[0]<original[1]<F(37,100)):
+        raise AssertionError('assert 0<original[0]<original[1]<F(37,100)')
+    if not (9-22*F(37,100)**2>0):  # derivative is positive throughout containing interval
+        raise AssertionError('assert 9-22*F(37,100)**2>0')
     return {'matched_volume_bracket':True,'original_interval_contains_exact_40_degrees':True}
 
 
 def main():
-    assert SQ[0]**2<2<SQ[1]**2
-    assert F(5671,4000)**2>F(401**2,80000)
+    if not (SQ[0]**2<2<SQ[1]**2):
+        raise AssertionError('assert SQ[0]**2<2<SQ[1]**2')
+    if not (F(5671,4000)**2>F(401**2,80000)):
+        raise AssertionError('assert F(5671,4000)**2>F(401**2,80000)')
     data=json.loads(DATA.read_text())
     result={'covered_plane':verify_plane(data),'original_free_paths':verify_loops(data,'original'),'skew_free_paths':verify_loops(data,'skew'),'volume_and_angle':verify_volume_and_angle(data),'probe_ratio_interval':['199/200','201/200'],'conclusion':'Continuum winding rank exactly2 on original interval versus rank3 on skew interval, for every probe ratio q/r in[199/200,201/200], with a unique equal-volume skew state for every original state, including exact40deg.'}
     Path(__file__).with_suffix('.json').write_text(json.dumps(result,indent=2)+'\n')

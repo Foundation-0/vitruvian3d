@@ -19,11 +19,13 @@ def certify(c,a,b):
     # in the interval exactly when |b|<=|a|.
     if a>=0 or b*b>a*a:
         minimum=c-abs(b)
-        assert minimum>=0,(c,a,b,'endpoint',minimum)
+        if not (minimum>=0):
+            raise AssertionError((c,a,b,'endpoint',minimum))
         return {'kind':'endpoint','minimum_integer':minimum}
     twice_constant=2*c-a
     radicand=3*(a*a+2*b*b)
-    assert twice_constant>=0 and twice_constant**2>=radicand,(c,a,b,twice_constant,radicand)
+    if not (twice_constant>=0 and twice_constant**2>=radicand):
+        raise AssertionError((c,a,b,twice_constant,radicand))
     return {'kind':'interior_surd','minimum':'(%d-sqrt(%d))/2'%(twice_constant,radicand),
             'squared_margin':twice_constant**2-radicand}
 
@@ -40,10 +42,12 @@ def main():
             b=2*n[2]*A[1]
             cert=certify(c,a,b)
             rows.append({'translation':n,'motif_difference':v,'c':c,'a':a,'b':b,**cert})
-    assert len(rows)==125*19-1
+    if not (len(rows)==125*19-1):
+        raise AssertionError('assert len(rows)==125*19-1')
     # For far translations: det>=12, Frobenius²<20 => sigma_min>6/5;
     # outside [-2,2]^3, |n|>=3 => separation>8/5>sqrt(2).
-    assert 64>2*25
+    if not (64>2*25):
+        raise AssertionError('assert 64>2*25')
     peak=9+1.5*math.sqrt(22)
     output={'path':'q:1 to -1; z=(sqrt(3-2q^2)-1)/2; L rows (2,-1,-1),(1,2,-1),(1+z,q,2+z)',
             'scope':'One-cell fixed motif ±e_i, all three prescribed bridges length sqrt(2), sphere diameter sqrt(2). Continuum path, not just sampled frames.',

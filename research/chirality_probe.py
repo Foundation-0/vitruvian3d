@@ -142,11 +142,16 @@ def main():
     original = np.array([[0,-1,-1],[1,0,-1],[1,-1,0]])
     flipped = original.copy(); flipped[0,1] *= -1
     lookup = {m:o for o in orbits for m in o['members']}
-    assert lookup[key(original)]['bernstein']['all_nonnegative']
-    assert lookup[key(flipped)]['endpoint']['collision']['distance_squared'] == 0
-    assert sum(o['orbit_size'] for o in orbits) == 64
-    assert sum(o['orbit_size'] for o in orbits if o['bernstein']['all_nonnegative']) == 20
-    assert all(o['proper_and_full_orbits_equal'] for o in orbits)
+    if not (lookup[key(original)]['bernstein']['all_nonnegative']):
+        raise AssertionError("assert lookup[key(original)]['bernstein']['all_nonnegative']")
+    if not (lookup[key(flipped)]['endpoint']['collision']['distance_squared'] == 0):
+        raise AssertionError("assert lookup[key(flipped)]['endpoint']['collision']['distance_squared'] == 0")
+    if not (sum(o['orbit_size'] for o in orbits) == 64):
+        raise AssertionError("assert sum(o['orbit_size'] for o in orbits) == 64")
+    if not (sum(o['orbit_size'] for o in orbits if o['bernstein']['all_nonnegative']) == 20):
+        raise AssertionError("assert sum(o['orbit_size'] for o in orbits if o['bernstein']['all_nonnegative']) == 20")
+    if not (all(o['proper_and_full_orbits_equal'] for o in orbits)):
+        raise AssertionError("assert all(o['proper_and_full_orbits_equal'] for o in orbits)")
     # Independently compare the algebraic quartic to direct geometric distances.
     rng = np.random.default_rng(5729)
     residual = 0.0
@@ -159,14 +164,19 @@ def main():
             L = (2+math.sqrt(2)*math.cos(theta))*np.eye(3)+math.sin(theta)*C
             direct = (1+s*s)**2*(np.dot(n@L+v,n@L+v)-2)
             residual = max(residual,abs(float(f-direct)))
-    assert residual < 1e-10
+    if not (residual < 1e-10):
+        raise AssertionError('assert residual < 1e-10')
     skew = np.array([[0,1,1],[-1,0,1],[-1,-1,0]])
     skewL = 2*np.eye(3,dtype=int)+skew
     residue = np.array([5,1,3]); missing = np.array([1,-1,1])
-    assert det3(skewL) == 14
-    assert np.all((skewL@residue)%7 == 0)
-    assert set((MOTIF@residue%7).tolist()) == set(range(1,7))
-    assert int(missing.sum())%2 == 1 and int(missing@residue)%7 == 0
+    if not (det3(skewL) == 14):
+        raise AssertionError('assert det3(skewL) == 14')
+    if not (np.all((skewL@residue)%7 == 0)):
+        raise AssertionError('assert np.all((skewL@residue)%7 == 0)')
+    if not (set((MOTIF@residue%7).tolist()) == set(range(1,7))):
+        raise AssertionError('assert set((MOTIF@residue%7).tolist()) == set(range(1,7))')
+    if not (int(missing.sum())%2 == 1 and int(missing@residue)%7 == 0):
+        raise AssertionError('assert int(missing.sum())%2 == 1 and int(missing@residue)%7 == 0')
     data = {'model':'L=(2+sqrt(2) cos(theta)) I+sin(theta) C; motif=+-unit axes; radius=1/sqrt(2)', 'finite_image_bound':'For every nonsingular-endpoint orbit symmetric-part min eigenvalue >= -sqrt(2). Thus |n L+v| >= (2-sqrt(2))|n|-2. If |n|^2 >=34, this exceeds sqrt(2), since (2+sqrt(2))/(2-sqrt(2))=3+2sqrt(2), whose square=17+12sqrt(2)<34. Enumerate |n|^2<=33.','image_count':len(IMAGES),'motif_difference_count':len(DIFF),'orbits':orbits,'controls':{'original_key':key(original),'original_accepted':True,'one_sign_flip_key':key(flipped),'one_sign_flip_rejected_by_exact_endpoint_overlap':True,'quartic_geometry_comparisons':1280,'max_float_residual':residual,'orbit_partition_count':64},'skew_endpoint':{'representative_C':skew.tolist(),'residue_vector_mod7':residue.tolist(),'missing_odd_fcc_site':missing.tolist(),'occupied_residues':[1,2,3,4,5,6],'vacancy_residue':0,'fcc_occupancy_fraction':'6/7','packing_density':'sqrt(2)*pi/7'}}
     OUT.write_text(json.dumps(data,indent=2)+'\n')
     print(json.dumps({'orbits':[{'key':x['representative'],'size':x['orbit_size'],'det':x['endpoint']['determinant'],'minimum':x['sampled_minimum']['distance_squared'],'bernstein':x['bernstein']['all_nonnegative'],'proper_equals_full':x['proper_and_full_orbits_equal']} for x in orbits]},indent=2))
