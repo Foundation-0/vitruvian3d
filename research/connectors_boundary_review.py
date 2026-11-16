@@ -16,18 +16,23 @@ for n in product(range(-3,4),repeat=3):
   d=tuple(y-x for x,y in zip(field.get(n,zero),field.get(m,zero)))
   new=tuple(x+y for x,y in zip(B[i],d))
   energy+=dot(d,d);excess+=dot(new,new)-dot(B[i],B[i]);linears[i]+=dot(B[i],d);count+=1
-assert energy==excess>0 and linears==[0]*3
+if not (energy==excess>0 and linears==[0]*3):
+    raise AssertionError('assert energy==excess>0 and linears==[0]*3')
 # Exact harmonic-mean identity underlying the six-ray Dirichlet bound.
 for R in range(6):
  for x in range(-R,R+1):
   lhs=F(1,R+1-x)+F(1,R+1+x)-F(2,R+1)
   rhs=F(2*x*x,(R+1)*((R+1)**2-x*x))
-  assert lhs==rhs>=0
+  if not (lhs==rhs>=0):
+      raise AssertionError('assert lhs==rhs>=0')
 vacancy=((0,-1,-1),(1,0,-1),(1,1,0));w=(1,-1,1)
-assert all(dot(b,w)==0 for b in vacancy) and dot(w,w)==3
-assert 6*dot(w,w)==18
+if not (all(dot(b,w)==0 for b in vacancy) and dot(w,w)==3):
+    raise AssertionError('assert all(dot(b,w)==0 for b in vacancy) and dot(w,w)==3')
+if not (6*dot(w,w)==18):
+    raise AssertionError('assert 6*dot(w,w)==18')
 # Taylor coefficient: delta length starts at 3/(2sqrt2)*t²(Df)².
 # Squaring that coefficient and multiplying byk/2 gives9k/16.
-assert F(1,2)*F(9,8)==F(9,16)
+if not (F(1,2)*F(9,8)==F(9,16)):
+    raise AssertionError('assert F(1,2)*F(9,8)==F(9,16)')
 result=dict(verdict='PASS exact fixed-exterior and fixed-period translation rigidity; linearized common-kernel flexes remain possible and cannot integrate as finite supported retained-length motions.',independent_finite_field=dict(arbitrary_rational_bridge_vectors=True,box_edges_checked=count,dirichlet_sum=str(energy),squared_length_excess_sum=str(excess),linear_sums=list(map(str,linears))),harmonic_identity='1/(R+1-x)+1/(R+1+x)-2/(R+1)=2x²/[(R+1)((R+1)²-x²)]>=0',vacancy_kernel=[1,-1,1],single_site_total_quadratic_excess=18,optional_spring_quartic_coefficient='9/16',scope='Fixed motif orientations/anchor offsets, homogeneous baseline, fixed exterior or periodic cell. Not arbitrary rotating bodies, nonuniform backgrounds, feasible hard-sphere infinitesimal modes, or a specified physical spring model.')
 Path(__file__).with_suffix('.json').write_text(json.dumps(result,indent=2)+'\n');print(json.dumps(result,indent=2))

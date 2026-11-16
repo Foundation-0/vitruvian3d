@@ -41,7 +41,8 @@ def main():
         inverse = 1 / axes
         radius = 1 / (inverse.sum() + np.linalg.norm(inverse))
         error = float(np.max(np.abs(centers - SIGNS * radius)))
-        assert error < 1e-12
+        if not (error < 1e-12):
+            raise AssertionError('assert error < 1e-12')
         axial.append({'axes': axes.tolist(), 'closed_form_radius': float(radius),
                       'max_face_area_formula_error': error, 'centers': centers.tolist()})
     basis = np.array([[2., 0., 0.], [.4, 1., 0.], [0., 0., 3.]])
@@ -49,7 +50,8 @@ def main():
     pairs = normalized_pair_squared(centers)
     cube_pairs = normalized_pair_squared(SIGNS)
     difference = float(np.max(np.abs(pairs - cube_pairs)))
-    assert difference > .01
+    if not (difference > .01):
+        raise AssertionError('assert difference > .01')
     result = {
         'status': 'Numerical verification of exact axial deduction; illustrative sheared counterexample.',
         'construction': 'Eight tetrahedra conv(0, +/-v1, +/-v2, +/-v3); one incenter per sign triple.',

@@ -22,21 +22,27 @@ def main():
             b=2*A[1]
             certify(c,a,b)
             adjacent+=1
-    assert adjacent==475
+    if not (adjacent==475):
+        raise AssertionError('assert adjacent==475')
     # Horizontal images outside this range are already covered by the uniform
     # path's all-neighbor argument. This invokes that theorem, not a new truncation.
     h=(3,1,5)
-    assert sum(x*x for x in h)==35
-    assert sum(a*b for a,b in zip(h,L1))==sum(a*b for a,b in zip(h,L2))==0
+    if not (sum(x*x for x in h)==35):
+        raise AssertionError('assert sum(x*x for x in h)==35')
+    if not (sum(a*b for a,b in zip(h,L1))==sum(a*b for a,b in zip(h,L2))==0):
+        raise AssertionError('assert sum(a*b for a,b in zip(h,L1))==sum(a*b for a,b in zip(h,L2))==0')
     projection_values=[sum(a*b for a,b in zip(h,p)) for p in P]
-    assert max(projection_values)==5 and min(projection_values)==-5
-    assert (2*12-10)**2>2*35
+    if not (max(projection_values)==5 and min(projection_values)==-5):
+        raise AssertionError('assert max(projection_values)==5 and min(projection_values)==-5')
+    if not ((2*12-10)**2>2*35):
+        raise AssertionError('assert (2*12-10)**2>2*35')
     # Exactly compare upper excess (3/2)sqrt(22)-5 with N times one-cell lower.
     one_cell_lower=F(270,6859)
     def beats_lower(N):
         rhs=F(2,3)*(5+N*one_cell_lower)
         return rhs>0 and rhs*rhs>22
-    assert not beats_lower(51) and beats_lower(52)
+    if not (not beats_lower(51) and beats_lower(52)):
+        raise AssertionError('assert not beats_lower(51) and beats_lower(52)')
     excess=1.5*math.sqrt(22)-5
     rows=[]
     for N in [1,2,8,16,51,52,64,256,1024]:

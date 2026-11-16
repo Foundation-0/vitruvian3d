@@ -88,7 +88,8 @@ def probe(deg,C,rep=2):
                 thresholds[dim]=min(w for _,w in items)
                 roots=[i for i in range(len(uf.parent)) if uf.parent[i]==i and len(uf.basis[i])>=dim]
                 witness[dim]=[v.tolist() for v in uf.basis[roots[0]]]
-    assert 3 in thresholds, ('no winding rank3',deg,rep,len(edges))
+    if not (3 in thresholds):
+        raise AssertionError(('no winding rank3',deg,rep,len(edges)))
     return {'angle':deg,'replication':rep,'vertices':len(vertex_map),'edges':len(edges),'rank_thresholds':{str(k):{'radius':v,'ratio':v/R,'winding_basis':witness[k],'one_bottleneck_edge':details[min(edges,key=lambda e:abs(edges[e]-v))]} for k,v in thresholds.items()},'edge_clearance_range':[min(edges.values()),max(edges.values())],'max_edge_length':max(lengths)}
 
 
@@ -103,7 +104,8 @@ def matched_density_controls():
         b=brentq(lambda deg:determinant(deg,CS['vacancy'])-volume,0,90,xtol=1e-11)
         original=probe(a,CS['fcc'],2); vacancy=probe(b,CS['vacancy'],2)
         difference=abs(determinant(b,CS['vacancy'])-volume)
-        assert difference<1e-10
+        if not (difference<1e-10):
+            raise AssertionError('assert difference<1e-10')
         row={'original_angle':a,'vacancy_angle':b,'cell_volume':volume,'packing_fraction':2*math.sqrt(2)*math.pi/volume,'volume_match_absolute_error':difference,'original':original['rank_thresholds'],'vacancy':vacancy['rank_thresholds']}
         if a==40:
             checks=[]
@@ -111,11 +113,14 @@ def matched_density_controls():
                 for route,deg,base in [('fcc',a,original),('vacancy',b,vacancy)]:
                     test=probe(deg,CS[route],rep)
                     d=max(abs(test['rank_thresholds'][k]['radius']-base['rank_thresholds'][k]['radius']) for k in ['1','2','3'])
-                    assert d<1e-7
+                    if not (d<1e-7):
+                        raise AssertionError('assert d<1e-7')
                     checks.append({'route':route,'replication':rep,'maximum_threshold_radius_difference':d})
             row['replication_checks']=checks
-            assert original['rank_thresholds']['3']['ratio']<1<original['rank_thresholds']['2']['ratio']
-            assert vacancy['rank_thresholds']['3']['ratio']>1
+            if not (original['rank_thresholds']['3']['ratio']<1<original['rank_thresholds']['2']['ratio']):
+                raise AssertionError("assert original['rank_thresholds']['3']['ratio']<1<original['rank_thresholds']['2']['ratio']")
+            if not (vacancy['rank_thresholds']['3']['ratio']>1):
+                raise AssertionError("assert vacancy['rank_thresholds']['3']['ratio']>1")
         controls.append(row)
     return controls
 
@@ -127,29 +132,36 @@ def main():
             row=probe(deg,C,2); row['route']=route
             check=probe(deg,C,3)
             diffs={k:abs(row['rank_thresholds'][k]['radius']-check['rank_thresholds'][k]['radius']) for k in row['rank_thresholds']}
-            assert max(diffs.values())<1e-7,(route,deg,diffs)
+            if not (max(diffs.values())<1e-7):
+                raise AssertionError((route,deg,diffs))
             row['replication3_max_threshold_difference']=max(diffs.values())
             row['replication3_graph_counts']=[check['vertices'],check['edges']]
             results.append(row)
             print(route,deg,{k:round(v['ratio'],8) for k,v in row['rank_thresholds'].items()},flush=True)
     fcc=next(x for x in results if x['route']=='fcc' and x['angle']==90)
-    assert abs(fcc['rank_thresholds']['3']['ratio']-(2/math.sqrt(3)-1))<1e-7
-    assert abs(results[0]['rank_thresholds']['3']['ratio']-(math.sqrt(4+2*math.sqrt(2))-1))<1e-7
+    if not (abs(fcc['rank_thresholds']['3']['ratio']-(2/math.sqrt(3)-1))<1e-7):
+        raise AssertionError("assert abs(fcc['rank_thresholds']['3']['ratio']-(2/math.sqrt(3)-1))<1e-7")
+    if not (abs(results[0]['rank_thresholds']['3']['ratio']-(math.sqrt(4+2*math.sqrt(2))-1))<1e-7):
+        raise AssertionError("assert abs(results[0]['rank_thresholds']['3']['ratio']-(math.sqrt(4+2*math.sqrt(2))-1))<1e-7")
     extra=[]
     for route,C in CS.items():
         for deg in [0,45,89,90]:
             check=probe(deg,C,4)
             baseline=next(x for x in results if x['route']==route and x['angle']==deg)
             difference=max(abs(check['rank_thresholds'][k]['radius']-baseline['rank_thresholds'][k]['radius']) for k in ['1','2','3'])
-            assert difference<1e-7
+            if not (difference<1e-7):
+                raise AssertionError('assert difference<1e-7')
             extra.append({'route':route,'angle':deg,'replication4_max_difference':difference})
     grid=[]
     for deg in range(91):
         a=probe(deg,CS['fcc'],2);b=probe(deg,CS['vacancy'],2)
         x={k:v['ratio'] for k,v in a['rank_thresholds'].items()}; y={k:v['ratio'] for k,v in b['rank_thresholds'].items()}
-        assert abs(x['1']-x['2'])<1e-7
-        assert max(y.values())-min(y.values())<1e-7
-        assert abs(x['2']-y['3'])<1e-7
+        if not (abs(x['1']-x['2'])<1e-7):
+            raise AssertionError("assert abs(x['1']-x['2'])<1e-7")
+        if not (max(y.values())-min(y.values())<1e-7):
+            raise AssertionError('assert max(y.values())-min(y.values())<1e-7')
+        if not (abs(x['2']-y['3'])<1e-7):
+            raise AssertionError("assert abs(x['2']-y['3'])<1e-7")
         grid.append({'angle':deg,'fcc_rank2':x['2'],'fcc_rank3':x['3'],'vacancy_rank3':y['3']})
     from scipy.optimize import brentq
     unit_transitions={}
@@ -157,10 +169,18 @@ def main():
         root=brentq(lambda deg:probe(deg,CS['fcc'],2)['rank_thresholds'][dim]['ratio']-1,20,70,xtol=1e-8)
         unit_transitions['rank'+dim+'_loss_angle']=root
     # UF controls: loops without a cell shift cannot imply traversal.
-    u=WindingUF(2);u.add(0,1,np.zeros(3,dtype=int));u.add(1,0,np.zeros(3,dtype=int));assert u.maxrank()==0
-    u.add(0,1,np.array([1,0,0]));assert u.maxrank()==1
-    u.add(0,1,np.array([0,1,0]));assert u.maxrank()==2
-    u.add(0,1,np.array([0,0,1]));assert u.maxrank()==3
+    u=WindingUF(2);u.add(0,1,np.zeros(3,dtype=int));u.add(1,0,np.zeros(3,dtype=int))
+    if not (u.maxrank()==0):
+        raise AssertionError('assert u.maxrank()==0')
+    u.add(0,1,np.array([1,0,0]))
+    if not (u.maxrank()==1):
+        raise AssertionError('assert u.maxrank()==1')
+    u.add(0,1,np.array([0,1,0]))
+    if not (u.maxrank()==2):
+        raise AssertionError('assert u.maxrank()==2')
+    u.add(0,1,np.array([0,0,1]))
+    if not (u.maxrank()==3):
+        raise AssertionError('assert u.maxrank()==3')
     Path(__file__).with_suffix('.json').write_text(json.dumps({'method':'Periodic Voronoi edge network; clearance minimized analytically over each full edge against all replicated sphere centers; union-find potentials detect integer winding rank. Numerical geometry, no bars.','rank_definition':'Maximum rank of integer winding subgroup within ONE connected periodic component; directions from disconnected components are never pooled.','results':results,'replication4_checks':extra,'one_degree_grid':grid,'unit_probe_transitions':unit_transitions,'matched_density_controls':matched_density_controls(),'controls':{'fcc_expected_ratio':2/math.sqrt(3)-1,'fcc_pass':True,'open_cubic_expected_ratio':math.sqrt(4+2*math.sqrt(2))-1,'open_cubic_pass':True,'union_find_rank_controls_pass':True}},indent=2)+'\n')
 
 

@@ -28,11 +28,14 @@ def port_check(nodes):
         m=neighbor(n,i);support=[]
         if n in lookup:support.append(6*lookup[n]+i)
         if m in lookup:support.append(6*lookup[m]+3+i)
-        assert support
+        if not (support):
+            raise AssertionError('assert support')
         if len(support)==2:internal+=1
         for column in support:usage[column]+=1
-    assert all(count==1 for count in usage)
-    assert len(edges)==6*len(nodes)-internal
+    if not (all(count==1 for count in usage)):
+        raise AssertionError('assert all(count==1 for count in usage)')
+    if not (len(edges)==6*len(nodes)-internal):
+        raise AssertionError('assert len(edges)==6*len(nodes)-internal')
     return {'motifs':len(nodes),'internal_edges':internal,'constraint_rows':len(edges),
             'all_port_columns_used_once':True,'local_manifold_dimension':internal}
 
@@ -50,7 +53,8 @@ def pair_minor():
                 for j in range(3):row[offset+j]=sign*b[j];row[offset+3+j]=-tau[j]
         rows.append(row)
     J=s.Matrix(rows);minor=s.factor(J[:,:11].det())
-    assert minor==-64*rho**2*(rho**2+3)**2
+    if not (minor==-64*rho**2*(rho**2+3)**2):
+        raise AssertionError('assert minor==-64*rho**2*(rho**2+3)**2')
     return str(minor)
 
 
@@ -67,12 +71,16 @@ def clearance():
             a=2*sum(x*x for x in u)+sum(x*x for x in z)
             b=2*sum(u[j]*z[j] for j in range(3))
             # Squared distance = (a+b sqrt(2))/2; certify >=6-sqrt(2)>4.
-            assert sign_surd(a-12,b+2)>=0
+            if not (sign_surd(a-12,b+2)>=0):
+                raise AssertionError('assert sign_surd(a-12,b+2)>=0')
             records.append({'n':n,'v':v,'a':a,'b':b})
-    assert len(records)==488
-    assert C.T==-C
+    if not (len(records)==488):
+        raise AssertionError('assert len(records)==488')
+    if not (C.T==-C):
+        raise AssertionError('assert C.T==-C')
     # sigma_min(3I+C/sqrt(2))>=3, so |n|>=2 => distance>=4.
-    assert s.Rational(3,2)**2>2
+    if not (s.Rational(3,2)**2>2):
+        raise AssertionError('assert s.Rational(3,2)**2>2')
     return records
 
 
@@ -80,17 +88,21 @@ def single_vacancy_branch():
     c,z,t=s.symbols('c z t',real=True) # c=cos(alpha), z=sin(alpha)
     w=s.Matrix([1,-1,1]);K=s.Matrix([[0,-1,-1],[1,0,-1],[1,1,0]])
     # K acts as w cross v. Its rows happen to equal the vacancy C.
-    assert K*s.Matrix([1,0,0])==w.cross(s.Matrix([1,0,0]))
+    if not (K*s.Matrix([1,0,0])==w.cross(s.Matrix([1,0,0]))):
+        raise AssertionError('assert K*s.Matrix([1,0,0])==w.cross(s.Matrix([1,0,0]))')
     R=c*s.eye(3)+(1-c)*(w*w.T)/3-z*K/s.sqrt(3)
     t_squared=4*(c-1)/9+4*z/(3*s.sqrt(3))
     for i in range(3):
         a=s.eye(3).col(i)+s.Matrix(list(C.row(i)))
         v=a-R*s.eye(3).col(i)
-        assert s.simplify(w.dot(v))==0
+        if not (s.simplify(w.dot(v))==0):
+            raise AssertionError('assert s.simplify(w.dot(v))==0')
         gap=s.expand(v.dot(v)+3*t*t-2).subs(t*t,t_squared)
-        assert s.simplify(s.expand(gap).subs(z*z,1-c*c))==0
+        if not (s.simplify(s.expand(gap).subs(z*z,1-c*c))==0):
+            raise AssertionError('assert s.simplify(s.expand(gap).subs(z*z,1-c*c))==0')
     # Fixed sphere at L3-e3=(1,1,1), moving e2: separation(1,0,1).
-    assert s.Matrix([1,0,1]).dot(w)==2
+    if not (s.Matrix([1,0,1]).dot(w)==2):
+        raise AssertionError('assert s.Matrix([1,0,1]).dot(w)==2')
     return 't^2=(4/9)(cos(alpha)-1)+(4/(3sqrt(3)))sin(alpha); u=t(1,-1,1), R=rotation about (1,-1,1) by -alpha'
 
 
@@ -98,8 +110,10 @@ def main():
     a,t=s.symbols('a t',positive=True)
     B=a*s.eye(3)+t*C
     T=s.Matrix.hstack(*[s.eye(3).col(i).cross(s.Matrix(list(B.row(i)))) for i in range(3)]).T
-    assert s.factor(B.det())==a*(a*a+3*t*t)
-    assert s.factor(T.det())==2*t**3
+    if not (s.factor(B.det())==a*(a*a+3*t*t)):
+        raise AssertionError('assert s.factor(B.det())==a*(a*a+3*t*t)')
+    if not (s.factor(T.det())==2*t**3):
+        raise AssertionError('assert s.factor(T.det())==2*t**3')
     cases={'single':[(0,0,0)],'adjacent_pair':[(0,0,0),(1,0,0)],
            'line_three':[(0,0,0),(1,0,0),(2,0,0)],
            'corner_three':[(0,0,0),(1,0,0),(0,1,0)],

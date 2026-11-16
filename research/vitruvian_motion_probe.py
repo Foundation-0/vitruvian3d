@@ -27,14 +27,17 @@ def measure(degrees):
     angles = np.deg2rad(degrees)
     lattice = np.diag(2 + np.sqrt(2) * np.cos(angles)) + np.sin(angles)[:, None] * C
     bridge_vectors = lattice - 2 * np.eye(3)
-    assert np.max(np.abs(np.sum(bridge_vectors ** 2, axis=1) - 2)) < 1e-12
-    assert np.linalg.det(lattice) > 0
+    if not (np.max(np.abs(np.sum(bridge_vectors ** 2, axis=1) - 2)) < 1e-12):
+        raise AssertionError('assert np.max(np.abs(np.sum(bridge_vectors ** 2, axis=1) - 2)) < 1e-12')
+    if not (np.linalg.det(lattice) > 0):
+        raise AssertionError('assert np.linalg.det(lattice) > 0')
     singular_min = np.linalg.svd(lattice, compute_uv=False)[-1]
     # Outside [-3,3]^3, |n| >= 4. Every motif difference has |v| <= 2.
     # A strict positive margin rules out omitted overlaps for this sample,
     # up to floating-point accuracy of the singular value calculation.
     outside_lower_bound = 4 * singular_min - 2
-    assert outside_lower_bound > np.sqrt(2) + 1e-8
+    if not (outside_lower_bound > np.sqrt(2) + 1e-8):
+        raise AssertionError('assert outside_lower_bound > np.sqrt(2) + 1e-8')
     distances = np.linalg.norm(ns @ lattice + vs, axis=1)
     ids = np.flatnonzero(variable)
     closest = ids[np.argmin(distances[variable])]
@@ -96,8 +99,10 @@ def main():
         },
     }
     destination = Path(__file__).with_name('vitruvian_motion_probe.json')
-    assert not measure([0, 90, 90])['feasible_at_tolerance_1e_8']
-    assert measure([90, 90, 90])['feasible_at_tolerance_1e_8']
+    if not (not measure([0, 90, 90])['feasible_at_tolerance_1e_8']):
+        raise AssertionError("assert not measure([0, 90, 90])['feasible_at_tolerance_1e_8']")
+    if not (measure([90, 90, 90])['feasible_at_tolerance_1e_8']):
+        raise AssertionError("assert measure([90, 90, 90])['feasible_at_tolerance_1e_8']")
     destination.write_text(json.dumps(result, indent=2) + '\n')
     print(json.dumps(result, indent=2))
 

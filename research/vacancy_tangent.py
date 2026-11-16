@@ -15,7 +15,8 @@ def main():
     classes=[]
     # C is skew, hence |nL|^2=4|n|^2+|nC|^2. If |n|>=2,
     # |nL+v|>=2|n|-2>=2>sqrt(2). The 26 neighbors suffice exactly.
-    assert np.array_equal(C.T,-C)
+    if not (np.array_equal(C.T,-C)):
+        raise AssertionError('assert np.array_equal(C.T,-C)')
     for n in itertools.product([-1,0,1],repeat=3):
         n=np.array(n)
         if not np.any(n): continue
@@ -32,30 +33,39 @@ def main():
     B=np.array([[1,0,0,0,0,0],[0,1,0,0,0,0],[0,-1,0,0,0,0],
                 [0,0,1,0,0,0],[0,0,0,1,0,0],[0,0,1,0,0,0],
                 [0,0,0,0,1,0],[0,0,0,0,-1,0],[0,0,0,0,0,1]],dtype=int)
-    assert not np.any(E@B)
+    if not (not np.any(E@B)):
+        raise AssertionError('assert not np.any(E@B)')
     H=np.array([[1,1,0,0,0,0],[1,-1,0,0,0,0],
                 [0,0,1,1,0,0],[0,0,-1,1,0,0],
                 [0,0,0,0,1,1],[0,0,0,0,-1,1]],dtype=int)
     reduced=G@B
-    assert all(any(np.array_equal(h,row) for row in reduced) for h in H)
+    if not (all(any(np.array_equal(h,row) for row in reduced) for h in H)):
+        raise AssertionError('assert all(any(np.array_equal(h,row) for row in reduced) for h in H)')
     sums=[np.array(c)@H for c in itertools.product([0,1],repeat=6)]
-    assert all(any(np.array_equal(row,total) for total in sums) for row in reduced)
-    assert np.array_equal(cofactor@B,[5,-2,-2,5,2,5])
+    if not (all(any(np.array_equal(row,total) for total in sums) for row in reduced)):
+        raise AssertionError('assert all(any(np.array_equal(row,total) for total in sums) for row in reduced)')
+    if not (np.array_equal(cofactor@B,[5,-2,-2,5,2,5])):
+        raise AssertionError('assert np.array_equal(cofactor@B,[5,-2,-2,5,2,5])')
     nonbar=np.array([r for r in G if not any(np.array_equal(r,e) for e in E)])
     twice_lambda=np.array([3,3,2,3,3,2,3,3,2])
-    assert np.array_equal(nonbar.T@twice_lambda+E.sum(axis=0),2*cofactor)
+    if not (np.array_equal(nonbar.T@twice_lambda+E.sum(axis=0),2*cofactor)):
+        raise AssertionError('assert np.array_equal(nonbar.T@twice_lambda+E.sum(axis=0),2*cofactor)')
     bounds=[(-1,1)]*9
     result=linprog(cofactor,A_ub=-G,b_ub=np.zeros(len(G)),A_eq=E,b_eq=np.zeros(3),bounds=bounds,method='highs')
-    assert result.success
+    if not (result.success):
+        raise AssertionError('assert result.success')
     rational=[Fraction(float(x)).limit_denominator(10000) for x in result.x]
     def exact_dot(row):return sum(int(a)*b for a,b in zip(row,rational))
-    assert all(exact_dot(row)>=0 for row in G)
-    assert all(exact_dot(row)==0 for row in E)
+    if not (all(exact_dot(row)>=0 for row in G)):
+        raise AssertionError('assert all(exact_dot(row)>=0 for row in G)')
+    if not (all(exact_dot(row)==0 for row in E)):
+        raise AssertionError('assert all(exact_dot(row)==0 for row in E)')
     exact_derivative=exact_dot(cofactor)
     # A uniform omitted-neighbor bound: outside the box |n|>=4, and
     # |nL+v| >= sigma_min(L)*4-2 > sqrt(2).
     singular_min=float(np.linalg.svd(L,compute_uv=False)[-1])
-    assert 4*singular_min-2>np.sqrt(2)
+    if not (4*singular_min-2>np.sqrt(2)):
+        raise AssertionError('assert 4*singular_min-2>np.sqrt(2)')
     neutral=[]
     for j in range(9):
         for sign in [-1,1]:

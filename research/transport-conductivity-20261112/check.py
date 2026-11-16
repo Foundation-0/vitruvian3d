@@ -23,12 +23,14 @@ HASHES = {
 
 def check(source: Path) -> dict:
     for name, expected in HASHES.items():
-        assert hashlib.sha256((source / name).read_bytes()).hexdigest() == expected, name
+        if not (hashlib.sha256((source / name).read_bytes()).hexdigest() == expected):
+            raise AssertionError(name)
     spec = importlib.util.spec_from_file_location("bound_passage_verifier", source / "research/passage_verify.py")
     module = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(module)
     data = json.loads((source / "research/passage_certificate.json").read_text())
-    assert module.SQ[0] ** 2 < 2 < module.SQ[1] ** 2
+    if not (module.SQ[0] ** 2 < 2 < module.SQ[1] ** 2):
+        raise AssertionError('assert module.SQ[0] ** 2 < 2 < module.SQ[1] ** 2')
     inherited = {
         "plane": module.verify_plane(data),
         "original": module.verify_loops(data, "original"),
@@ -39,7 +41,8 @@ def check(source: Path) -> dict:
     # The original checker already proves sigma_min(L)>2 on both intervals.
     # Entry bounds d<4, |off_diagonal|<1 imply ||L||_F^2<54<64.
     # Row norm squared<18 and sqrt(18)<9/2 imply V<81.
-    assert 2 < 2**2 and 54 < 64 and 18 < F(9, 2)**2
+    if not (2 < 2**2 and 54 < 64 and 18 < F(9, 2)**2):
+        raise AssertionError('assert 2 < 2**2 and 54 < 64 and 18 < F(9, 2)**2')
     lattice_bounds = {"smallest_singular_value_strict_lower": "2",
                       "operator_norm_strict_upper": "8",
                       "cell_volume_strict_upper": "81"}
@@ -51,7 +54,8 @@ def check(source: Path) -> dict:
             points = loop["fractional_vertices_scaled"]
             steps = sum(sum(abs(x-y) for x, y in zip(a, b)) for a, b in zip(points, points[1:]))
             bound = F(8 * steps, data["fractional_polyline_scale"])
-            assert 0 < bound < 20
+            if not (0 < bound < 20):
+                raise AssertionError('assert 0 < bound < 20')
             rows.append({"winding": loop["winding"], "physical_length_strict_upper": str(bound)})
         lengths[kind] = rows
 
@@ -62,19 +66,25 @@ def check(source: Path) -> dict:
     cases = {}
     for name, h, R2 in [("equal_radius", h_unit, F(2)),
                         ("full_probe_ratio_window", h_window, R2_max)]:
-        assert B > 2*h
+        if not (B > 2*h):
+            raise AssertionError('assert B > 2*h')
         slack = (B - 2*h)**2 - R2
-        assert slack > 0
+        if not (slack > 0):
+            raise AssertionError('assert slack > 0')
         # Cube support has radius sqrt(3)*h<2*h and diameter below period spacing.
-        assert 3*h*h < 1
+        if not (3*h*h < 1):
+            raise AssertionError('assert 3*h*h < 1')
         # Product tent kernel: mass=1 and squared L2 norm=(2/(3h))^3.
         kernel_squared_norm = F(8, 27) / h**3
-        assert (F(2, 3)/h)**3 == kernel_squared_norm
+        if not ((F(2, 3)/h)**3 == kernel_squared_norm):
+            raise AssertionError('assert (F(2, 3)/h)**3 == kernel_squared_norm')
         # Averaging m individual Cauchy-Schwarz bounds, V<81 and lengths<20.
         original_coefficient = F(27, 8) * h**3 / (2*81*20**2) * 4
         skew_coefficient = F(27, 8) * h**3 / (3*81*20**2) * F(4, 3)
-        assert original_coefficient == h**3 / 4800
-        assert skew_coefficient == h**3 / 21600
+        if not (original_coefficient == h**3 / 4800):
+            raise AssertionError('assert original_coefficient == h**3 / 4800')
+        if not (skew_coefficient == h**3 / 21600):
+            raise AssertionError('assert skew_coefficient == h**3 / 21600')
         cases[name] = {
             "kernel_cube_half_width": str(h),
             "exclusion_radius_squared_upper": str(R2),
@@ -85,10 +95,14 @@ def check(source: Path) -> dict:
         }
 
     maximum_plane_distance_squared = F(inherited["plane"]["max_squared_distance_upper_bound"])
-    assert maximum_plane_distance_squared < F(176, 125)**2
-    assert F(176, 125) + F(1, 500) == F(141, 100)
-    assert F(141, 100)**2 < F(399**2, 80000)
-    assert F(1, 4000) * 8 == F(1, 500)
+    if not (maximum_plane_distance_squared < F(176, 125)**2):
+        raise AssertionError('assert maximum_plane_distance_squared < F(176, 125)**2')
+    if not (F(176, 125) + F(1, 500) == F(141, 100)):
+        raise AssertionError('assert F(176, 125) + F(1, 500) == F(141, 100)')
+    if not (F(141, 100)**2 < F(399**2, 80000)):
+        raise AssertionError('assert F(141, 100)**2 < F(399**2, 80000)')
+    if not (F(1, 4000) * 8 == F(1, 500)):
+        raise AssertionError('assert F(1, 4000) * 8 == F(1, 500)')
     barrier = {
         "plane_distance_strict_upper": "176/125",
         "physical_slab_half_width": "1/500",
@@ -99,14 +113,17 @@ def check(source: Path) -> dict:
     }
 
     W = inherited["skew"]["winding_vectors"]
-    assert abs(module.determinant(W)) == 1
+    if not (abs(module.determinant(W)) == 1):
+        raise AssertionError('assert abs(module.determinant(W)) == 1')
     gram = [[sum(F(row[i])*row[j] for row in W) - (F(1, 3) if i == j else 0)
              for j in range(3)] for i in range(3)]
     minors = [gram[0][0],
               gram[0][0]*gram[1][1] - gram[0][1]*gram[1][0],
               module.determinant(gram)]
-    assert all(x > 0 for x in minors)
-    assert inherited["original"]["winding_vectors"] == [[0, 0, -1], [0, 1, 0]]
+    if not (all(x > 0 for x in minors)):
+        raise AssertionError('assert all(x > 0 for x in minors)')
+    if not (inherited["original"]["winding_vectors"] == [[0, 0, -1], [0, 1, 0]]):
+        raise AssertionError('assert inherited["original"]["winding_vectors"] == [[0, 0, -1], [0, 1, 0]]')
 
     # Must-fail controls for this certificate's sufficient conditions.
     rejected = {
@@ -115,7 +132,8 @@ def check(source: Path) -> dict:
         "physical_slab_half_width_1_over_10": (F(176, 125)+F(1, 10))**2 >= F(399**2, 80000),
         "dependent_winding_set": module.determinant([W[0], W[1], W[0]]) == 0,
     }
-    assert all(rejected.values())
+    if not (all(rejected.values())):
+        raise AssertionError('assert all(rejected.values())')
     return {
         "source_commit": PIN,
         "source_sha256": HASHES,

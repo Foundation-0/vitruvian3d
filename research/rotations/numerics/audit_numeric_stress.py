@@ -19,8 +19,10 @@ VAC=np.array([[2,-1,-1],[1,2,-1],[1,1,2]],dtype=int)
 
 def canonical(site):
     n,p=site
-    assert len(n)==3 and all(type(x) is int for x in n)
-    assert type(p) is int and 0<=p<6
+    if not (len(n)==3 and all(type(x) is int for x in n)):
+        raise AssertionError('assert len(n)==3 and all(type(x) is int for x in n)')
+    if not (type(p) is int and 0<=p<6):
+        raise AssertionError('assert type(p) is int and 0<=p<6')
     return tuple(n),p
 
 
@@ -44,7 +46,8 @@ def exact_rows(pairs,patch):
         x=VAC.T@s.Matrix(left[0])+s.Matrix(P[left[1]].tolist())
         y=VAC.T@s.Matrix(right[0])+s.Matrix(P[right[1]].tolist())
         d=x-y
-        assert d.dot(d)==2
+        if not (d.dot(d)==2):
+            raise AssertionError('assert d.dot(d)==2')
         row=[]
         for node in patch:
             # Rebuild each Jacobian column from an actual unit rigid-body velocity.
@@ -65,23 +68,32 @@ def exact_controls(data):
     for control in data['cone_controls']:
         if control['angle']!=90:continue
         patch=[tuple(n) for n in control['patch']]
-        assert len(set(patch))==len(patch)
-        assert {edgekey(pair) for pair in control['bar_pairs']}==bridges(patch)
-        assert len(control['bar_pairs'])==len(bridges(patch))
+        if not (len(set(patch))==len(patch)):
+            raise AssertionError('assert len(set(patch))==len(patch)')
+        if not ({edgekey(pair) for pair in control['bar_pairs']}==bridges(patch)):
+            raise AssertionError("assert {edgekey(pair) for pair in control['bar_pairs']}==bridges(patch)")
+        if not (len(control['bar_pairs'])==len(bridges(patch))):
+            raise AssertionError("assert len(control['bar_pairs'])==len(bridges(patch))")
         A=exact_rows(control['contact_pairs'],patch)
         J=exact_rows(control['bar_pairs'],patch)
-        assert A==s.Matrix(control['contact_rows_integer'])
-        assert J==s.Matrix(control['bar_rows_integer'])
+        if not (A==s.Matrix(control['contact_rows_integer'])):
+            raise AssertionError("assert A==s.Matrix(control['contact_rows_integer'])")
+        if not (J==s.Matrix(control['bar_rows_integer'])):
+            raise AssertionError("assert J==s.Matrix(control['bar_rows_integer'])")
         w=s.Matrix([s.Rational(x) for x in control['contact_weights']])
         lam=s.Matrix([s.Rational(x) for x in control['bar_multipliers']])
-        assert all(x>0 for x in w)
-        assert A.T*w+J.T*lam==s.zeros(6*len(patch),1)
-        assert A.col_join(J).rank()==6*len(patch)
+        if not (all(x>0 for x in w)):
+            raise AssertionError('assert all(x>0 for x in w)')
+        if not (A.T*w+J.T*lam==s.zeros(6*len(patch),1)):
+            raise AssertionError('assert A.T*w+J.T*lam==s.zeros(6*len(patch),1)')
+        if not (A.col_join(J).rank()==6*len(patch)):
+            raise AssertionError('assert A.col_join(J).rank()==6*len(patch)')
         outputs.append({'motifs':len(patch),'genuine_prescribed_bar_count':J.rows,
                         'contact_rows':A.rows,'bar_rank':J.rank(),'stacked_rank':A.col_join(J).rank(),
                         'minimum_positive_weight':str(min(w)),
                         'exact_equilibrium_and_label_reconstruction_passed':True})
-    assert sorted(x['motifs'] for x in outputs)==[1,2]
+    if not (sorted(x['motifs'] for x in outputs)==[1,2]):
+        raise AssertionError("assert sorted(x['motifs'] for x in outputs)==[1,2]")
     return outputs
 
 
@@ -95,12 +107,14 @@ def quaternion_rotate(w,p):
 def finite_frames(data):
     L=np.array(data['lattice']);patch=[(0,0,0),(1,0,0)];barset=bridges(patch)
     expected=3*np.eye(3)+(VAC-2*np.eye(3))/math.sqrt(2)
-    assert np.max(np.abs(L-expected))<1e-14
+    if not (np.max(np.abs(L-expected))<1e-14):
+        raise AssertionError('assert np.max(np.abs(L-expected))<1e-14')
     fixedlabels=[(n,p) for n in itertools.product(range(-2,4),repeat=3) if n not in patch for p in range(6)]
     fixed=np.array([np.array(n)@L+P[p] for n,p in fixedlabels])
     residual=0.;gap=math.inf;farlower=math.inf;phase_error=0.
     parameters=[row['parameter'] for row in data['states']]
-    assert len(parameters)==len(set(parameters))==81 and parameters==sorted(parameters)
+    if not (len(parameters)==len(set(parameters))==81 and parameters==sorted(parameters)):
+        raise AssertionError('assert len(parameters)==len(set(parameters))==81 and parameters==sorted(parameters)')
     for state in data['states']:
         x=np.array(state['coordinates']).reshape(2,6)
         moving={(n,p):np.array(n)@L+x[j,:3]+quaternion_rotate(x[j,3:],P[p]) for j,n in enumerate(patch) for p in range(6)}
@@ -118,7 +132,8 @@ def finite_frames(data):
             d=moving[a]-moving[b];gap=min(gap,float(d@d-2))
         farlower=min(farlower,8-max(float(np.linalg.norm(y)) for y in moving.values()))
         phase_error=max(phase_error,abs(np.array(data['normalized_tangent'])@x.ravel()-state['parameter']))
-    assert residual<1e-10 and gap>1.9 and farlower>math.sqrt(2) and phase_error<1e-9
+    if not (residual<1e-10 and gap>1.9 and farlower>math.sqrt(2) and phase_error<1e-9):
+        raise AssertionError('assert residual<1e-10 and gap>1.9 and farlower>math.sqrt(2) and phase_error<1e-9')
     return {'distinct_frames':81,'quaternion_maximum_bar_squared_residual':residual,
             'minimum_nonbar_squared_gap':gap,'omitted_image_lower_bound':farlower,
             'maximum_phase_constraint_residual':phase_error,

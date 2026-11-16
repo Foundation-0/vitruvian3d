@@ -28,7 +28,8 @@ def main():
     expected={(s.Integer(1),s.Integer(1),s.Integer(0)),(s.Integer(1),s.Integer(-1),s.Integer(0)),
               (s.Rational(1,3),s.Rational(4,3),s.Rational(1,3)),
               (s.Integer(0),s.Integer(-1),s.Integer(1)),(s.Integer(-1),s.Integer(0),s.Integer(1))}
-    assert valid==expected
+    if not (valid==expected):
+        raise AssertionError('assert valid==expected')
     # Verify each necessary contact by direct squared-gap reduction.
     p,q,z=s.symbols('p q z',real=True)
     L=s.Matrix([[2,-1,-1],[1,2,-1],[p,q,2+z]])
@@ -41,7 +42,8 @@ def main():
         d=s.Matrix(1,3,n)*L+s.Matrix(1,3,v)
         gap=s.expand(d.dot(d)-2)
         reduced=s.Poly(gap-(p*p+q*q+z*z-2),p,q,z).as_expr()
-        assert s.expand(reduced-factor*(row[0]+row[1]*p+row[2]*q+row[3]*z))==0
+        if not (s.expand(reduced-factor*(row[0]+row[1]*p+row[2]*q+row[3]*z))==0):
+            raise AssertionError('assert s.expand(reduced-factor*(row[0]+row[1]*p+row[2]*q+row[3]*z))==0')
     peak=9+s.Rational(3,2)*s.sqrt(22)
     edges={'AB':peak,'AC':8+s.Rational(9,2)*s.sqrt(2),'CE':peak,
            'ED':8+s.Rational(9,2)*s.sqrt(2),'DB':9+s.sqrt(34)}
@@ -53,15 +55,22 @@ def main():
         'ED':(9+2*t+5*s.sqrt(1-2*t-2*t*t),-s.Rational(1,2)+1/s.sqrt(18),-1,0),
         'DB':(9+3*t+5*s.sqrt(1-t*t),3/s.sqrt(34),0,1)}
     for label,(expression,critical,lower,upper) in arc_checks.items():
-        assert bool(lower<critical) and bool(critical<upper)
-        assert s.simplify(s.diff(expression,t).subs(t,critical))==0
-        assert s.simplify(expression.subs(t,critical)-edges[label])==0
-        assert bool(expression.subs(t,lower)>=12) and bool(expression.subs(t,upper)>=12)
-    assert all(bool(value<=peak) for value in edges.values())
+        if not (bool(lower<critical) and bool(critical<upper)):
+            raise AssertionError('assert bool(lower<critical) and bool(critical<upper)')
+        if not (s.simplify(s.diff(expression,t).subs(t,critical))==0):
+            raise AssertionError('assert s.simplify(s.diff(expression,t).subs(t,critical))==0')
+        if not (s.simplify(expression.subs(t,critical)-edges[label])==0):
+            raise AssertionError('assert s.simplify(expression.subs(t,critical)-edges[label])==0')
+        if not (bool(expression.subs(t,lower)>=12) and bool(expression.subs(t,upper)>=12)):
+            raise AssertionError('assert bool(expression.subs(t,lower)>=12) and bool(expression.subs(t,upper)>=12)')
+    if not (all(bool(value<=peak) for value in edges.values())):
+        raise AssertionError('assert all(bool(value<=peak) for value in edges.values())')
     h=s.Matrix([3,1,5])
-    assert all(h.dot(s.Matrix(row[1:]))>0 for row in constraints)
+    if not (all(h.dot(s.Matrix(row[1:]))>0 for row in constraints)):
+        raise AssertionError('assert all(h.dot(s.Matrix(row[1:]))>0 for row in constraints)')
     maximum_direction=s.sqrt(s.Rational(2,35))*h
-    assert all(bool(s.simplify(row[0]+s.Matrix(row[1:]).dot(maximum_direction))>0) for row in constraints)
+    if not (all(bool(s.simplify(row[0]+s.Matrix(row[1:]).dot(maximum_direction))>0) for row in constraints)):
+        raise AssertionError('assert all(bool(s.simplify(row[0]+s.Matrix(row[1:]).dot(maximum_direction))>0) for row in constraints)')
     result={'scope':'Exact minimax optimum with L1=(2,-1,-1), L2=(1,2,-1) fixed and only the third bridge moving; not unrestricted all-row optimum.',
             'necessary_spherical_region_constraints':[list(row) for row in constraints],
             'vertices':[[str(x) for x in point] for point in sorted(valid,key=lambda t:tuple(float(x) for x in t))],

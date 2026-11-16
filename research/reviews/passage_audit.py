@@ -28,27 +28,37 @@ def main():
     hashes={name:hashlib.sha256(pinned(name)).hexdigest() for name in names}
     base=json.loads(pinned('passage_certificate.json'))
     window=json.loads(pinned('passage_window.json'))
-    assert type(base['integer_lattice_enclosure_scale']) is int and base['integer_lattice_enclosure_scale']>0
-    assert type(base['fractional_polyline_scale']) is int and base['fractional_polyline_scale']>0
+    if not (type(base['integer_lattice_enclosure_scale']) is int and base['integer_lattice_enclosure_scale']>0):
+        raise AssertionError("assert type(base['integer_lattice_enclosure_scale']) is int and base['integer_lattice_enclosure_scale']>0")
+    if not (type(base['fractional_polyline_scale']) is int and base['fractional_polyline_scale']>0):
+        raise AssertionError("assert type(base['fractional_polyline_scale']) is int and base['fractional_polyline_scale']>0")
     for name in ['original_free_loops','free_loops']:
         for loop in base[name]:
-            assert ints(loop['fractional_vertices_scaled']) and ints(loop['winding'])
+            if not (ints(loop['fractional_vertices_scaled']) and ints(loop['winding'])):
+                raise AssertionError("assert ints(loop['fractional_vertices_scaled']) and ints(loop['winding'])")
     for label in base['plane_sphere_labels']+window['plane_sphere_table']:
-        assert ints(label['n']) and ints(label['p'])
+        if not (ints(label['n']) and ints(label['p'])):
+            raise AssertionError("assert ints(label['n']) and ints(label['p'])")
     for data in [base,window]:
         for interval in data['half_angle_intervals'].values():
-            a,b=map(F,interval);assert 0<a<b<1
-    assert hashes['passage_certificate.json']==window['base_certificate_sha256']
+            a,b=map(F,interval)
+            if not (0<a<b<1):
+                raise AssertionError('assert 0<a<b<1')
+    if not (hashes['passage_certificate.json']==window['base_certificate_sha256']):
+        raise AssertionError("assert hashes['passage_certificate.json']==window['base_certificate_sha256']")
     module=types.ModuleType('pinned_passage_verifier')
     module.__file__=str(research/'passage_verify.py')
     exec(compile(pinned('passage_verify.py'),module.__file__,'exec'),module.__dict__)
     # Functions do not write outputs; do not invoke published main().
     narrow={'plane':module.verify_plane(base),'original':module.verify_loops(base,'original'),
             'skew':module.verify_loops(base,'skew'),'volume':module.verify_volume_and_angle(base)}
-    assert module.SQ[0]**2<2<module.SQ[1]**2
-    assert F(5671,4000)**2>F(401**2,80000)
+    if not (module.SQ[0]**2<2<module.SQ[1]**2):
+        raise AssertionError('assert module.SQ[0]**2<2<module.SQ[1]**2')
+    if not (F(5671,4000)**2>F(401**2,80000)):
+        raise AssertionError('assert F(5671,4000)**2>F(401**2,80000)')
     connector_hash=hashlib.sha256(subprocess.check_output(['git','show',CONNECTOR_PIN+':research/connectors_proof.md'],cwd=REPO)).hexdigest()
-    assert connector_hash=='cc328d5b84f3bd0b02c1cc85dd51d50e77835acc2592f8af30ac14ce0594d441'
+    if not (connector_hash=='cc328d5b84f3bd0b02c1cc85dd51d50e77835acc2592f8af30ac14ce0594d441'):
+        raise AssertionError("assert connector_hash=='cc328d5b84f3bd0b02c1cc85dd51d50e77835acc2592f8af30ac14ce0594d441'")
     output={'reviewed_passage_commit':PIN,'reviewed_repository':'https://github.com/Foundation-0/vitruvian3d','reviewed_connector_commit':CONNECTOR_PIN,
             'source_read_method':'git show at exact pinned commit, independent of moving checkout HEAD',
             'published_file_sha256':hashes,

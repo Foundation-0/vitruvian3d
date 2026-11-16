@@ -29,8 +29,10 @@ def finite_check(field):
         energy+=dot(delta,delta);excess+=strain;linear[i]+=dot(B[i],delta)
         for j in range(3):sumdiff[i][j]+=delta[j]
         edge_excess.append(strain)
-    assert excess==energy and all(x==0 for x in linear)
-    assert all(all(x==0 for x in row) for row in sumdiff)
+    if not (excess==energy and all(x==0 for x in linear)):
+        raise AssertionError('assert excess==energy and all(x==0 for x in linear)')
+    if not (all(all(x==0 for x in row) for row in sumdiff)):
+        raise AssertionError('assert all(all(x==0 for x in row) for row in sumdiff)')
     return {'support_sites':len(field),'affected_or_incident_edges':len(edges),
             'total_squared_length_excess':str(excess),'discrete_dirichlet_sum':str(energy),
             'telescoping_linear_terms':[str(x) for x in linear],
@@ -46,7 +48,8 @@ def periodic_check(shape):
             m=tuple((n[j]+(i==j))%shape[j] for j in range(3))
             delta=sub(field[m],field[n]);new=add(B[i],delta)
             energy+=dot(delta,delta);excess+=dot(new,new)-dot(B[i],B[i]);linear+=dot(B[i],delta)
-    assert linear==0 and energy==excess>0
+    if not (linear==0 and energy==excess>0):
+        raise AssertionError('assert linear==0 and energy==excess>0')
     return {'periods':shape,'total_squared_length_excess':str(excess),'discrete_dirichlet_sum':str(energy)}
 
 
@@ -58,17 +61,21 @@ def main():
         result=finite_check(field)
         maximum_square=max(dot(u,u) for u in field.values())
         lower=6*maximum_square/F(R+1)
-        assert F(result['discrete_dirichlet_sum'])>=lower
+        if not (F(result['discrete_dirichlet_sum'])>=lower):
+            raise AssertionError("assert F(result['discrete_dirichlet_sum'])>=lower")
         result.update({'support_box_radius':R,'max_displacement_squared':str(maximum_square),
                        'line_path_dirichlet_lower_bound':str(lower)})
         cases.append(result)
     k=(1,-1,1)
-    assert all(dot(row,k)==0 for row in B)
+    if not (all(dot(row,k)==0 for row in B)):
+        raise AssertionError('assert all(dot(row,k)==0 for row in B)')
     epsilon=F(1,10)
     field={(0,0,0):tuple(epsilon*x for x in k)}
     example=finite_check(field)
-    assert F(example['discrete_dirichlet_sum'])==18*epsilon**2
-    assert F(example['max_squared_length_excess'])==3*epsilon**2
+    if not (F(example['discrete_dirichlet_sum'])==18*epsilon**2):
+        raise AssertionError("assert F(example['discrete_dirichlet_sum'])==18*epsilon**2")
+    if not (F(example['max_squared_length_excess'])==3*epsilon**2):
+        raise AssertionError("assert F(example['max_squared_length_excess'])==3*epsilon**2")
     # Every affected bridge has zero first-order change because B_i dot k=0.
     example['every_first_order_bridge_change_zero']=True
     example['every_affected_exact_squared_length_increase']=str(3*epsilon**2)

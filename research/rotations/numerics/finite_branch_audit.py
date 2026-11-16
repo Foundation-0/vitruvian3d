@@ -23,7 +23,8 @@ def rotation(w):
 
 def main():
     data=json.loads((HERE/'two_body_branch.json').read_text());L=np.array(data['lattice'])
-    assert np.max(np.abs(L-(3*np.eye(3)+np.array([[0,-1,-1],[1,0,-1],[1,1,0]])/math.sqrt(2))))<1e-14
+    if not (np.max(np.abs(L-(3*np.eye(3)+np.array([[0,-1,-1],[1,0,-1],[1,1,0]])/math.sqrt(2))))<1e-14):
+        raise AssertionError('assert np.max(np.abs(L-(3*np.eye(3)+np.array([[0,-1,-1],[1,0,-1],[1,1,0]])/math.sqrt(2))))<1e-14')
     index={n:i for i,n in enumerate(PATCH)}
     starts=set()
     for n in PATCH:
@@ -32,7 +33,8 @@ def main():
     bars=[]
     for n,i in starts:
         m=list(n);m[i]+=1;bars.append(((n,i),(tuple(m),i+3)))
-    assert len(bars)==11
+    if not (len(bars)==11):
+        raise AssertionError('assert len(bars)==11')
     barset={tuple(sorted(e)) for e in bars}
     fixed=[]
     for n in itertools.product(range(-2,4),repeat=3):
@@ -50,7 +52,9 @@ def main():
     previous=None
     for state in data['states']:
         x=np.array(state['coordinates']);moving=positions(x)
-        res=float(np.abs(constraints(x)).max());worstres=max(worstres,res);assert res<1e-10
+        res=float(np.abs(constraints(x)).max());worstres=max(worstres,res)
+        if not (res<1e-10):
+            raise AssertionError('assert res<1e-10')
         for a,point in moving.items():
             delta=fixedpoints-point;ds=np.einsum('ij,ij->i',delta,delta)-2
             for k,b in enumerate(fixedlabels):
@@ -71,9 +75,11 @@ def main():
         minsing=min(minsing,float(np.linalg.svd(aug,compute_uv=False)[-1]))
         if previous is not None:maxstep=max(maxstep,float(np.linalg.norm(x-previous)))
         previous=x
-    assert mingap>1.9 and farlower>math.sqrt(2) and minsing>.1
+    if not (mingap>1.9 and farlower>math.sqrt(2) and minsing>.1):
+        raise AssertionError('assert mingap>1.9 and farlower>math.sqrt(2) and minsing>.1')
     unique_parameters=len({s['parameter'] for s in data['states']})
-    assert unique_parameters==len(data['states'])==81
+    if not (unique_parameters==len(data['states'])==81):
+        raise AssertionError("assert unique_parameters==len(data['states'])==81")
     result={'stored_frames':len(data['states']),'unique_parameters':unique_parameters,'parameter_range':[data['states'][0]['parameter'],data['states'][-1]['parameter']],
         'independent_rodrigues_maximum_bar_squared_residual':worstres,'independent_minimum_nonbar_squared_gap':mingap,
         'omitted_image_distance_lower_bound':farlower,'minimum_sampled_augmented_jacobian_singular_value':minsing,

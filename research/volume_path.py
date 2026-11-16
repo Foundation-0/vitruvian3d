@@ -40,7 +40,8 @@ def main():
                             constraints=[{'type':'ineq','fun':lambda t:gaps(t,beta)}],
                             options={'maxiter':250,'ftol':1e-11})
             if gaps(result.x,beta).min()>-1e-7 and (best is None or result.fun<best.fun):best=result
-        assert best is not None
+        if not (best is not None):
+            raise AssertionError('assert best is not None')
         last=best.x
         L=lattice(last,beta)
         row={'beta_deg':float(beta_deg),'theta_deg':np.rad2deg(last).tolist(),
